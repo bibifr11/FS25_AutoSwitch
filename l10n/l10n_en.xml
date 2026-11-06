@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <texts>
+        <text name="vtpas_on" text="On"/>
+        <text name="vtpas_off" text="Off"/>
+        <text name="vtpas_auto" text="Automatic"/>
+        <text name="vtpas_manual" text="Manual"/>
+        <text name="vtpas_slip_label" text="Wheel slip for rear diff lock"/>
+        <text name="vtpas_slip_tip" text="Wheel slip (%) above which the rear differential locks automatically (Enhanced Vehicle). It unlocks at half this threshold. Off = never."/>
+        <text name="vtpas_slipFront_label" text="Wheel slip for front diff lock"/>
+        <text name="vtpas_slipFront_tip" text="Wheel slip (%) above which the front differential locks automatically (Enhanced Vehicle). It unlocks at half this threshold. Off = never."/>
+        <text name="vtpas_diff_label" text="Differentials and transmission"/>
+        <text name="vtpas_diff_tip" text="Auto = AutoSwitch locks the differentials on slip, picks 2WD / 4WD and releases the locks in turns. Manual = you handle everything; an engaged lock is never released, the tractor only turns up to its limit (wheels turned fully, it slides) (50 % rear, 20 % front, 10 % both). Key: Right Ctrl + Up arrow."/>
+        <text name="vtpas_tire_label" text="Tire pressure (manual driving)"/>
+        <text name="vtpas_tire_tip" text="With AutoDrive or Courseplay inflating and deflating are always automatic. This setting applies when you drive yourself: Automatic = inflated on roads, deflated in fields; Manual = you use the mod's key."/>
+        <text name="vtpas_notifDiff_label" text="Differential notifications"/>
+        <text name="vtpas_notifDiff_tip" text="Shows a notification when a vehicle locks or unlocks its differentials."/>
+        <text name="vtpas_notifTires_label" text="Tire notifications"/>
+        <text name="vtpas_notifTires_tip" text="Shows a notification when a vehicle inflates or deflates its tires."/>
+        <text name="vtpas_notif_diffLocked" text="%s: differentials locked (slip %.0f%%)"/>
+        <text name="vtpas_notif_diffUnlocked" text="%s: differentials unlocked"/>
+        <text name="vtpas_notif_diffRearLocked" text="%s: rear differential locked (slip %.0f%%)"/>
+        <text name="vtpas_notif_diffRearUnlocked" text="%s: rear differential unlocked"/>
+        <text name="vtpas_notif_diffRearPlowLocked" text="%s: rear differential locked (plough lowered)"/>
+        <text name="vtpas_notif_diffFrontLocked" text="%s: front differential locked (slip %.0f%%)"/>
+        <text name="vtpas_notif_diffFrontUnlocked" text="%s: front differential unlocked"/>
+        <text name="vtpas_notif_tiresInflated" text="%s: tires inflated (road pressure)"/>
+        <text name="vtpas_notif_tiresDeflated" text="%s: tires deflated (field pressure)"/>
+        <text name="vtpas_alert_pct_label" text="Slip alert: threshold"/>
+        <text name="vtpas_alert_pct_tip" text="Shows a red message when a vehicle's wheel slip stays above this percentage for the set duration. Off = no alert."/>
+        <text name="vtpas_alert_sec_label" text="Slip alert: duration"/>
+        <text name="vtpas_alert_sec_tip" text="Time (in seconds) the slip must stay above the threshold before the alert appears."/>
+        <text name="vtpas_alert_slip" text="%s: excessive wheel slip (%.0f%%) for more than %d s!"/>
+        <text name="vtpas_alert_diffSteer" text="Straighten the wheels"/>
+        <text name="vtpas_diffdelay_label" text="Differentials: delay before lock"/>
+        <text name="vtpas_diffdelay_tip" text="Time (in seconds) the wheel slip must stay above the threshold before the differentials lock automatically."/>
+        <text name="vtpas_decimal" text="."/>
+        <text name="vtpas_tiredelay_label" text="Tires: delay between two changes"/>
+        <text name="vtpas_tiredelay_tip" text="Minimum time (in seconds) between two pressure changes (inflate / deflate) to avoid rapid back-and-forth. Off = no delay."/>
+        <text name="vtpas_hintShow_label" text="Recommended speed range (in fields)"/>
+        <text name="vtpas_hintShow_tip" text="Shows the recommended speed range above the speedometer, updated continuously from the zone (field / road), tire pressure, soil type, soil moisture and wheel slip."/>
+        <text name="vtpas_hint_range" text="Recommended range: %d - %d km/h"/>
+        <text name="vtpas_hint_min" text="Recommended speed: min %d km/h"/>
+        <text name="vtpas_hint_max" text="Recommended speed: max %d km/h"/>
+        <text name="vtpas_hint_free" text="Free speed"/>
+        <text name="vtpas_hint_risk" text="Risk of getting stuck: min %d km/h, don't stop"/>
+        <text name="vtpas_hint_field" text="Field"/>
+        <text name="vtpas_hint_road" text="Off-field"/>
+        <text name="vtpas_hint_soil" text="moisture %d %%"/>
+        <text name="vtpas_hint_frozen" text="frozen ground"/>
+        <text name="vtpas_hint_tiresField" text="field tires"/>
+        <text name="vtpas_hint_tiresRoad" text="road tires"/>
+        <text name="vtpas_hint_slip" text="slip %d %%"/>
+        <text name="vtpas_gt_StubbleTillage" text="stubble tilled"/>
+        <text name="vtpas_gt_Cultivated" text="cultivated"/>
+        <text name="vtpas_gt_Seedbed" text="seedbed"/>
+        <text name="vtpas_gt_Plowed" text="plowed"/>
+        <text name="vtpas_gt_RolledSeedbed" text="rolled seedbed"/>
+        <text name="vtpas_gt_Ridge" text="ridges"/>
+        <text name="vtpas_gt_Sown" text="sown"/>
+        <text name="vtpas_gt_DirectSown" text="direct sown"/>
+        <text name="vtpas_gt_Planted" text="planted"/>
+        <text name="vtpas_gt_RidgeSown" text="sown ridges"/>
+        <text name="vtpas_gt_Rollerlines" text="rolled"/>
+        <text name="vtpas_gt_HarvestReady" text="crop"/>
+        <text name="vtpas_gt_HarvestReadyO" text="crop"/>
+        <text name="vtpas_gt_Grass" text="grass"/>
+        <text name="vtpas_gt_GrassCut" text="cut grass"/>
+        <text name="vtpas_hint_riskShort" text="RISK OF GETTING STUCK"/>
+        <text name="vtpas_durDiffs_label" text="Differential notifications: duration"/>
+        <text name="vtpas_durTires_label" text="Tire notifications: duration"/>
+        <text name="vtpas_durAlert_label" text="Slip alert: display duration"/>
+        <text name="vtpas_dur_tip" text="How long (in seconds) the message stays on screen."/>
+        <text name="vtpas_protectSeed_label" text="Protect sown crops (reverse / seeder)"/>
+        <text name="vtpas_protectSeed_tip" text="Prevents Mud System Physics from erasing crops under the wheels when the vehicle reverses, and under the wheels of a seeder or planter. Other mud crop damage is kept."/>
+        <text name="vtpas_slipIcon_label" text="Slip icon"/>
+        <text name="vtpas_slipIcon_tip" text="Always shows (in a vehicle) the tractor seen from above (locked axles in red, 4WD driveline in green) with the slip of each wheel, or a single percentage per locked axle, movable with the mouse independently of the speed range. Colour: white, yellow from 10 %, orange at the differential threshold, red at the alert threshold."/>
+        <text name="vtpas_seedCoverFill_label" text="Fill seeder with closed cover"/>
+        <text name="vtpas_seedCoverFill_tip" text="Allows seeders and planters to be filled with seeds (big bag, pallet, trailer, auger, station) even when the hopper cover is closed. Off = base game behaviour."/>
+        <text name="vtpas_wetGrip_label" text="Wet ground grip (MoreRealistic)"/>
+        <text name="vtpas_wetGrip_tip" text="MoreRealistic ignores the grip computed by Mud System Physics and Tractor Terrain Dynamics. This setting reduces wheel grip in fields depending on local moisture (from 20 %, maximum at 70 %) and soil type, and lowers MoreRealistic's 'wet field' grip by 20 %. At 60 % moisture: about -34 % (Beginner), -45 % (Easy), -56 % (Normal), -67 % (Hard), -78 % (Extreme)."/>
+        <text name="vtpas_wetGrip_beginner" text="Beginner"/>
+        <text name="vtpas_wetGrip_easy" text="Easy"/>
+        <text name="vtpas_wetGrip_normal" text="Normal"/>
+        <text name="vtpas_wetGrip_hard" text="Hard"/>
+        <text name="vtpas_wetGrip_extreme" text="Extreme"/>
+        <text name="vtpas_auto4wd_label" text="Drive: 2WD on asphalt and concrete, 4WD elsewhere"/>
+        <text name="vtpas_auto4wd_tip" text="Automatically switches to two-wheel drive on hard surfaces (asphalt road, concrete) and to four-wheel drive everywhere else: fields, gravel or dirt tracks, grass (Enhanced Vehicle). In 2WD, if the rear axle slips beyond the threshold, 4WD engages first, then the differentials lock if slip continues; on the road it returns to 2WD once grip is back. A manual change is kept until the next ground change."/>
+        <text name="input_AS_DRIVE_MODE" text="Differentials and transmission: Auto / Manual"/>
+        <text name="vtpas_autoOnHelper_label" text="Back to Auto with AutoDrive / Courseplay"/>
+        <text name="vtpas_autoOnHelper_tip" text="In Manual, switches back to Auto as soon as AutoDrive or Courseplay takes over the tractor."/>
+        <text name="vtpas_notif_modeManual" text="Differentials and transmission: MANUAL"/>
+        <text name="vtpas_notif_modeAuto" text="Differentials and transmission: AUTO"/>
+        <text name="vtpas_hud_manual" text="MANUAL"/>
+        <text name="vtpas_hud_auto" text="AUTO"/>
+        <text name="input_AS_DUAL_SWITCH" text="Mount / remove dual wheels"/>
+        <text name="as_dual_store_function" text="On foot next to the rack, with a stopped tractor nearby: Right Ctrl + I. Full rack = mount dual wheels, empty rack = remove them. 30 min of work (15 min per tire), one tire every 15 min."/>
+        <text name="as_dual_mounting" text="Dual wheel mounting started: ready at %s"/>
+        <text name="as_dual_unmounting" text="Dual wheel removal started: ready at %s"/>
+        <text name="as_dual_done_on" text="Dual wheels mounted"/>
+        <text name="as_dual_done_off" text="Single wheels mounted"/>
+        <text name="as_dual_none" text="No dual wheels available for this tractor"/>
+        <text name="as_dual_nosingle" text="No single-wheel configuration found"/>
+        <text name="as_dual_norack" text="No tire rack nearby"/>
+        <text name="as_dual_stop" text="Stop the tractor to change wheels"/>
+        <text name="as_dual_money" text="Not enough money (%s)"/>
+        <text name="as_dual_cancel" text="Tractor moved: wheel change cancelled"/>
+        <text name="as_dual_failed" text="Wheel change failed"/>
+        <text name="as_dual_mp" text="Wheel change is only available in single player"/>
+        <text name="as_dual_notractor" text="No tractor parked near the tire rack"/>
+        <text name="as_dual_alreadytwin" text="This tractor already has dual wheels: the rack only provides dual wheels"/>
+        <text name="as_dual_running" text="Wheel change already in progress: ready at %s"/>
+        <text name="as_dual_rackempty" text="This rack is empty (or incomplete).&#10;&#10;Its tires are mounted on another tractor: remove them from that tractor first, or use a full rack."/>
+        <text name="as_dual_rackfull" text="This rack is not empty: it cannot take the removed tires.&#10;&#10;Use an empty rack."/>
+        <text name="as_dual_rackbusy" text="This rack is already used for another wheel change in progress."/>
+        <text name="as_dual_store_function_ar" text="2 BKT Agrimax V-Flecto 650/65R42 tires on rims. On foot next to the rack with a stopped tractor nearby: Right Ctrl + I. Alone = rear dual wheels; with the front rack = front + rear dual wheels. 30 min of work (15 min per tire)."/>
+        <text name="as_dual_store_function_av" text="2 BKT Agrimax V-Flecto 540/65R30 tires on rims. Use it with the rear rack to mount front + rear dual wheels (Right Ctrl + I, on foot next to the racks)."/>
+        <text name="as_dual_needar" text="No full rear dual wheel rack near this tractor.&#10;&#10;An empty rack means its tires are already mounted on another tractor: remove them from that tractor first, or buy a new rack."/>
+        <text name="as_dual_needav" text="This tractor only exists with front + rear dual wheels.&#10;&#10;Add a full front dual wheel rack near the tractor."/>
+        <text name="as_dual_needar_empty" text="To remove the dual wheels, an empty rear rack is needed near the tractor to put the tires on.&#10;&#10;A full rack cannot take more tires."/>
+        <text name="as_dual_needav_empty" text="This tractor also has front dual wheels: an empty front rack is also needed near the tractor."/>
+        <text name="as_dual_confirm_title" text="Wheel change"/>
+        <text name="as_dual_confirm_on" text="Mounting dual wheels: %d tires, %d min of work (ready around %s).&#10;&#10;The tractor will be immobilized during the change: you cannot enter it or start a helper. If it is moved, the change is cancelled.&#10;&#10;Start mounting?"/>
+        <text name="as_dual_confirm_off" text="Removing dual wheels: %d tires, %d min of work (ready around %s).&#10;&#10;The tractor will be immobilized during the change: you cannot enter it or start a helper. If it is moved, the change is cancelled.&#10;&#10;Start removal?"/>
+        <text name="as_dual_brand" text="No %s dual wheels for this tractor: change the tire brand in the workshop (available: %s)"/>
+        <text name="as_dual_locked" text="Tractor immobilized: wheel change in progress (ready at %s)"/>
+        <text name="as_dual_zone" text="Park the tractor inside the mounting area (rectangle on the ground next to the rack)"/>
+        <text name="as_dual_marker" text="Stand here"/>
+        <text name="as_dual_marker_on" text="Right Ctrl + I: change wheels"/>
+        <text name="as_dual_timer_title" text="Wheel change"/>
+        <text name="as_dual_timer_on" text="%s: mounting duals - %d min (ready at %s) - tire %d/%d"/>
+        <text name="as_dual_timer_off" text="%s: removing duals - %d min (ready at %s) - tire %d/%d"/>
+        <text name="vtpas_adField_label" text="AutoDrive: speed in fields"/>
+        <text name="vtpas_adField_tip" text="Speed imposed on AutoDrive in a field, instead of its own setting. AutoDrive still slows down in turns and on arrival."/>
+        <text name="vtpas_adPath_label" text="AutoDrive: speed on tracks"/>
+        <text name="vtpas_adPath_tip" text="Speed imposed on AutoDrive on tracks (gravel, dirt, grass)."/>
+        <text name="vtpas_adRoad_label" text="AutoDrive: speed on roads"/>
+        <text name="vtpas_adRoad_tip" text="Speed imposed on AutoDrive on paved roads. No limit: the tractor's maximum speed."/>
+        <text name="vtpas_adNoLimit" text="No limit"/>
+        <text name="vtpas_tabTitle" text="AutoSwitch"/>
+        <text name="vtpas_reqTitle" text="Required mods"/>
+        <text name="vtpas_reqTip" text="Minimum version: %s"/>
+        <text name="vtpas_reqOk" text="OK (%s)"/>
+        <text name="vtpas_reqAbsent" text="X  Missing"/>
+        <text name="vtpas_reqInactive" text="X  Not enabled"/>
+        <text name="vtpas_reqOld" text="X  Version %s (%s required)"/>
+        <text name="vtpas_reqBlockedMod" text="X  Blocked by AutoSwitch"/>
+        <text name="vtpas_rvBlockedNotif" text="Real Physics - Tire Wear: disabled and blocked by AutoSwitch (tire wear is handled by AutoSwitch)"/>
+        <text name="vtpas_rmsBlockedNotif" text="Realistic Mechanical Systems: blocked by AutoSwitch (Advanced Damage System is the breakdown mod)"/>
+        <text name="vtpas_keyLock_taken" text="Keys reserved for AutoSwitch, taken back from: %s"/>
+        <text name="vtpas_reqOptional" text="Optional (wear handled by AutoSwitch)"/>
+        <text name="vtpas_secDiff" text="Differentials"/>
+        <text name="vtpas_secTires" text="Tires"/>
+        <text name="vtpas_secAlerts" text="Notifications and alerts"/>
+        <text name="vtpas_secAD" text="AutoDrive"/>
+        <text name="vtpas_secHud" text="Display"/>
+        <text name="vtpas_secGround" text="Ground and crops"/>
+        <text name="vtpas_secWorld" text="Lights, wind, tracks and weather"/>
+        <text name="vtpas_secMoney" text="Finances"/>
+        <text name="vtpas_secTraffic" text="Traffic and shop"/>
+        <text name="vtpas_sleepHours" text="+%d h"/>
+        <text name="vtpas_sleepDay" text="+%d day"/>
+        <text name="vtpas_sleepDays" text="+%d days"/>
+        <text name="vtpas_sleepText" text="Choose how long to sleep: hours and days."/>
+        <text name="vtpas_sleepHoursTitle" text="Time in hours"/>
+        <text name="vtpas_sleepDaysTitle" text="Time in days"/>
+        <text name="vtpas_lightRange_base" text="x1 (base game)"/>
+        <text name="vtpas_windSway_label" text="Wind movement"/>
+        <text name="vtpas_windSway_tip" text="How strongly trees, crops and grass move in the wind. x1 = base game (at 57 km/h the base game only moves foliage like a breeze). The wind speed itself is unchanged."/>
+        <text name="vtpas_hudDedup_label" text="Hide duplicate displays"/>
+        <text name="vtpas_hudDedup_tip" text="Hides info other mods repeat (e.g. Enhanced Vehicle: Wear | Paint and Fuel). Those mods' settings are not changed."/>
+        <text name="vtpas_overdraft_label" text="Authorised overdraft"/>
+        <text name="vtpas_overdraft_tip" text="Buying and leasing allowed with a negative balance, down to this percentage of the resale value of what you own (purchased equipment, land, buildings). Off = base game."/>
+        <text name="vtpas_overdraft_off" text="Off"/>
+        <text name="vtpas_overdraftRate_label" text="Overdraft interest (yearly)"/>
+        <text name="vtpas_overdraftRate_tip" text="Interest charged every in-game day on the negative balance, prorated over the year (12 months). &quot;Overdraft interest&quot; line in Finances."/>
+        <text name="vtpas_overdraftRate_none" text="None"/>
+        <text name="finance_asOverdraftInterest" text="Overdraft interest"/>
+        <!-- v1.0.0.81 : coopératives payées en fin de mois -->
+        <text name="vtpas_coopPay_label" text="Co-ops pay at the end of the month"/>
+        <text name="vtpas_coopPay_tip" text='Sales to co-ops (selling points whose name contains "coop") are marked "To be paid" in the register (Right Ctrl + R) and paid at the end of the month, "Co-ops" line in Finances. Editable list: modSettings/FS25_AutoSwitch/cooperatives.xml.'/>
+        <text name="vtpas_coopPay_paid" text="Co-ops: %s paid for the month"/>
+        <text name="finance_asCoopPayment" text="Co-ops"/>
+        <text name="vtpas_secHours" text="Opening hours"/>
+        <text name="vtpas_hours_label" text="Opening hours"/>
+        <text name="vtpas_hours_tip" text='Shop and selling points closed outside their opening hours. Exceptions per selling point: modSettings/FS25_AutoSwitch/horaires.xml (open="0" close="24": open 24/7).'/>
+        <text name="vtpas_hours_shopOpen" text="Shop: opens at"/>
+        <text name="vtpas_hours_shopClose" text="Shop: closes at"/>
+        <text name="vtpas_hours_shop_tip" text="Outside opening hours the shop can be browsed but buying, leasing, selling or building is refused."/>
+        <text name="vtpas_hours_sellOpen" text="Selling points: open at"/>
+        <text name="vtpas_hours_sellClose" text="Selling points: close at"/>
+        <text name="vtpas_hours_sell_tip" text="Silos, mills, factories... Outside opening hours nothing is accepted; an AutoDrive truck waits until opening."/>
+        <text name="vtpas_hours_shopClosed" text="The shop is closed. Open from %s to %s."/>
+        <text name="vtpas_hours_stationClosed" text="%s: closed, opens at %s"/>
+        <text name="vtpas_noOvertake_label" text="No overtaking of tractors"/>
+        <text name="vtpas_noOvertake_tip" text="Traffic cars stay behind tractors (AutoDrive or driven) on the road. They may pass when the tractor has been stopped for 10 s or has its hazard lights on."/>
+        <text name="vtpas_cpResume_label" text="Restart Courseplay on load"/>
+        <text name="vtpas_cpResume_tip" text="Vehicles that were driven by Courseplay when the game was saved start again when the savegame is loaded: field work at the point where it stopped (or the nearest point), unloaders and other jobs with their settings."/>
+        <text name="vtpas_shopBlockTwins_label" text="Dual wheels blocked in shop"/>
+        <text name="vtpas_shopBlockTwins_tip" text="The shop and workshop no longer offer dual wheels: fit them with the tire pallets. Tractors already on duals keep them, and a pallet can switch them back to single wheels."/>
+        <!-- v1.0.0.59 : fenêtre Météo -->
+        <text name="vtpas_weatherWidget_label" text="Mini weather next to the clock"/>
+        <text name="vtpas_weatherWidget_tip" text="Shows the current weather and the next change left of the clock. Drag it with the mouse when the cursor is visible; a click opens the Weather window (Right Ctrl + M)."/>
+        <text name="input_AS_WEATHER" text="Weather: open / close"/>
+        <text name="input_AS_REGISTER" text="Weighings and sales register: open / close"/>
+        <text name="input_AS_FIELDS" text="Fields: open / close"/>
+        <text name="vtpas_wx_title" text="Weather"/>
+        <text name="vtpas_wx_now" text="Now"/>
+        <text name="vtpas_wx_nowShort" text="Now"/>
+        <text name="vtpas_wx_next24" text="Next 24 h"/>
+        <text name="vtpas_wx_events" text="Upcoming changes"/>
+        <text name="vtpas_wx_days" text="Next days"/>
+        <text name="vtpas_wx_sun" text="Sunny"/>
+        <text name="vtpas_wx_partly" text="Partly cloudy"/>
+        <text name="vtpas_wx_cloudy" text="Cloudy"/>
+        <text name="vtpas_wx_rain" text="Rain"/>
+        <text name="vtpas_wx_snow" text="Snow"/>
+        <text name="vtpas_wx_hail" text="Hail"/>
+        <text name="vtpas_wx_thunder" text="Thunderstorm"/>
+        <text name="vtpas_wx_twister" text="Twister"/>
+        <text name="vtpas_wx_unknown" text="Unknown"/>
+        <text name="vtpas_wx_today" text="Today"/>
+        <text name="vtpas_wx_tomorrow" text="Tomorrow"/>
+        <text name="vtpas_wx_afterTomorrow" text="Day after tomorrow"/>
+        <text name="vtpas_wx_inDays" text="In %d days"/>
+        <text name="vtpas_wx_durDays" text="%d d %d h"/>
+        <text name="vtpas_wx_minMax" text="Low %s / high %s"/>
+        <text name="vtpas_wx_wind" text="Wind"/>
+        <text name="vtpas_wx_from" text="from %s"/>
+        <text name="vtpas_wx_precip" text="Precipitation"/>
+        <text name="vtpas_wx_none" text="None"/>
+        <text name="vtpas_wx_light" text="light"/>
+        <text name="vtpas_wx_moderate" text="moderate"/>
+        <text name="vtpas_wx_heavy" text="heavy"/>
+        <text name="vtpas_wx_mmPerHour" text="about %.1f mm/h"/>
+        <text name="vtpas_wx_ground" text="Ground wetness"/>
+        <text name="vtpas_wx_change" text="Next change"/>
+        <text name="vtpas_wx_nextChange" text="%s at %s (in %s)"/>
+        <text name="vtpas_wx_endAt" text="Ends at %s"/>
+        <text name="vtpas_wx_noForecast" text="No forecast from the game"/>
+        <text name="vtpas_wx_fromTo" text="from %s to %s"/>
+        <text name="vtpas_wx_dayPlus" text="D+%d"/>
+        <text name="vtpas_wx_clickMe" text="Click me"/>
+        <text name="vtpas_wx_forecastShort" text="Forecast"/>
+        <text name="vtpas_wx_until" text="until %s"/>
+        <text name="vtpas_wx_rainDay" text="%s over %s"/>
+        <text name="vtpas_wx_dry" text="Dry"/>
+        <text name="vtpas_wx_footer" text="Game forecast for the next %s. Amounts estimated from intensity. * = day not fully forecast"/>
+        <text name="vtpas_wx_dir_N" text="N"/>
+        <text name="vtpas_wx_dir_NE" text="NE"/>
+        <text name="vtpas_wx_dir_E" text="E"/>
+        <text name="vtpas_wx_dir_SE" text="SE"/>
+        <text name="vtpas_wx_dir_S" text="S"/>
+        <text name="vtpas_wx_dir_SW" text="SW"/>
+        <text name="vtpas_wx_dir_W" text="W"/>
+        <text name="vtpas_wx_dir_NW" text="NW"/>
+        <text name="vtpas_beamEnabled_label" text="Enhanced headlights"/>
+        <text name="vtpas_beamEnabled_tip" text="Yes: headlight reach and brightness set below. No: base game headlights, no processing (better performance)."/>
+        <text name="vtpas_light_road_label" text="Headlights"/>
+        <text name="vtpas_light_road_tip" text="Low and high beams, roof lights. Reach and brightness together, from x1.1 to x2.5."/>
+        <text name="vtpas_light_workFront_label" text="Front work lights"/>
+        <text name="vtpas_light_workFront_tip" text="Work lights facing forward (and vehicle-specific work lights)."/>
+        <text name="vtpas_light_workBack_label" text="Rear work lights"/>
+        <text name="vtpas_light_workBack_tip" text="Work lights facing backward."/>
+        <text name="vtpas_light_beacon_label" text="Beacon lights"/>
+        <text name="vtpas_light_beacon_tip" text="Light cast by the beacon lights."/>
+        <text name="vtpas_light_signal_label" text="Signal lights"/>
+        <text name="vtpas_light_signal_tip" text="Turn signals, brake lights and reverse lights."/>
+        <text name="vtpas_light_other_label" text="Other lights"/>
+        <text name="vtpas_light_other_tip" text="Interior lighting and lights that are in none of the game lists."/>
+        <text name="vtpas_tracksMax_label" text="Tire tracks kept (points)"/>
+        <text name="vtpas_tracksMax_tip" text="Number of tire track points kept and saved with the game. Fewer = less memory and processing."/>
+        <!-- Aide (menu Échap > Aide) : help/helpLine.xml -->
+        <text name="as_help_title" text="AutoSwitch"/>
+        <text name="as_help_subTitle" text="Make it real"/>
+        <text name="as_help_intro_title" text="Overview"/>
+        <text name="as_help_intro_p1_title" text="What AutoSwitch does"/>
+        <text name="as_help_intro_p1_text" text="AutoSwitch makes Variable Tire Pressure, Enhanced Vehicle, MoreRealistic, Mud System Physics and Tractor Terrain Dynamics work together, without modifying any of them.&#10;&#10;It handles tire pressure and differential locks on its own, makes grip realistic depending on the ground and its moisture, and adds handy windows: Weather, Fields and Register.&#10;&#10;It also settles the conflicts between MoreRealistic, DynamicDrivePro, Enhanced Vehicle and Recovery Winch: no mod is disabled."/>
+        <text name="as_help_intro_p2_title" text="AUTO / MANUAL mode"/>
+        <text name="as_help_intro_p2_text" text="Key Right Ctrl + Up arrow, inside a vehicle. The mode is shown above the tractor.&#10;&#10;• AUTO: AutoSwitch locks the differentials depending on wheel slip and picks 2WD or 4WD depending on the ground.&#10;• MANUAL: you handle differentials and 2WD / 4WD yourself. An engaged lock is never released, and the tractor only steers up to its limit (wheels turned fully, it slides).&#10;&#10;When AutoDrive or Courseplay takes over, the tractor goes back to AUTO (adjustable)."/>
+        <text name="as_help_intro_p3_title" text="Shortcuts"/>
+        <text name="as_help_intro_p3_text" text="• Right Ctrl + Up arrow: AUTO / MANUAL mode (inside a vehicle)&#10;• Right Ctrl + M: Weather window&#10;• Right Ctrl + C: Fields window&#10;• Right Ctrl + R: weighing and sales Register&#10;• Right Ctrl + I: mount / unmount dual wheels (on foot, next to a tire rack)&#10;&#10;All these keys can be changed in Settings &gt; Controls."/>
+        <text name="as_help_intro_p4_title" text="Settings and required mods"/>
+        <text name="as_help_intro_p4_text" text="All settings are in Esc &gt; Settings, AUTOSWITCH tab. Each line has a tooltip.&#10;&#10;At the bottom of the tab:&#10;• the list of required mods, with a green tick (OK) or a red cross (missing, not activated or too old). A missing required mod does not block the game: only the features that depend on it are turned off;&#10;• &quot;Logs in log.txt&quot;: one switch per feature, off by default. Errors are always written.&#10;&#10;Required mods: VariableTirePressure, EnhancedVehicle, AutoDrive, Courseplay, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, TractorTerrainDynamics, DynamicDrivePro, RealisticHarvesting, MoistureSystem.&#10;Tire wear is built in: no tire mod is needed."/>
+        <text name="as_help_diff_title" text="Differentials and 4WD"/>
+        <text name="as_help_diff_p1_title" text="Automatic locking"/>
+        <text name="as_help_diff_p1_text" text="In AUTO mode, AutoSwitch locks the differentials (Enhanced Vehicle) when the wheels slip:&#10;• rear at 15 % slip, then front at 30 % (adjustable thresholds);&#10;• the slip must last 1.5 s before locking (adjustable);&#10;• unlocked when the slip falls back to half the threshold.&#10;&#10;A notification is shown on each lock and unlock (can be turned off). Locks are reset when the game is loaded."/>
+        <text name="as_help_diff_p2_title" text="2WD on the road, 4WD elsewhere"/>
+        <text name="as_help_diff_p2_text" text="The tractor switches to 2WD on asphalt and concrete, and to 4WD everywhere else: fields, gravel or dirt tracks, grass.&#10;&#10;In 2WD, if the rear axle slips, 4WD engages first, then the differentials lock if it still slips. On the road, back to 2WD once grip returns.&#10;&#10;A choice made by hand is kept until the next change of ground."/>
+        <text name="as_help_diff_p3_title" text="When turning"/>
+        <text name="as_help_diff_p3_text" text="• In 4WD, steering is limited to 90 %.&#10;• Locks are released beyond 50 % of full steering (rear only), 20 % (front only) or 10 % (both).&#10;• With the wheels turned, a lock is refused: the message &quot;Straighten the wheels&quot; is shown."/>
+        <text name="as_help_diff_p4_title" text="Plowing"/>
+        <text name="as_help_diff_p4_text" text="In AUTO mode, when a plow is lowered (even behind another implement), the rear differential locks and stays locked while it is in the ground. In MANUAL, it is up to you."/>
+        <text name="as_help_diff_p5_title" text="Combines, forage harvesters and 2WD machines"/>
+        <text name="as_help_diff_p5_text" text="Machines without 4WD keep full steering, have no 2WD / 4WD and only their driven axle locks. The HUD then shows a combine or a forage harvester instead of the tractor.&#10;&#10;The actual drivetrain of each machine is read after MoreRealistic (see the page &quot;Files and advanced settings&quot;)."/>
+        <text name="as_help_tires_title" text="Tires and dual wheels"/>
+        <text name="as_help_tires_p1_title" text="Tire pressure"/>
+        <text name="as_help_tires_p1_text" text="With AutoDrive or Courseplay, tires (Variable Tire Pressure) are deflated in the field and inflated on the road, always automatically.&#10;&#10;When you drive yourself, the &quot;Tire pressure&quot; setting decides: Automatic (as with a helper) or Manual (you use the Variable Tire Pressure key).&#10;&#10;Variable Tire Pressure's automatic re-inflation at 30 km/h is disabled. At least 4 s separate two pressure changes (adjustable)."/>
+        <text name="as_help_tires_p2_title" text="Mounting dual wheels"/>
+        <text name="as_help_tires_p2_text" text="The shop and the workshop no longer offer dual wheels (adjustable): they are mounted with tire racks, available in the shop and the construction menu.&#10;• Rear rack: 2 BKT 650/65R42 tires on rims.&#10;• Front rack: 2 BKT 540/65R30 tires, used with the rear rack for front + rear dual wheels.&#10;&#10;1. Park the tractor, stopped, in the mounting area (rectangle on the ground next to the rack).&#10;2. On foot, stand on the yellow marker.&#10;3. Press Right Ctrl + I and confirm.&#10;&#10;Full rack = mounting, empty rack = unmounting (the tires are put back on it). Allow 15 in-game minutes per tire; the tractor cannot be used during the work and the change is cancelled if it is moved. Single-player only."/>
+        <text name="as_help_tires_p3_title" text="Benefits of dual wheels"/>
+        <text name="as_help_tires_p3_text" text="The real width of dual wheels is used by Mud System Physics (less sinking) and they grip better on wet ground. A Variable Tire Pressure fix is applied for tires with brand variants."/>
+        <text name="as_help_tires_p4_title" text="Wear and dirt"/>
+        <text name="as_help_tires_p4_text" text="Tires and tracks wear with AutoSwitch: distance driven, wheel slip (a spinning wheel wears much faster), real wheel load, ground (roads wear about 3 times more than fields), pressure (low pressure on the road = fast wear), road speed and heat. Each wheel set keeps its own wear.&#10;&#10;A worn tire grips less in the field, on dirt and snow; on dry roads it grips a bit better (slick effect), on wet roads less. Its radius shrinks a little.&#10;&#10;The tractor in the HUD shows one bar per wheel (green, yellow, orange, red = tread left), the vehicle info box shows the percentage, and a warning appears at 75 % and 90 %. In the workshop, the « New tires » button replaces tires worn 25 % or more. Settings in the AUTOSWITCH tab (on / off, tire life).&#10;&#10;Tires dirty with mud stay dirty much longer while driving (at least one hour on the road); water, rain and washing always clean them."/>
+        <text name="as_help_ground_title" text="Grip, ground and mud"/>
+        <text name="as_help_ground_p1_title" text="Grip on wet ground"/>
+        <text name="as_help_ground_p1_text" text="MoreRealistic ignores the grip computed by Mud System Physics and Tractor Terrain Dynamics. AutoSwitch therefore lowers grip in the field depending on local moisture (from 20 %, maximum at 70 %) and the soil type.&#10;&#10;Five levels: Beginner, Easy, Normal (default), Hard, Extreme. At 60 % moisture, the loss goes from about 34 % (Beginner) to 78 % (Extreme)."/>
+        <text name="as_help_ground_p2_title" text="Grip bonuses"/>
+        <text name="as_help_ground_p2_text" text="• Tires deflated in the field (Variable Tire Pressure): bonus capped at +15 % (+20 % with dual wheels).&#10;• Locked differentials: +4 % on the rear wheels, +3 % on the front wheels."/>
+        <text name="as_help_ground_p3_title" text="Puddles"/>
+        <text name="as_help_ground_p3_text" text="The Precision Farming soil type counts in Mud System Physics moisture: sand dries quickly, clay stays wet.&#10;&#10;When it rains on saturated ground, water gathers in the hollows of the terrain (fields, tracks, meadows; never on asphalt, concrete or in water) and forms visible puddles. They slowly disappear through seepage and evaporation."/>
+        <text name="as_help_ground_p4_title" text="Grass and tracks"/>
+        <text name="as_help_ground_p4_text" text="Mud System Physics mowed the grass under every wheel from 12 % moisture. Instead, trampled grass goes back one growth stage, with a chance that rises with speed and moisture; above 30 km/h it is cut short.&#10;&#10;Tire tracks are kept with the savegame: they no longer disappear when the game is reloaded (60,000 points by default, adjustable)."/>
+        <text name="as_help_ground_p5_title" text="Implements, mud and sowing"/>
+        <text name="as_help_ground_p5_text" text="• Implements stay still when stopped: no more bouncing caused by Mud System Physics and MoreRealistic.&#10;• Mud also slows down unbraked trailers and implements.&#10;• Seeding protection: when reversing, and under the wheels of a seeder or planter, the crop is no longer erased.&#10;• Seeders and planters can be filled with the lid closed.&#10;• Direct re-sowing is possible on crushed strips.&#10;• AutoSwitch's Mud System Physics and Tractor Terrain Dynamics settings are applied automatically."/>
+        <text name="as_help_hud_title" text="Display"/>
+        <text name="as_help_hud_p1_title" text="Top view of the tractor"/>
+        <text name="as_help_hud_p1_text" text="Inside a vehicle, a top view of the tractor is shown next to the speedometer: locked axles in red, 4WD in green, and the slip of each wheel (or a single percentage per locked axle).&#10;&#10;Slip color: white, yellow from 10 %, orange at the differential threshold, red at the alert threshold. It can be moved with the mouse."/>
+        <text name="as_help_hud_p2_title" text="Recommended speed"/>
+        <text name="as_help_hud_p2_text" text="Above the speedometer, the recommended speed range is recomputed continuously depending on the area (field / road), tire pressure, the ground, its moisture and wheel slip. &quot;RISK OF GETTING STUCK&quot; warns you when you should not stop."/>
+        <text name="as_help_hud_p3_title" text="Alerts and notifications"/>
+        <text name="as_help_hud_p3_text" text="• Red slip alert when slip stays above 80 % for 5 s (threshold and duration adjustable, can be turned off).&#10;• Differential and tire notifications, with an adjustable display time.&#10;• &quot;Hide duplicate displays&quot; hides information that other mods repeat (for example Enhanced Vehicle), without changing their settings."/>
+        <text name="as_help_weather_title" text="Weather"/>
+        <text name="as_help_weather_p1_title" text="Weather window"/>
+        <text name="as_help_weather_p1_text" text="Right Ctrl + M opens the Weather window, in four parts: now, next 24 h (in 3-hour slots), upcoming changes and next days.&#10;&#10;These are the game's real forecasts: what is shown will happen. The game only gives a rain intensity: millimeters are estimated. A &quot;*&quot; marks a day that is not fully forecast."/>
+        <text name="as_help_weather_p2_title" text="Mini weather"/>
+        <text name="as_help_weather_p2_text" text="Left of the clock, the mini weather shows the current weather, the next change, the wind and its direction. It can be moved with the mouse when the cursor is visible; a click on it (&quot;Click me&quot;) opens the Weather window. Can be turned off."/>
+        <text name="as_help_weather_p3_title" text="Visible wind"/>
+        <text name="as_help_weather_p3_text" text="Trees, crops and grass move more strongly in the wind (x2.2 by default; x1 = base game). Only the display changes: wind speed stays the game's."/>
+        <text name="as_help_fields_title" text="Fields"/>
+        <text name="as_help_fields_p1_title" text="Fields window"/>
+        <text name="as_help_fields_p1_text" text="Right Ctrl + C, or a click on the field icon (with &quot;Click me&quot; written under it), opens the list of your fields. One line per owned field:&#10;• Field: the game's number;&#10;• Crop and Stage;&#10;• Sown, Fertilizer, Herbicide: date of the last pass;&#10;• Harvest: when the crop will be ready.&#10;&#10;The mouse wheel scrolls the list; the cross at the top closes the window."/>
+        <text name="as_help_fields_p2_title" text="Dates"/>
+        <text name="as_help_fields_p2_text" text="The game keeps no dates: AutoSwitch records them itself since it was installed, once at least 10 % of the field has been worked (passes along the edge do not count). Before that, the cell says &quot;before tracking&quot;. Dates are kept with the savegame."/>
+        <text name="as_help_fields_p3_title" text="Harvest"/>
+        <text name="as_help_fields_p3_text" text="• A month (&quot;about Month 8&quot;): harvest estimated from the crop's calendar.&#10;• &quot;Ready&quot;: the crop can be harvested.&#10;• &quot;Ready (best 5/7)&quot;: can be harvested, but the best stage is not reached yet (crops harvestable over several stages, such as silage maize).&#10;• &quot;Best&quot;: best time to harvest.&#10;• After harvest: &quot;Harvested&quot; or the stubble."/>
+        <text name="as_help_fields_p4_title" text="Merged fields"/>
+        <text name="as_help_fields_p4_text" text="Game fields merged into one (a single outline of cultivated ground) are shown on a single line, for example &quot;Field 12 (2 fields)&quot;.&#10;• A click on the blue cross unfolds the list of fields in the group.&#10;• A click on a field in this list makes it the main field (the one whose number is shown).&#10;&#10;The outline is computed only once, spread over several frames so the game is not slowed down, then kept with the savegame."/>
+        <text name="as_help_register_title" text="Register"/>
+        <text name="as_help_register_p1_title" text="Weighing and sales register"/>
+        <text name="as_help_register_p1_text" text="Right Ctrl + R opens the register, in three tabs:&#10;• Weighings: each pass on a weighbridge (sent by AutoDrive Addon), with the place and who weighed (AutoDrive or the player);&#10;• Sales: each sale with the product, quantity, amount and selling point. Unloading a trailer arrives in small pieces: they are grouped into a single line;&#10;• Totals: per month and per product.&#10;&#10;Totals are shown at the bottom of each tab."/>
+        <text name="as_help_register_p2_title" text="Years and deleting"/>
+        <text name="as_help_register_p2_text" text="One page per year: the register opens on the current year; the &lt; &gt; arrows show previous years (nothing is erased).&#10;&#10;The cross at the end of a line deletes it: click a second time to confirm.&#10;&#10;The register is kept with the savegame."/>
+        <text name="as_help_money_title" text="Money"/>
+        <text name="as_help_money_p1_title" text="Overdraft and interest"/>
+        <text name="as_help_money_p1_text" text="You can buy or lease with the account in the red, up to 20 % of the resale value of what you own: purchased equipment (not leased), land and buildings (adjustable; Off = base game).&#10;&#10;Interest is charged every in-game day on the negative balance: 10 % per year by default, spread over the days of the year. &quot;Overdraft interest&quot; line in Finances."/>
+        <text name="as_help_money_p2_title" text="Cooperatives paid at the end of the month"/>
+        <text name="as_help_money_p2_text" text="A sale to a cooperative (selling point whose name contains &quot;coop&quot;) works as usual, but the money does not come in straight away: it is marked &quot;To be paid&quot; in the register and the month's total is paid at the end of the month, &quot;Co-ops&quot; line in Finances. Can be turned off."/>
+        <text name="as_help_hours_title" text="Opening hours and sleep"/>
+        <text name="as_help_hours_p1_title" text="Opening hours"/>
+        <text name="as_help_hours_p1_text" text="• Shop: 8 am to 7 pm. Outside these hours, the shop can still be browsed, but buying, leasing, selling or building is refused.&#10;• Selling points (silos, mills, factories…): 6 am to 10 pm. Outside these hours, nothing is accepted; an AutoDrive truck waits on site for opening.&#10;&#10;Hours adjustable in the AUTOSWITCH tab, and can be turned off."/>
+        <text name="as_help_hours_p2_title" text="Sleep"/>
+        <text name="as_help_hours_p2_text" text="The Sleep window offers two lists: hours (+0 to +23 h) and days (0 to 7). With days, you wake up at 8 am on the last day, plus the chosen hours. Days pass normally: crops, sales and wages are computed as usual."/>
+        <text name="as_help_road_title" text="Road, traffic and lights"/>
+        <text name="as_help_road_p1_title" text="Traffic"/>
+        <text name="as_help_road_p1_text" text="• Traffic cars no longer overtake tractors (AutoDrive or driven) on the road. They pass if the tractor has been stopped for 10 s, is reversing or has its hazard lights on.&#10;• Their sensors are reduced to 80 % of their width: they no longer brake when meeting a tractor.&#10;&#10;Also works with traffic added by Traffic Density Control."/>
+        <text name="as_help_road_p2_title" text="AutoDrive speed"/>
+        <text name="as_help_road_p2_text" text="AutoSwitch sets AutoDrive's speed by the ground: 20 km/h in fields, 30 km/h on tracks, no limit on the road (adjustable). AutoDrive still slows down in turns and at arrival."/>
+        <text name="as_help_road_p3_title" text="Lights"/>
+        <text name="as_help_road_p3_text" text="The lights of all vehicles, yours included, reach further and shine brighter, with one setting per light type (reach and brightness together, from x1.1 to x2.5):&#10;• headlights: x2;&#10;• front and rear work lights: x2;&#10;• beacon lights, signal lights (turn signals, brake, reverse) and other lights: x1.1.&#10;&#10;&quot;Enhanced headlights: No&quot; restores the base game lights, with no computing at all."/>
+        <text name="as_help_files_title" text="Files and advanced settings"/>
+        <text name="as_help_files_p1_title" text="modSettings/FS25_AutoSwitch folder"/>
+        <text name="as_help_files_p1_text" text="These files are created by AutoSwitch and can be corrected by hand, with the game closed:&#10;• transmissions.xml: drivetrain of each machine. &quot;detected&quot; is what AutoSwitch read; fill in &quot;forced&quot; with 4x4, front (front axle only) or rear (rear axle only) to impose yours.&#10;• cooperatives.xml: each selling point with coop=&quot;true&quot; or &quot;false&quot;, to correct what counts as a cooperative.&#10;• horaires.xml: opening hours of a specific selling point. -1 = hours from the menu; open=&quot;0&quot; close=&quot;24&quot; = open 24/7."/>
+        <text name="as_help_files_p2_title" text="In the savegame"/>
+        <text name="as_help_files_p2_text" text="• AutoSwitch_fields.xml: dates and merged fields of the Fields window.&#10;• AutoSwitch_register.xml: weighings and sales of the register.&#10;• AutoSwitch_coop.xml: what the cooperatives still owe.&#10;&#10;Tire tracks and the AUTOSWITCH tab settings are also kept with the game."/>
+        <!-- fin de l'aide -->
+        <text name="vtpas_tireLife_label" text="Tire wear"/>
+        <text name="vtpas_tireLife_tip" text="Tires and tracks wear with distance, wheel slip, load, ground, pressure and weather. Worn tires: less grip in the field, a bit more on dry roads."/>
+        <text name="vtpas_tireLife_uyt" text="Use Your Tyres is active: it handles tire wear, this setting has no effect."/>
+        <text name="vtpas_tireLifeKm_label" text="Tire life"/>
+        <text name="vtpas_tireLifeKm_tip" text="Road distance, at normal load, to wear out a 2 m tire. Fields wear about 3 times less, wheel slip much more."/>
+        <text name="vtpas_tl_info" text="Tire wear"/>
+        <text name="vtpas_tl_front" text="Front"/>
+        <text name="vtpas_tl_rear" text="Rear"/>
+        <text name="vtpas_tl_alertWorn" text="%s: tires worn (%d %%)"/>
+        <text name="vtpas_tl_alertCritical" text="%s: tires must be replaced (%d %%), go to the workshop"/>
+        <text name="vtpas_tl_trackCut" text="%s: rubber track cut, replace it at the workshop"/>
+        <text name="vtpas_tl_replace" text="New tires"/>
+        <text name="vtpas_tl_replaceAsk" text="Fit %d new tires for %s?"/>
+    </texts>
+</l10n>

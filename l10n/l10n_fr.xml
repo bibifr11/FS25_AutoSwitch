@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <texts>
+        <text name="vtpas_on" text="Activé"/>
+        <text name="vtpas_off" text="Désactivé"/>
+        <text name="vtpas_auto" text="Automatique"/>
+        <text name="vtpas_manual" text="Manuel"/>
+        <text name="vtpas_slip_label" text="Patinage pour blocage du diff arrière"/>
+        <text name="vtpas_slip_tip" text="Patinage (%) au-delà duquel le différentiel arrière se verrouille automatiquement (Enhanced Vehicle). Il se déverrouille à la moitié de ce seuil. Désactivé = jamais."/>
+        <text name="vtpas_slipFront_label" text="Patinage pour blocage du diff avant"/>
+        <text name="vtpas_slipFront_tip" text="Patinage (%) au-delà duquel le différentiel avant se verrouille automatiquement (Enhanced Vehicle). Il se déverrouille à la moitié de ce seuil. Désactivé = jamais."/>
+        <text name="vtpas_diff_label" text="Différentiels et transmission"/>
+        <text name="vtpas_diff_tip" text="Auto = AutoSwitch bloque les différentiels selon le patinage, choisit 4x2 / 4x4 et coupe les blocages en virage. Manuel = vous gérez tout ; un blocage engagé ne se coupe plus, le tracteur ne tourne qu'à son seuil (roues braquées à fond, il ripe) (50 % arrière, 20 % avant, 10 % les deux). Touche : Ctrl droit + Flèche haut."/>
+        <text name="vtpas_tire_label" text="Pression des pneus (conduite manuelle)"/>
+        <text name="vtpas_tire_tip" text="Avec AutoDrive ou Courseplay, le gonflage et le dégonflage sont toujours automatiques. Ce réglage s'applique lorsque vous conduisez vous-même : Automatique = pneus gonflés sur route et dégonflés dans les champs ; Manuel = vous utilisez la touche du mod."/>
+        <text name="vtpas_notifDiff_label" text="Notifications des différentiels"/>
+        <text name="vtpas_notifDiff_tip" text="Affiche une notification quand un véhicule verrouille ou déverrouille ses différentiels."/>
+        <text name="vtpas_notifTires_label" text="Notifications des pneus"/>
+        <text name="vtpas_notifTires_tip" text="Affiche une notification quand un véhicule gonfle ou dégonfle ses pneus."/>
+        <text name="vtpas_notif_diffLocked" text="%s : différentiels verrouillés (patinage %.0f %%)"/>
+        <text name="vtpas_notif_diffUnlocked" text="%s : différentiels déverrouillés"/>
+        <text name="vtpas_notif_diffRearLocked" text="%s : différentiel arrière verrouillé (patinage %.0f %%)"/>
+        <text name="vtpas_notif_diffRearUnlocked" text="%s : différentiel arrière déverrouillé"/>
+        <text name="vtpas_notif_diffRearPlowLocked" text="%s : différentiel arrière verrouillé (charrue en terre)"/>
+        <text name="vtpas_notif_diffFrontLocked" text="%s : différentiel avant verrouillé (patinage %.0f %%)"/>
+        <text name="vtpas_notif_diffFrontUnlocked" text="%s : différentiel avant déverrouillé"/>
+        <text name="vtpas_notif_tiresInflated" text="%s : pneus gonflés (pression route)"/>
+        <text name="vtpas_notif_tiresDeflated" text="%s : pneus dégonflés (pression champ)"/>
+        <text name="vtpas_alert_pct_label" text="Alerte de patinage : seuil"/>
+        <text name="vtpas_alert_pct_tip" text="Affiche un message rouge quand le patinage d'un véhicule reste au-dessus de ce pourcentage pendant la durée réglée. Désactivé = aucune alerte."/>
+        <text name="vtpas_alert_sec_label" text="Alerte de patinage : durée"/>
+        <text name="vtpas_alert_sec_tip" text="Durée (en secondes) pendant laquelle le patinage doit rester au-dessus du seuil avant que l'alerte s'affiche."/>
+        <text name="vtpas_alert_slip" text="%s : patinage excessif (%.0f %%) depuis plus de %d s !"/>
+        <text name="vtpas_alert_diffSteer" text="Redressez les roues"/>
+        <text name="vtpas_diffdelay_label" text="Différentiels : délai avant blocage"/>
+        <text name="vtpas_diffdelay_tip" text="Durée (en secondes) pendant laquelle le patinage doit rester au-dessus du seuil avant que les différentiels se verrouillent automatiquement."/>
+        <text name="vtpas_decimal" text=","/>
+        <text name="vtpas_tiredelay_label" text="Pneus : délai entre deux changements"/>
+        <text name="vtpas_tiredelay_tip" text="Durée minimale (en secondes) entre deux changements de pression (gonflage / dégonflage), pour éviter les allers-retours trop rapides. Désactivé = aucun délai."/>
+        <text name="vtpas_hintShow_label" text="Plage de vitesse conseillée (dans les champs)"/>
+        <text name="vtpas_hintShow_tip" text="Affiche au-dessus du compteur la plage de vitesse conseillée, recalculée en continu selon la zone (champ / route), la pression des pneus, le sol, son humidité et le patinage."/>
+        <text name="vtpas_hint_range" text="Plage conseillée : %d - %d km/h"/>
+        <text name="vtpas_hint_min" text="Vitesse conseillée : %d km/h mini"/>
+        <text name="vtpas_hint_max" text="Vitesse conseillée : %d km/h maxi"/>
+        <text name="vtpas_hint_free" text="Vitesse libre"/>
+        <text name="vtpas_hint_risk" text="Risque d'enlisement : %d km/h mini, sans s'arrêter"/>
+        <text name="vtpas_hint_field" text="Champ"/>
+        <text name="vtpas_hint_road" text="Hors champ"/>
+        <text name="vtpas_hint_soil" text="humidité %d %%"/>
+        <text name="vtpas_hint_frozen" text="sol gelé"/>
+        <text name="vtpas_hint_tiresField" text="pneus champ"/>
+        <text name="vtpas_hint_tiresRoad" text="pneus route"/>
+        <text name="vtpas_hint_slip" text="patinage %d %%"/>
+        <text name="vtpas_gt_StubbleTillage" text="déchaumé"/>
+        <text name="vtpas_gt_Cultivated" text="cultivé"/>
+        <text name="vtpas_gt_Seedbed" text="lit de semence"/>
+        <text name="vtpas_gt_Plowed" text="labouré"/>
+        <text name="vtpas_gt_RolledSeedbed" text="lit de semence roulé"/>
+        <text name="vtpas_gt_Ridge" text="buttes"/>
+        <text name="vtpas_gt_Sown" text="semé"/>
+        <text name="vtpas_gt_DirectSown" text="semis direct"/>
+        <text name="vtpas_gt_Planted" text="planté"/>
+        <text name="vtpas_gt_RidgeSown" text="buttes semées"/>
+        <text name="vtpas_gt_Rollerlines" text="roulé"/>
+        <text name="vtpas_gt_HarvestReady" text="culture"/>
+        <text name="vtpas_gt_HarvestReadyO" text="culture"/>
+        <text name="vtpas_gt_Grass" text="herbe"/>
+        <text name="vtpas_gt_GrassCut" text="herbe fauchée"/>
+        <text name="vtpas_hint_riskShort" text="RISQUE D'ENLISEMENT"/>
+        <text name="vtpas_durDiffs_label" text="Notifications des différentiels : durée"/>
+        <text name="vtpas_durTires_label" text="Notifications des pneus : durée"/>
+        <text name="vtpas_durAlert_label" text="Alerte de patinage : durée d'affichage"/>
+        <text name="vtpas_dur_tip" text="Durée (en secondes) pendant laquelle le message reste affiché à l'écran."/>
+        <text name="vtpas_protectSeed_label" text="Protéger le semis (marche arrière / semoir)"/>
+        <text name="vtpas_protectSeed_tip" text="Empêche Mud System Physics d'effacer la culture sous les roues quand le véhicule recule, et sous les roues d'un semoir ou d'une planteuse. Le reste de la destruction dans la boue est conservé."/>
+        <text name="vtpas_slipIcon_label" text="Icône de patinage"/>
+        <text name="vtpas_slipIcon_tip" text="Affiche en permanence (dans un véhicule) le tracteur vu de dessus (ponts bloqués en rouge, transmission 4x4 en vert) avec le patinage de chaque roue, ou un seul pourcentage par pont bloqué, déplaçable à la souris indépendamment de la plage de vitesse. Couleur : blanc, jaune dès 10 %, orange au seuil des différentiels, rouge au seuil d'alerte."/>
+        <text name="vtpas_seedCoverFill_label" text="Remplir le semoir couvercle fermé"/>
+        <text name="vtpas_seedCoverFill_tip" text="Permet de remplir les semoirs et planteuses en graines (big bag, palette, remorque, vis, station) même quand le couvercle de la trémie est fermé. Désactivé = comportement du jeu de base."/>
+        <text name="vtpas_wetGrip_label" text="Adhérence en sol humide (MoreRealistic)"/>
+        <text name="vtpas_wetGrip_tip" text="MoreRealistic ignore l'adhérence calculée par Mud System Physics et Tractor Terrain Dynamics. Ce réglage réduit l'adhérence des roues dans les champs selon l'humidité locale (dès 20 %, maximum à 70 %) et le type de sol, et abaisse de 20 % l'adhérence « champ mouillé » de MoreRealistic. À 60 % d'humidité : environ -34 % (Débutant), -45 % (Facile), -56 % (Normal), -67 % (Dur), -78 % (Extrême)."/>
+        <text name="vtpas_wetGrip_beginner" text="Débutant"/>
+        <text name="vtpas_wetGrip_easy" text="Facile"/>
+        <text name="vtpas_wetGrip_normal" text="Normal"/>
+        <text name="vtpas_wetGrip_hard" text="Dur"/>
+        <text name="vtpas_wetGrip_extreme" text="Extrême"/>
+        <text name="vtpas_auto4wd_label" text="Transmission : 4x2 sur goudron et béton, 4x4 ailleurs"/>
+        <text name="vtpas_auto4wd_tip" text="Passe automatiquement en 2 roues motrices sur le dur (route goudronnée, béton) et en 4 roues motrices partout ailleurs : champs, chemins de gravier ou de terre, herbe (Enhanced Vehicle). En 2 roues motrices, si l'essieu arrière patine au-delà du seuil, le 4x4 s'enclenche d'abord, puis les différentiels se bloquent si ça patine encore ; sur route, retour en 4x2 quand l'adhérence revient. Un réglage manuel reste respecté jusqu'au prochain changement de terrain."/>
+        <text name="input_AS_DRIVE_MODE" text="Différentiels et transmission : Auto / Manuel"/>
+        <text name="vtpas_autoOnHelper_label" text="Retour en Auto avec AutoDrive / Courseplay"/>
+        <text name="vtpas_autoOnHelper_tip" text="En Manuel, repasse en Auto dès qu'AutoDrive ou Courseplay prend la main sur le tracteur."/>
+        <text name="vtpas_notif_modeManual" text="Différentiels et transmission : MANUEL"/>
+        <text name="vtpas_notif_modeAuto" text="Différentiels et transmission : AUTO"/>
+        <text name="vtpas_hud_manual" text="MANUEL"/>
+        <text name="vtpas_hud_auto" text="AUTO"/>
+        <text name="input_AS_DUAL_SWITCH" text="Monter / démonter les jumelées"/>
+        <text name="as_dual_store_function" text="À pied près de la palette, tracteur arrêté à côté : Ctrl droit + I. Palette pleine = montage des jumelées, palette vide = démontage. 1 h de travail, un pneu toutes les 15 min."/>
+        <text name="as_dual_mounting" text="Montage des jumelées commencé : prêt à %s"/>
+        <text name="as_dual_unmounting" text="Démontage des jumelées commencé : prêt à %s"/>
+        <text name="as_dual_done_on" text="Roues jumelées montées"/>
+        <text name="as_dual_done_off" text="Roues simples remontées"/>
+        <text name="as_dual_none" text="Pas de jumelées disponibles pour ce tracteur"/>
+        <text name="as_dual_nosingle" text="Aucune configuration en roues simples trouvée"/>
+        <text name="as_dual_norack" text="Aucune palette de pneus à proximité"/>
+        <text name="as_dual_stop" text="Arrêtez le tracteur pour changer les roues"/>
+        <text name="as_dual_money" text="Fonds insuffisants (%s)"/>
+        <text name="as_dual_cancel" text="Tracteur déplacé : changement de roues annulé"/>
+        <text name="as_dual_failed" text="Changement de roues impossible"/>
+        <text name="as_dual_mp" text="Changement de roues disponible en solo uniquement"/>
+        <text name="as_dual_notractor" text="Aucun tracteur à jumelées garé près de la palette"/>
+        <text name="as_dual_alreadytwin" text="Ce tracteur est déjà équipé de jumelées : la palette ne fournit que des jumelées"/>
+        <text name="as_dual_running" text="Changement de roues déjà en cours : prêt à %s"/>
+        <text name="as_dual_rackempty" text="Cette palette est vide (ou incomplète).&#10;&#10;Ses pneus sont montés sur un autre tracteur : démontez-les d'abord de ce tracteur, ou utilisez une palette pleine."/>
+        <text name="as_dual_rackfull" text="Cette palette n'est pas vide : elle ne peut pas recevoir les pneus démontés.&#10;&#10;Utilisez une palette vide."/>
+        <text name="as_dual_rackbusy" text="Cette palette est déjà utilisée pour un autre changement de roues en cours."/>
+        <text name="as_dual_store_function_ar" text="2 pneus BKT Agrimax V-Flecto 650/65R42 sur jantes. À pied près de la palette, tracteur arrêté à côté : Ctrl droit + I. Seule = jumelées arrière ; avec la palette AV = jumelées avant + arrière. 30 min de montage (15 min par pneu)."/>
+        <text name="as_dual_store_function_av" text="2 pneus BKT Agrimax V-Flecto 540/65R30 sur jantes. S'utilise avec la palette AR pour monter des jumelées avant + arrière (Ctrl droit + I, à pied près des palettes)."/>
+        <text name="as_dual_needar" text="Aucune palette de jumelées AR pleine près de ce tracteur.&#10;&#10;Une palette vide veut dire que ses pneus sont déjà montés sur un autre tracteur : démontez-les d'abord de ce tracteur, ou achetez une nouvelle palette."/>
+        <text name="as_dual_needav" text="Ce tracteur n'existe qu'en jumelées avant + arrière.&#10;&#10;Ajoutez une palette de jumelées AV pleine près du tracteur."/>
+        <text name="as_dual_needar_empty" text="Pour démonter les jumelées, il faut une palette AR vide près du tracteur pour y poser les pneus.&#10;&#10;Une palette encore pleine ne peut pas recevoir d'autres pneus."/>
+        <text name="as_dual_needav_empty" text="Ce tracteur a aussi des jumelées à l'avant : il faut en plus une palette AV vide près du tracteur pour les déposer."/>
+        <text name="as_dual_confirm_title" text="Changement de roues"/>
+        <text name="as_dual_confirm_on" text="Montage des jumelées : %d pneus, %d min de travail (prêt vers %s).&#10;&#10;Le tracteur sera immobilisé pendant le changement : impossible d'y monter ou de lancer un ouvrier. S'il est déplacé, le changement sera annulé.&#10;&#10;Commencer le montage ?"/>
+        <text name="as_dual_confirm_off" text="Démontage des jumelées : %d pneus, %d min de travail (prêt vers %s).&#10;&#10;Le tracteur sera immobilisé pendant le changement : impossible d'y monter ou de lancer un ouvrier. S'il est déplacé, le changement sera annulé.&#10;&#10;Commencer le démontage ?"/>
+        <text name="as_dual_brand" text="Pas de jumelées %s pour ce tracteur : changez de marque de pneus à l'atelier (disponibles : %s)"/>
+        <text name="as_dual_locked" text="Tracteur immobilisé : changement de roues en cours (prêt à %s)"/>
+        <text name="as_dual_zone" text="Placez le tracteur dans la zone de montage (rectangle au sol à côté de la palette)"/>
+        <text name="as_dual_marker" text="Placez-vous ici"/>
+        <text name="as_dual_marker_on" text="Ctrl droit + I : changer les roues"/>
+        <text name="as_dual_timer_title" text="Changement de roues"/>
+        <text name="as_dual_timer_on" text="%s : montage jumelées - %d min (prêt à %s) - pneu %d/%d"/>
+        <text name="as_dual_timer_off" text="%s : démontage jumelées - %d min (prêt à %s) - pneu %d/%d"/>
+        <text name="vtpas_adField_label" text="AutoDrive : vitesse au champ"/>
+        <text name="vtpas_adField_tip" text="Vitesse imposée à AutoDrive dans un champ, à la place de son propre réglage. AutoDrive ralentit toujours dans les virages et aux arrivées."/>
+        <text name="vtpas_adPath_label" text="AutoDrive : vitesse sur les chemins"/>
+        <text name="vtpas_adPath_tip" text="Vitesse imposée à AutoDrive sur les chemins (gravier, terre, herbe)."/>
+        <text name="vtpas_adRoad_label" text="AutoDrive : vitesse sur la route"/>
+        <text name="vtpas_adRoad_tip" text="Vitesse imposée à AutoDrive sur la route goudronnée. Sans limite : vitesse maximale du tracteur."/>
+        <text name="vtpas_adNoLimit" text="Sans limite"/>
+        <text name="vtpas_tabTitle" text="AutoSwitch"/>
+        <text name="vtpas_reqTitle" text="Mods requis"/>
+        <text name="vtpas_reqTip" text="Version minimale : %s"/>
+        <text name="vtpas_reqOk" text="OK (%s)"/>
+        <text name="vtpas_reqAbsent" text="X  Absent"/>
+        <text name="vtpas_reqInactive" text="X  Pas activé"/>
+        <text name="vtpas_reqOld" text="X  Version %s (%s requise)"/>
+        <text name="vtpas_reqBlockedMod" text="X  Bloqué par AutoSwitch"/>
+        <text name="vtpas_rvBlockedNotif" text="Real Physics - Tire Wear : désactivé et bloqué par AutoSwitch (l'usure des pneus est gérée par AutoSwitch)"/>
+        <text name="vtpas_rmsBlockedNotif" text="Realistic Mechanical Systems : bloqué par AutoSwitch (Advanced Damage System est le mod de pannes)"/>
+        <text name="vtpas_keyLock_taken" text="Touches réservées à AutoSwitch, reprises à : %s"/>
+        <text name="vtpas_reqOptional" text="Facultatif (usure gérée par AutoSwitch)"/>
+        <text name="vtpas_secDiff" text="Différentiels"/>
+        <text name="vtpas_secTires" text="Pneus"/>
+        <text name="vtpas_secAlerts" text="Notifications et alertes"/>
+        <text name="vtpas_secAD" text="AutoDrive"/>
+        <text name="vtpas_secHud" text="Affichage"/>
+        <text name="vtpas_secGround" text="Sol et cultures"/>
+        <text name="vtpas_secWorld" text="Lumières, vent, traces et météo"/>
+        <text name="vtpas_secMoney" text="Finances"/>
+        <text name="vtpas_secTraffic" text="Trafic et magasin"/>
+        <text name="vtpas_sleepHours" text="+%d h"/>
+        <text name="vtpas_sleepDay" text="+%d jour"/>
+        <text name="vtpas_sleepDays" text="+%d jours"/>
+        <text name="vtpas_sleepText" text="Choisissez combien de temps dormir : heures et jours."/>
+        <text name="vtpas_sleepHoursTitle" text="Temps en heures"/>
+        <text name="vtpas_sleepDaysTitle" text="Temps en jours"/>
+        <text name="vtpas_lightRange_base" text="x1 (jeu de base)"/>
+        <text name="vtpas_windSway_label" text="Mouvement du vent"/>
+        <text name="vtpas_windSway_tip" text="Force du mouvement des arbres, cultures et herbe au vent. x1 = jeu de base (à 57 km/h le jeu ne bouge le feuillage que comme une brise). La vitesse du vent ne change pas."/>
+        <text name="vtpas_hudDedup_label" text="Masquer les affichages en double"/>
+        <text name="vtpas_hudDedup_tip" text="Cache les infos que d'autres mods répètent (ex. Enhanced Vehicle : Usure | Peinture et Carburant). Les réglages de ces mods ne sont pas modifiés."/>
+        <text name="vtpas_overdraft_label" text="Découvert autorisé"/>
+        <text name="vtpas_overdraft_tip" text="Achat et location possibles avec le compte dans le rouge, jusqu'à ce pourcentage de la valeur de revente de ce que tu possèdes (matériel acheté, terres, bâtiments). Désactivé = jeu de base."/>
+        <text name="vtpas_overdraft_off" text="Désactivé"/>
+        <text name="vtpas_overdraftRate_label" text="Agios (taux annuel)"/>
+        <text name="vtpas_overdraftRate_tip" text="Intérêts prélevés chaque jour de jeu sur le solde négatif, au prorata de l'année (12 mois). Ligne « Agios » dans Finances."/>
+        <text name="vtpas_overdraftRate_none" text="Aucun"/>
+        <text name="finance_asOverdraftInterest" text="Agios"/>
+        <!-- v1.0.0.81 : coopératives payées en fin de mois -->
+        <text name="vtpas_coopPay_label" text="Coopératives payées en fin de mois"/>
+        <text name="vtpas_coopPay_tip" text="Les ventes aux coopératives (point de vente dont le nom contient « coop ») sont notées « À payer » dans le registre (Ctrl droit + R) et versées à la fin du mois, ligne « Coopératives » dans Finances. Liste modifiable : modSettings/FS25_AutoSwitch/cooperatives.xml."/>
+        <text name="vtpas_coopPay_paid" text="Coopératives : %s versés pour le mois"/>
+        <text name="finance_asCoopPayment" text="Coopératives"/>
+        <text name="vtpas_secHours" text="Horaires d'ouverture"/>
+        <text name="vtpas_hours_label" text="Horaires d'ouverture"/>
+        <text name="vtpas_hours_tip" text='Magasin et points de vente fermés en dehors de leurs horaires. Exceptions par point de vente : modSettings/FS25_AutoSwitch/horaires.xml (open="0" close="24" : ouvert 24 h/24).'/>
+        <text name="vtpas_hours_shopOpen" text="Magasin : ouverture"/>
+        <text name="vtpas_hours_shopClose" text="Magasin : fermeture"/>
+        <text name="vtpas_hours_shop_tip" text="Hors horaires, la boutique reste consultable mais acheter, louer, vendre ou construire est refusé."/>
+        <text name="vtpas_hours_sellOpen" text="Points de vente : ouverture"/>
+        <text name="vtpas_hours_sellClose" text="Points de vente : fermeture"/>
+        <text name="vtpas_hours_sell_tip" text="Silos, moulins, usines... Hors horaires, rien n'est accepté ; un camion AutoDrive attend l'ouverture."/>
+        <text name="vtpas_hours_shopClosed" text="Le magasin est fermé. Ouvert de %s à %s."/>
+        <text name="vtpas_hours_stationClosed" text="%s : fermé, ouvre à %s"/>
+        <text name="vtpas_noOvertake_label" text="Interdire de doubler les tracteurs"/>
+        <text name="vtpas_noOvertake_tip" text="Les voitures du trafic restent derrière les tracteurs (AutoDrive ou conduits) qui roulent sur la route. Elles peuvent passer si le tracteur est arrêté depuis 10 s ou a les warnings allumés."/>
+        <text name="vtpas_cpResume_label" text="Relancer Courseplay au chargement"/>
+        <text name="vtpas_cpResume_tip" text="Les véhicules où Courseplay roulait lors de la sauvegarde repartent au chargement de la partie : travail au champ au point où il s'était arrêté (sinon au point le plus proche), déchargeurs et autres travaux avec leurs réglages."/>
+        <text name="vtpas_shopBlockTwins_label" text="Jumelées bloquées en magasin"/>
+        <text name="vtpas_shopBlockTwins_tip" text="Le magasin et l'atelier ne proposent plus les roues jumelées : elles se montent avec les palettes de pneus. Les tracteurs déjà en jumelées les gardent et la palette peut les remettre en roues simples."/>
+        <!-- v1.0.0.59 : fenêtre Météo -->
+        <text name="vtpas_weatherWidget_label" text="Mini-météo près de l'horloge"/>
+        <text name="vtpas_weatherWidget_tip" text="Affiche le temps actuel et le prochain changement à gauche de l'horloge. Déplaçable à la souris quand le curseur est visible ; un clic ouvre la fenêtre Météo (Ctrl droit + M)."/>
+        <text name="input_AS_WEATHER" text="Météo : ouvrir / fermer"/>
+        <text name="input_AS_REGISTER" text="Registre des pesées et des ventes : ouvrir / fermer"/>
+        <text name="input_AS_FIELDS" text="Champs : ouvrir / fermer"/>
+        <text name="vtpas_wx_title" text="Météo"/>
+        <text name="vtpas_wx_now" text="Maintenant"/>
+        <text name="vtpas_wx_nowShort" text="Maint."/>
+        <text name="vtpas_wx_next24" text="Prochaines 24 h"/>
+        <text name="vtpas_wx_events" text="Changements à venir"/>
+        <text name="vtpas_wx_days" text="Prochains jours"/>
+        <text name="vtpas_wx_sun" text="Ensoleillé"/>
+        <text name="vtpas_wx_partly" text="Éclaircies"/>
+        <text name="vtpas_wx_cloudy" text="Nuageux"/>
+        <text name="vtpas_wx_rain" text="Pluie"/>
+        <text name="vtpas_wx_snow" text="Neige"/>
+        <text name="vtpas_wx_hail" text="Grêle"/>
+        <text name="vtpas_wx_thunder" text="Orage"/>
+        <text name="vtpas_wx_twister" text="Tornade"/>
+        <text name="vtpas_wx_unknown" text="Inconnu"/>
+        <text name="vtpas_wx_today" text="Aujourd'hui"/>
+        <text name="vtpas_wx_tomorrow" text="Demain"/>
+        <text name="vtpas_wx_afterTomorrow" text="Après-demain"/>
+        <text name="vtpas_wx_inDays" text="Dans %d jours"/>
+        <text name="vtpas_wx_durDays" text="%d j %d h"/>
+        <text name="vtpas_wx_minMax" text="Mini %s / maxi %s"/>
+        <text name="vtpas_wx_wind" text="Vent"/>
+        <text name="vtpas_wx_from" text="secteur %s"/>
+        <text name="vtpas_wx_precip" text="Précipitations"/>
+        <text name="vtpas_wx_none" text="Aucune"/>
+        <text name="vtpas_wx_light" text="faible"/>
+        <text name="vtpas_wx_moderate" text="modérée"/>
+        <text name="vtpas_wx_heavy" text="forte"/>
+        <text name="vtpas_wx_mmPerHour" text="environ %.1f mm/h"/>
+        <text name="vtpas_wx_ground" text="Humidité du sol"/>
+        <text name="vtpas_wx_change" text="Prochain changement"/>
+        <text name="vtpas_wx_nextChange" text="%s à %s (dans %s)"/>
+        <text name="vtpas_wx_endAt" text="Fin à %s"/>
+        <text name="vtpas_wx_noForecast" text="Pas de prévision du jeu"/>
+        <text name="vtpas_wx_fromTo" text="de %s à %s"/>
+        <text name="vtpas_wx_dayPlus" text="J+%d"/>
+        <text name="vtpas_wx_clickMe" text="Clique-moi"/>
+        <text name="vtpas_wx_forecastShort" text="Prévision"/>
+        <text name="vtpas_wx_until" text="jusqu'à %s"/>
+        <text name="vtpas_wx_rainDay" text="%s en %s"/>
+        <text name="vtpas_wx_dry" text="Sec"/>
+        <text name="vtpas_wx_footer" text="Prévisions du jeu sur %s. Quantités estimées d'après l'intensité. * = jour pas entièrement prévu"/>
+        <text name="vtpas_wx_dir_N" text="N"/>
+        <text name="vtpas_wx_dir_NE" text="NE"/>
+        <text name="vtpas_wx_dir_E" text="E"/>
+        <text name="vtpas_wx_dir_SE" text="SE"/>
+        <text name="vtpas_wx_dir_S" text="S"/>
+        <text name="vtpas_wx_dir_SW" text="SO"/>
+        <text name="vtpas_wx_dir_W" text="O"/>
+        <text name="vtpas_wx_dir_NW" text="NO"/>
+        <text name="vtpas_beamEnabled_label" text="Phares renforcés"/>
+        <text name="vtpas_beamEnabled_tip" text="Oui : portée et luminosité des phares réglées ci-dessous. Non : phares du jeu de base, aucun calcul (meilleures performances)."/>
+        <text name="vtpas_light_road_label" text="Phares de route"/>
+        <text name="vtpas_light_road_tip" text="Phares de croisement et de route, feux de toit. Portée et luminosité ensemble, de x1,1 à x2,5."/>
+        <text name="vtpas_light_workFront_label" text="Phares de travail avant"/>
+        <text name="vtpas_light_workFront_tip" text="Phares de travail tournés vers l'avant (et phares de travail propres au véhicule)."/>
+        <text name="vtpas_light_workBack_label" text="Phares de travail arrière"/>
+        <text name="vtpas_light_workBack_tip" text="Phares de travail tournés vers l'arrière."/>
+        <text name="vtpas_light_beacon_label" text="Gyrophares"/>
+        <text name="vtpas_light_beacon_tip" text="Lumière projetée par les gyrophares."/>
+        <text name="vtpas_light_signal_label" text="Signalisation"/>
+        <text name="vtpas_light_signal_tip" text="Clignotants, feux stop et feux de recul."/>
+        <text name="vtpas_light_other_label" text="Autres lumières"/>
+        <text name="vtpas_light_other_tip" text="Éclairage intérieur et lumières qui ne sont dans aucune liste du jeu."/>
+        <text name="vtpas_tracksMax_label" text="Traces de pneus gardées (points)"/>
+        <text name="vtpas_tracksMax_tip" text="Nombre de points de traces de pneus gardés et sauvegardés avec la partie. Moins = moins de mémoire et de calcul."/>
+        <!-- Aide (menu Échap > Aide) : help/helpLine.xml -->
+        <text name="as_help_title" text="AutoSwitch"/>
+        <text name="as_help_subTitle" text="Make it real"/>
+        <text name="as_help_intro_title" text="Présentation"/>
+        <text name="as_help_intro_p1_title" text="Ce que fait AutoSwitch"/>
+        <text name="as_help_intro_p1_text" text="AutoSwitch fait travailler ensemble Variable Tire Pressure, Enhanced Vehicle, MoreRealistic, Mud System Physics et Tractor Terrain Dynamics, sans modifier ces mods.&#10;&#10;Il gère tout seul la pression des pneus et les différentiels, rend l'adhérence réaliste selon le sol et l'humidité, et ajoute des fenêtres pratiques : Météo, Champs et Registre.&#10;&#10;Il règle aussi les conflits entre MoreRealistic, DynamicDrivePro, Enhanced Vehicle et Recovery Winch : aucun mod n'est désactivé."/>
+        <text name="as_help_intro_p2_title" text="Mode AUTO / MANUEL"/>
+        <text name="as_help_intro_p2_text" text="Touche Ctrl droit + Flèche haut, dans un véhicule. Le mode s'affiche au-dessus du tracteur.&#10;&#10;• AUTO : AutoSwitch bloque les différentiels selon le patinage et choisit 4x2 ou 4x4 selon le terrain.&#10;• MANUEL : vous gérez vous-même différentiels et 4x2 / 4x4. Un blocage engagé ne se coupe plus, et le tracteur ne tourne que jusqu'à son seuil de braquage (roues braquées à fond, il ripe).&#10;&#10;Quand AutoDrive ou Courseplay prend la main, le tracteur repasse en AUTO (réglable)."/>
+        <text name="as_help_intro_p3_title" text="Raccourcis"/>
+        <text name="as_help_intro_p3_text" text="• Ctrl droit + Flèche haut : mode AUTO / MANUEL (dans un véhicule)&#10;• Ctrl droit + M : fenêtre Météo&#10;• Ctrl droit + C : fenêtre Champs&#10;• Ctrl droit + R : Registre des pesées et des ventes&#10;• Ctrl droit + I : monter / démonter les jumelées (à pied, près d'une palette de pneus)&#10;&#10;Toutes ces touches se changent dans Paramètres &gt; Commandes."/>
+        <text name="as_help_intro_p4_title" text="Réglages et mods requis"/>
+        <text name="as_help_intro_p4_text" text="Tous les réglages sont dans Échap &gt; Paramètres, onglet AUTOSWITCH. Chaque ligne a une bulle d'aide.&#10;&#10;En bas de l'onglet :&#10;• la liste des mods requis, avec une coche verte (OK) ou une croix rouge (absent, pas activé ou trop ancien). Un mod requis manquant ne bloque pas la partie : seules les fonctions qui en dépendent sont coupées ;&#10;• « Logs dans log.txt » : un interrupteur par fonction, coupés par défaut. Les erreurs sont toujours écrites.&#10;&#10;Mods requis : VariableTirePressure, EnhancedVehicle, AutoDrive, Courseplay, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, TractorTerrainDynamics, DynamicDrivePro, RealisticHarvesting, MoistureSystem.&#10;L'usure des pneus est intégrée : aucun mod de pneus n'est nécessaire."/>
+        <text name="as_help_diff_title" text="Différentiels et 4x4"/>
+        <text name="as_help_diff_p1_title" text="Blocage automatique"/>
+        <text name="as_help_diff_p1_text" text="En mode AUTO, AutoSwitch bloque les différentiels (Enhanced Vehicle) quand les roues patinent :&#10;• arrière à 15 % de patinage, puis avant à 30 % (seuils réglables) ;&#10;• le patinage doit durer 1,5 s avant le blocage (réglable) ;&#10;• déblocage quand le patinage retombe à la moitié du seuil.&#10;&#10;Une notification s'affiche à chaque blocage et déblocage (désactivable). Les blocages sont remis à zéro au chargement de la partie."/>
+        <text name="as_help_diff_p2_title" text="4x2 sur la route, 4x4 ailleurs"/>
+        <text name="as_help_diff_p2_text" text="Le tracteur passe en 4x2 sur le goudron et le béton, et en 4x4 partout ailleurs : champs, chemins de gravier ou de terre, herbe.&#10;&#10;En 4x2, si l'essieu arrière patine, le 4x4 s'enclenche d'abord, puis les différentiels se bloquent si ça patine encore. Sur la route, retour en 4x2 quand l'adhérence revient.&#10;&#10;Un choix fait à la main reste respecté jusqu'au prochain changement de terrain."/>
+        <text name="as_help_diff_p3_title" text="En virage"/>
+        <text name="as_help_diff_p3_text" text="• En 4x4, le braquage est limité à 90 %.&#10;• Les blocages se coupent au-delà de 50 % du braquage (arrière seul), 20 % (avant seul) ou 10 % (les deux).&#10;• Roues braquées, un blocage est refusé : le message « Redressez les roues » s'affiche."/>
+        <text name="as_help_diff_p4_title" text="Labour"/>
+        <text name="as_help_diff_p4_text" text="En mode AUTO, quand une charrue est abaissée (même derrière un autre outil), le différentiel arrière se verrouille et le reste tant qu'elle est en terre. En MANUEL, c'est à vous de le faire."/>
+        <text name="as_help_diff_p5_title" text="Moissonneuses, ensileuses et machines 4x2"/>
+        <text name="as_help_diff_p5_text" text="Les machines sans 4x4 gardent leur braquage complet, n'ont pas de 4x2 / 4x4 et seul leur pont moteur se bloque. Le HUD montre alors une moissonneuse ou une ensileuse à la place du tracteur.&#10;&#10;La transmission réelle de chaque machine est lue après MoreRealistic (voir la page « Fichiers et réglages avancés »)."/>
+        <text name="as_help_tires_title" text="Pneus et jumelées"/>
+        <text name="as_help_tires_p1_title" text="Pression des pneus"/>
+        <text name="as_help_tires_p1_text" text="Avec AutoDrive ou Courseplay, les pneus (Variable Tire Pressure) sont dégonflés au champ et regonflés sur la route, toujours automatiquement.&#10;&#10;Quand vous conduisez vous-même, le réglage « Pression des pneus » décide : Automatique (comme avec un helper) ou Manuel (vous utilisez la touche de Variable Tire Pressure).&#10;&#10;Le regonflage automatique de Variable Tire Pressure à 30 km/h est désactivé. Un délai de 4 s minimum sépare deux changements de pression (réglable)."/>
+        <text name="as_help_tires_p2_title" text="Monter des jumelées"/>
+        <text name="as_help_tires_p2_text" text="Le magasin et l'atelier ne proposent plus les roues jumelées (réglable) : elles se montent avec les palettes de pneus, en boutique et au menu construction.&#10;• Palette AR : 2 pneus BKT 650/65R42 sur jantes.&#10;• Palette AV : 2 pneus BKT 540/65R30, à utiliser avec la palette AR pour des jumelées avant + arrière.&#10;&#10;1. Garez le tracteur, arrêté, dans la zone de montage (rectangle au sol à côté de la palette).&#10;2. À pied, placez-vous sur le repère jaune.&#10;3. Appuyez sur Ctrl droit + I et confirmez.&#10;&#10;Palette pleine = montage, palette vide = démontage (les pneus y sont reposés). Comptez 15 minutes de jeu par pneu ; le tracteur est immobilisé pendant le travail et le changement est annulé s'il est déplacé. Solo uniquement."/>
+        <text name="as_help_tires_p3_title" text="Avantages des jumelées"/>
+        <text name="as_help_tires_p3_text" text="La largeur réelle des jumelées est prise en compte par Mud System Physics (moins d'enfoncement) et elles accrochent mieux en sol humide. Un correctif de Variable Tire Pressure est appliqué pour les pneus à variantes de marques."/>
+        <text name="as_help_tires_p4_title" text="Usure et saleté"/>
+        <text name="as_help_tires_p4_text" text="Les pneus et les chenilles s'usent avec AutoSwitch : distance roulée, patinage (une roue qui patine s'use beaucoup plus), charge réelle de la roue, sol (la route use environ 3 fois plus que le champ), pression (pneu dégonflé sur route = usure rapide), vitesse sur route et chaleur. Chaque jeu de roues garde sa propre usure.&#10;&#10;Un pneu usé accroche moins au champ, sur la terre et la neige ; sur route sèche il accroche un peu mieux (effet slick), sur route mouillée moins. Son rayon diminue un peu.&#10;&#10;Le tracteur du HUD montre une barre par roue (vert, jaune, orange, rouge = reste du pneu), la gomme prend un aspect usé, la boîte d'info du véhicule donne le pourcentage, et une alerte s'affiche à 75 % et 90 %. À l'atelier, le bouton « Pneus neufs » remplace les pneus usés à 25 % ou plus. Réglages dans l'onglet AUTOSWITCH (marche / arrêt, durée de vie).&#10;&#10;Les pneus salis par la boue le restent bien plus longtemps en roulant (au moins une heure de route) ; l'eau, la pluie et le lavage les nettoient toujours."/>
+        <text name="as_help_ground_title" text="Adhérence, sol et boue"/>
+        <text name="as_help_ground_p1_title" text="Adhérence en sol humide"/>
+        <text name="as_help_ground_p1_text" text="MoreRealistic ne tient pas compte de l'adhérence calculée par Mud System Physics et Tractor Terrain Dynamics. AutoSwitch réduit donc l'adhérence au champ selon l'humidité locale (à partir de 20 %, maximum à 70 %) et le type de sol.&#10;&#10;Cinq niveaux : Débutant, Facile, Normal (par défaut), Dur, Extrême. À 60 % d'humidité, la perte va d'environ 34 % (Débutant) à 78 % (Extrême)."/>
+        <text name="as_help_ground_p2_title" text="Bonus d'adhérence"/>
+        <text name="as_help_ground_p2_text" text="• Pneus dégonflés au champ (Variable Tire Pressure) : bonus ramené à +15 % (+20 % en jumelées).&#10;• Différentiels bloqués : +4 % sur les roues arrière, +3 % sur les roues avant."/>
+        <text name="as_help_ground_p3_title" text="Flaques"/>
+        <text name="as_help_ground_p3_text" text="Le type de sol de Precision Farming compte dans l'humidité de Mud System Physics : le sable sèche vite, l'argile reste mouillée.&#10;&#10;Quand il pleut sur un sol saturé, l'eau s'accumule dans les creux du terrain (champs, chemins, prés ; jamais sur le goudron, le béton ou dans l'eau) et forme des flaques visibles. Elles disparaissent peu à peu par infiltration et évaporation."/>
+        <text name="as_help_ground_p4_title" text="Herbe et traces"/>
+        <text name="as_help_ground_p4_text" text="Mud System Physics fauchait l'herbe sous chaque roue dès 12 % d'humidité. À la place, l'herbe piétinée recule d'un stade, avec une chance qui monte avec la vitesse et l'humidité ; au-delà de 30 km/h elle est coupée à ras.&#10;&#10;Les traces de pneus sont gardées avec la sauvegarde : elles ne disparaissent plus au rechargement (60 000 points par défaut, réglable)."/>
+        <text name="as_help_ground_p5_title" text="Outils, boue et semis"/>
+        <text name="as_help_ground_p5_text" text="• Les outils restent stables à l'arrêt : ils ne sautillent plus à cause de Mud System Physics et MoreRealistic.&#10;• La boue freine aussi les remorques et outils sans frein.&#10;• Protection du semis : en marche arrière, et sous les roues d'un semoir ou d'une planteuse, la culture n'est plus effacée.&#10;• Les semoirs et planteuses se remplissent même couvercle fermé.&#10;• Ressemis direct possible sur les bandes écrasées.&#10;• Les paramètres Mud System Physics et Tractor Terrain Dynamics d'AutoSwitch sont appliqués automatiquement."/>
+        <text name="as_help_hud_title" text="Affichage"/>
+        <text name="as_help_hud_p1_title" text="Tracteur vu de dessus"/>
+        <text name="as_help_hud_p1_text" text="Dans un véhicule, un tracteur vu de dessus s'affiche près du compteur : ponts bloqués en rouge, 4x4 en vert, et le patinage de chaque roue (ou un seul pourcentage par pont bloqué).&#10;&#10;Couleur du patinage : blanc, jaune dès 10 %, orange au seuil des différentiels, rouge au seuil d'alerte. Il se déplace à la souris."/>
+        <text name="as_help_hud_p2_title" text="Vitesse conseillée"/>
+        <text name="as_help_hud_p2_text" text="Au-dessus du compteur, la plage de vitesse conseillée est recalculée en continu selon la zone (champ / route), la pression des pneus, le sol, son humidité et le patinage. « RISQUE D'ENLISEMENT » prévient quand il ne faut pas s'arrêter."/>
+        <text name="as_help_hud_p3_title" text="Alertes et notifications"/>
+        <text name="as_help_hud_p3_text" text="• Alerte rouge de patinage quand il reste au-dessus de 80 % pendant 5 s (seuil et durée réglables, désactivable).&#10;• Notifications des différentiels et des pneus, avec une durée d'affichage réglable.&#10;• « Masquer les affichages en double » cache les infos que d'autres mods répètent (par exemple Enhanced Vehicle), sans changer leurs réglages."/>
+        <text name="as_help_weather_title" text="Météo"/>
+        <text name="as_help_weather_p1_title" text="Fenêtre Météo"/>
+        <text name="as_help_weather_p1_text" text="Ctrl droit + M ouvre la fenêtre Météo, en quatre parties : maintenant, prochaines 24 h (par tranches de 3 h), changements à venir et prochains jours.&#10;&#10;Ce sont les vraies prévisions du jeu : ce qui est affiché arrivera. Le jeu ne donne qu'une intensité de pluie : les millimètres sont estimés. Un « * » marque un jour pas entièrement prévu."/>
+        <text name="as_help_weather_p2_title" text="Mini-météo"/>
+        <text name="as_help_weather_p2_text" text="À gauche de l'horloge, la mini-météo montre le temps actuel, le prochain changement, le vent et sa direction. Elle se déplace à la souris quand le curseur est visible ; un clic dessus (« Clique-moi ») ouvre la fenêtre Météo. Désactivable."/>
+        <text name="as_help_weather_p3_title" text="Vent visible"/>
+        <text name="as_help_weather_p3_text" text="Les arbres, cultures et herbe bougent plus fort au vent (x2,2 par défaut ; x1 = jeu de base). Seul l'affichage change : la vitesse du vent reste celle du jeu."/>
+        <text name="as_help_fields_title" text="Champs"/>
+        <text name="as_help_fields_p1_title" text="Fenêtre Champs"/>
+        <text name="as_help_fields_p1_text" text="Ctrl droit + C, ou un clic sur l'icône du champ (sous laquelle est écrit « Clique-moi »), ouvre la liste de vos champs. Une ligne par champ possédé :&#10;• Champ : numéro du jeu ;&#10;• Culture et Stade ;&#10;• Semis, Engrais, Herbicide : date du dernier passage ;&#10;• Récolte : quand la culture sera prête.&#10;&#10;La molette fait défiler la liste ; la croix en haut ferme la fenêtre."/>
+        <text name="as_help_fields_p2_title" text="Les dates"/>
+        <text name="as_help_fields_p2_text" text="Le jeu ne garde aucune date : AutoSwitch les note lui-même depuis son installation, quand au moins 10 % du champ a été travaillé (les passages en bordure ne comptent pas). Avant cela, la case indique « avant suivi ». Les dates sont gardées avec la sauvegarde."/>
+        <text name="as_help_fields_p3_title" text="La récolte"/>
+        <text name="as_help_fields_p3_text" text="• Un mois (« vers Mois 8 ») : récolte estimée d'après le calendrier de la culture.&#10;• « Prêt » : la culture peut être récoltée.&#10;• « Prêt (idéal 5/7) » : récoltable, mais le meilleur stade n'est pas encore atteint (cultures récoltables sur plusieurs stades, comme le maïs ensilage).&#10;• « Idéal » : meilleur moment pour récolter.&#10;• Après la récolte : « Récolté » ou le chaume."/>
+        <text name="as_help_fields_p4_title" text="Champs réunis"/>
+        <text name="as_help_fields_p4_text" text="Des champs du jeu réunis en un seul (un seul contour de terre cultivée) sont affichés sur une seule ligne, par exemple « Champ 12 (2 champs) ».&#10;• Un clic sur la croix bleue déplie la liste des champs du groupe.&#10;• Un clic sur un champ de cette liste en fait le champ principal (celui dont le numéro s'affiche).&#10;&#10;Le contour est calculé une seule fois, réparti sur plusieurs images pour ne pas ralentir le jeu, puis gardé avec la sauvegarde."/>
+        <text name="as_help_register_title" text="Registre"/>
+        <text name="as_help_register_p1_title" text="Registre des pesées et des ventes"/>
+        <text name="as_help_register_p1_text" text="Ctrl droit + R ouvre le registre, en trois onglets :&#10;• Pesées : chaque passage sur un pont-bascule (envoyé par AutoDrive Addon), avec le lieu et qui a pesé (AutoDrive ou le joueur) ;&#10;• Ventes : chaque vente avec le produit, la quantité, le montant et le point de vente. Le déchargement d'une benne arrive par petits morceaux : ils sont regroupés en une seule ligne ;&#10;• Totaux : par mois et par produit.&#10;&#10;Des totaux sont affichés en bas de chaque onglet."/>
+        <text name="as_help_register_p2_title" text="Années et suppression"/>
+        <text name="as_help_register_p2_text" text="Une page par année : le registre s'ouvre sur l'année en cours ; les flèches &lt; &gt; montrent les années précédentes (rien n'est effacé).&#10;&#10;La croix au bout d'une ligne la supprime : cliquez une deuxième fois pour confirmer.&#10;&#10;Le registre est gardé avec la sauvegarde."/>
+        <text name="as_help_money_title" text="Argent"/>
+        <text name="as_help_money_p1_title" text="Découvert et agios"/>
+        <text name="as_help_money_p1_text" text="Vous pouvez acheter ou louer avec le compte dans le rouge, jusqu'à 20 % de la valeur de revente de ce que vous possédez : matériel acheté (pas la location), terres et bâtiments (réglable ; Désactivé = jeu de base).&#10;&#10;Des agios sont prélevés chaque jour de jeu sur le solde négatif : 10 % par an par défaut, répartis sur les jours de l'année. Ligne « Agios » dans Finances."/>
+        <text name="as_help_money_p2_title" text="Coopératives payées en fin de mois"/>
+        <text name="as_help_money_p2_text" text="Une vente à une coopérative (point de vente dont le nom contient « coop ») se fait comme d'habitude, mais l'argent n'arrive pas tout de suite : il est noté « À payer » dans le registre et le total du mois est versé à la fin du mois, ligne « Coopératives » dans Finances. Désactivable."/>
+        <text name="as_help_hours_title" text="Horaires et sommeil"/>
+        <text name="as_help_hours_p1_title" text="Horaires d'ouverture"/>
+        <text name="as_help_hours_p1_text" text="• Magasin : de 8 h à 19 h. En dehors, la boutique reste consultable, mais acheter, louer, vendre ou construire est refusé.&#10;• Points de vente (silos, moulins, usines…) : de 6 h à 22 h. En dehors, rien n'est accepté ; un camion AutoDrive attend l'ouverture sur place.&#10;&#10;Heures réglables dans l'onglet AUTOSWITCH, et désactivables."/>
+        <text name="as_help_hours_p2_title" text="Dormir"/>
+        <text name="as_help_hours_p2_text" text="La fenêtre Dormir propose deux listes : des heures (+0 à +23 h) et des jours (0 à 7). Avec des jours, le réveil se fait à 8 h le dernier jour, plus les heures choisies. Les jours passent normalement : cultures, ventes et salaires sont calculés comme d'habitude."/>
+        <text name="as_help_road_title" text="Route, trafic et lumières"/>
+        <text name="as_help_road_p1_title" text="Trafic"/>
+        <text name="as_help_road_p1_text" text="• Les voitures du trafic ne doublent plus les tracteurs (AutoDrive ou conduits) qui roulent sur la route. Elles passent si le tracteur est arrêté depuis 10 s, recule ou a les warnings allumés.&#10;• Leurs capteurs sont réduits à 80 % de leur largeur : elles ne freinent plus en croisant un tracteur.&#10;&#10;Fonctionne aussi avec le trafic ajouté par Traffic Density Control."/>
+        <text name="as_help_road_p2_title" text="Vitesse d'AutoDrive"/>
+        <text name="as_help_road_p2_text" text="AutoSwitch impose la vitesse d'AutoDrive selon le terrain : 20 km/h au champ, 30 km/h sur les chemins, sans limite sur la route (réglable). AutoDrive ralentit toujours dans les virages et aux arrivées."/>
+        <text name="as_help_road_p3_title" text="Phares"/>
+        <text name="as_help_road_p3_text" text="Les lumières de tous les véhicules, le vôtre compris, éclairent plus loin et plus fort, avec un réglage par type de feu (portée et luminosité ensemble, de x1,1 à x2,5) :&#10;• phares de route : x2 ;&#10;• phares de travail avant et arrière : x2 ;&#10;• gyrophares, signalisation (clignotants, stop, recul) et autres lumières : x1,1.&#10;&#10;« Phares renforcés : Non » remet les lumières du jeu de base, sans aucun calcul."/>
+        <text name="as_help_files_title" text="Fichiers et réglages avancés"/>
+        <text name="as_help_files_p1_title" text="Dossier modSettings/FS25_AutoSwitch"/>
+        <text name="as_help_files_p1_text" text="Ces fichiers sont créés par AutoSwitch et peuvent être corrigés à la main, jeu fermé :&#10;• transmissions.xml : transmission de chaque machine. « detected » est ce qu'AutoSwitch a lu ; remplissez « forced » avec 4x4, front (avant seul) ou rear (arrière seul) pour imposer la vôtre.&#10;• cooperatives.xml : chaque point de vente avec coop=&quot;true&quot; ou &quot;false&quot;, pour corriger ce qui est une coopérative.&#10;• horaires.xml : horaires propres à un point de vente. -1 = horaires du menu ; open=&quot;0&quot; close=&quot;24&quot; = ouvert 24 h/24."/>
+        <text name="as_help_files_p2_title" text="Dans la sauvegarde"/>
+        <text name="as_help_files_p2_text" text="• AutoSwitch_fields.xml : dates et champs réunis de la fenêtre Champs.&#10;• AutoSwitch_register.xml : pesées et ventes du registre.&#10;• AutoSwitch_coop.xml : ce que les coopératives doivent encore.&#10;&#10;Les traces de pneus et les réglages de l'onglet AUTOSWITCH sont aussi gardés avec la partie."/>
+        <!-- fin de l'aide -->
+        <text name="vtpas_tireLife_label" text="Usure des pneus"/>
+        <text name="vtpas_tireLife_tip" text="Pneus et chenilles s'usent selon la distance, le patinage, la charge, le sol, la pression et la météo. Pneu usé : moins d'adhérence au champ, un peu plus sur route sèche."/>
+        <text name="vtpas_tireLife_uyt" text="Use Your Tyres est activé : c'est lui qui gère l'usure, ce réglage est sans effet."/>
+        <text name="vtpas_tireLifeKm_label" text="Durée de vie des pneus"/>
+        <text name="vtpas_tireLifeKm_tip" text="Distance sur route, à charge normale, pour user un pneu de 2 m. Le champ use environ 3 fois moins, le patinage beaucoup plus."/>
+        <text name="vtpas_tl_info" text="Usure des pneus"/>
+        <text name="vtpas_tl_front" text="AV"/>
+        <text name="vtpas_tl_rear" text="AR"/>
+        <text name="vtpas_tl_alertWorn" text="%s : pneus usés (%d %%)"/>
+        <text name="vtpas_tl_alertCritical" text="%s : pneus à remplacer (%d %%), passez à l'atelier"/>
+        <text name="vtpas_tl_trackCut" text="%s : chenille entaillée, à remplacer à l'atelier"/>
+        <text name="vtpas_tl_replace" text="Pneus neufs"/>
+        <text name="vtpas_tl_replaceAsk" text="Monter %d pneus neufs pour %s ?"/>
+    </texts>
+</l10n>
