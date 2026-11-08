@@ -355,6 +355,72 @@ local function shDriveState(vehicle)
     return k, front, rear, is[3] ~= 0, true
 end
 
+-- (08/11) pressions Variable Tire Pressure de chaque pont, en bar (mêmes calculs que VTP,
+-- sans le modifier) : pont scindé -> valeur du pont, sinon interpolation de currentFactor
+-- entre la pression champ et la pression route du pont
+local function shVtpPreset(spec, axle, road)
+    local F = axle == "front" and "Front" or "Rear"
+    local lo = axle == "front" and "front" or "rear"
+    if road then
+        return tonumber(spec["customRoadPressure" .. F] or spec["defaultRoadPressure" .. F] or spec[lo .. "RoadPressure"]
+            or spec.customRoadPressure or spec.roadPressure or spec.defaultRoadPressure) or 2.0
+    end
+    return tonumber(spec["customFieldPressure" .. F] or spec["defaultFieldPressure" .. F] or spec[lo .. "FieldPressure"]
+        or spec.customFieldPressure or spec.fieldPressure or spec.defaultFieldPressure) or 1.0
+end
+
+local function shVtpFactorToBar(spec, factor, fieldP, roadP)
+    if type(factor) ~= "number" then return nil end
+    local fieldF = spec.fieldDeformationFactor or 1.0
+    local roadF = spec.roadDeformationFactor or 0.35
+    local denom = roadF - fieldF
+    if math.abs(denom) < 0.000001 then return nil end
+    local t = math.max(0, math.min(1, (factor - fieldF) / denom))
+    return fieldP + (roadP - fieldP) * t
+end
+
+local function shVtpAxleBar(spec, axle)
+    local roadP, fieldP = shVtpPreset(spec, axle, true), shVtpPreset(spec, axle, false)
+    if roadP < fieldP then roadP, fieldP = fieldP, roadP end
+    if spec.tractorAxleSplitActive == true and type(spec._vtpAxleState) == "table" then
+        local st = spec._vtpAxleState[axle]
+        if type(st) == "table" then
+            if type(st.currentBar) == "number" then return st.currentBar end
+            local b = shVtpFactorToBar(spec, st.currentFactor, fieldP, roadP)
+            if b ~= nil then return b end
+            return st.isRoadMode == true and roadP or fieldP
+        end
+    end
+    local b = shVtpFactorToBar(spec, spec.currentFactor, fieldP, roadP)
+    if b ~= nil then return b end
+    return spec.isRoadMode == true and roadP or fieldP
+end
+
+-- renvoie pression avant, pression arrière (bar), ou nil si VTP n'agit pas sur ce véhicule
+local function shVtpPressures(vehicle)
+    local spec = vehicle ~= nil and vehicle.spec_variableTirePressure or nil
+    if spec == nil or spec.isConfigEnabled ~= true then return nil end
+    if vehicle.vtpIsEnabledForCurrentWheelConfig ~= nil then
+        local ok, en = pcall(vehicle.vtpIsEnabledForCurrentWheelConfig, vehicle)
+        if ok and en == false then return nil end
+    end
+    local okF, f = pcall(shVtpAxleBar, spec, "front")
+    local okR, r = pcall(shVtpAxleBar, spec, "rear")
+    if not okF or not okR or type(f) ~= "number" or type(r) ~= "number" then return nil end
+    return f, r
+end
+
+-- ligne « Av: 1.2 Bar » centrée sur fond sombre
+local function shDrawPressureRow(x, y, w, h, size, label)
+    if drawFilledRect ~= nil then
+        drawFilledRect(x, y, w, h, 0, 0, 0, 0.6)
+    end
+    setTextAlignment(RenderText.ALIGN_CENTER)
+    setTextBold(true)
+    setTextColor(0.55, 0.85, 1, 1)
+    renderText(x + w * 0.5, y + (h - size) * 0.5 + size * 0.15, size, label)
+end
+
 -- texte de patinage centré en (cx, cy), sur fond sombre
 local function shDrawPct(cx, cy, size, pct, padX, padY)
     local txt = tostring(math.floor(pct + 0.5)) .. " %"
@@ -454,18 +520,27 @@ function AS_SpeedHint:draw()
             local okH, h = pcall(AS_TireLife.rearToolsHeight, AS_TireLife, vehicle, py)
             if okH and type(h) == "number" then toolH = h end
         end
-        by = shClamp(by, 0, math.max(0, 1 - iconH - modeH - toolH))
-        self.iconBox = { x = bx, y = by, w = blockW, h = iconH + modeH + toolH }
+        -- (08/11) pressions VTP : « Av » au-dessus du tracteur, « Ar » en dessous
+        local pFront, pRear = shVtpPressures(vehicle)
+        local presH = 0
+        if pFront ~= nil then presH = pctSize + py(5) end
+        by = shClamp(by, 0, math.max(0, 1 - iconH - modeH - toolH - presH * 2))
+        self.iconBox = { x = bx, y = by, w = blockW, h = iconH + modeH + toolH + presH * 2 }
         local toolY = by
         by = by + toolH
+        if presH > 0 then
+            shDrawPressureRow(bx, by, blockW, presH, pctSize, string.format(L("vtpas_hud_pressRear"), pRear))
+            shDrawPressureRow(bx, by + presH + iconH, blockW, presH, pctSize, string.format(L("vtpas_hud_pressFront"), pFront))
+            by = by + presH
+        end
         local manual = AS_Diff ~= nil and AS_Diff.isManual ~= nil and AS_Diff.isManual(vehicle)
         if drawFilledRect ~= nil then
-            drawFilledRect(bx, by + iconH, blockW, modeH, 0, 0, 0, 0.6)
+            drawFilledRect(bx, by + iconH + presH, blockW, modeH, 0, 0, 0, 0.6)
         end
         setTextAlignment(RenderText.ALIGN_CENTER)
         setTextBold(true)
         if manual then setTextColor(1, 0.6, 0.1, 1) else setTextColor(0.3, 1, 0.3, 1) end
-        renderText(bx + blockW * 0.5, by + iconH + py(2) + modeSize * 0.15, modeSize, L(manual and "vtpas_hud_manual" or "vtpas_hud_auto"))
+        renderText(bx + blockW * 0.5, by + iconH + presH + py(2) + modeSize * 0.15, modeSize, L(manual and "vtpas_hud_manual" or "vtpas_hud_auto"))
 
         local k, frontLocked, rearLocked, frontDriven, rearDriven = shDriveState(vehicle)
         local kind = "tractor"

@@ -151,6 +151,8 @@
         <text name="vtpas_cropCalendar_label" text="Crop calendar"/>
         <text name="vtpas_cropCalendar_tip" text="Sowing and harvest dates. Map: the map's own dates. Climate Profiles: the dates of the Climate Profiles mod (its weather stays active either way). Without Climate Profiles, this setting changes nothing."/>
         <text name="vtpas_cropCalendar_map" text="Map"/>
+        <text name="vtpas_hud_pressFront" text="Front: %.1f bar"/>
+        <text name="vtpas_hud_pressRear" text="Rear: %.1f bar"/>
         <text name="vtpas_reqOptional" text="Optional (wear handled by AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differentials"/>
         <text name="vtpas_secTires" text="Tires"/>

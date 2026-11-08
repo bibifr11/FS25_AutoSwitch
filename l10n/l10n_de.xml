@@ -151,6 +151,8 @@
         <text name="vtpas_cropCalendar_label" text="Anbaukalender"/>
         <text name="vtpas_cropCalendar_tip" text="Saat- und Erntetermine. Karte: die Termine der Karte. Climate Profiles: die Termine der Mod Climate Profiles (ihr Wetter bleibt in beiden Fällen aktiv). Ohne Climate Profiles ändert diese Einstellung nichts."/>
         <text name="vtpas_cropCalendar_map" text="Karte"/>
+        <text name="vtpas_hud_pressFront" text="Vorn: %.1f bar"/>
+        <text name="vtpas_hud_pressRear" text="Hinten: %.1f bar"/>
         <text name="vtpas_reqOptional" text="Optional (Verschleiß über AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differenziale"/>
         <text name="vtpas_secTires" text="Reifen"/>

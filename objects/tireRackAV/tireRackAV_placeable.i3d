@@ -31,7 +31,7 @@
 
 
   <Materials>
-    <Material name="agrimaxVFlecto_rubberBlack_mat" materialId="455" customShaderId="13" customShaderVariation="tirePressureDeformation">
+    <Material name="agrimaxVFlecto_rubberBlack_mat" materialId="5" customShaderId="13" customShaderVariation="tirePressureDeformation">
       <Texture fileId="10"/>
       <Normalmap fileId="11"/>
       <Glossmap fileId="12"/>
@@ -41,23 +41,23 @@
       <CustomParameter name="porosity" value="0.5"/>
       <CustomParameter name="morphPos" value="-0.4496 -0.732 0.5 0.1"/>
     </Material>
-    <Material name="euroPalletNew_mat" materialId="5" customShaderId="5" customShaderVariation="customDiffuseBlend">
+    <Material name="euroPalletNew_mat" materialId="6" customShaderId="5" customShaderVariation="customDiffuseBlend">
       <Texture fileId="2"/>
       <Normalmap fileId="3"/>
       <Glossmap fileId="4"/>
       <Custommap name="mCustomDiffuse" fileId="6"/>
     </Material>
-    <Material name="lambert1" materialId="6" diffuseColor="0.494118 0.494118 0.494118 1">
+    <Material name="lambert1" materialId="7" diffuseColor="0.494118 0.494118 0.494118 1">
     </Material>
-    <Material name="lambert1" materialId="7" diffuseColor="0.501961 0.501961 0.501961 1">
+    <Material name="lambert1" materialId="8" diffuseColor="0.501961 0.501961 0.501961 1">
     </Material>
-    <Material name="mud_mat1" materialId="454" customShaderId="21">
+    <Material name="mud_mat1" materialId="9" customShaderId="21">
       <Texture fileId="19"/>
       <Normalmap fileId="20"/>
       <Glossmap fileId="17"/>
       <CustomParameter name="morphPos" value="-0.4496 -0.732 0.5 0.1"/>
     </Material>
-    <Material name="rim_outer_mat" materialId="470" customShaderId="13" customShaderVariation="rim">
+    <Material name="rim_outer_mat" materialId="10" customShaderId="13" customShaderVariation="rim">
       <Texture fileId="10"/>
       <Normalmap fileId="22"/>
       <Glossmap fileId="23"/>
@@ -69,54 +69,57 @@
   </Materials>
 
 
-  <Shapes externalShapesFile="tireRackAV.i3d.shapes">
+  <Shapes externalShapesFile="tireRackAV_placeable.i3d.shapes">
   </Shapes>
 
   <Scene>
-    <Shape name="emptyPallet_component1" translation="0.00734284 0 8.54353e-05" scale="1.6997 2.4996 1.70033" shapeId="1" static="true" collisionFilterGroup="0x10004" collisionFilterMask="0xfe3ffb83" clipDistance="150" nodeId="26" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="6">
-      <Shape name="euroPallet_vis" shapeId="2" clipDistance="200" nodeId="27" castsShadows="true" receiveShadows="true" materialIds="5">
-        <TransformGroup name="collisions" clipDistance="10" nodeId="30">
-          <Shape name="floorCollision01" translation="-0.3 5.7e-05 0" shapeId="3" static="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.001" nodeId="31" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7"/>
-          <Shape name="floorCollision02" translation="0.3 5.7e-05 0" shapeId="4" static="true" collisionFilterGroup="0x10000" collisionFilterMask="0xfe3dfb83" staticFriction="1" dynamicFriction="1" density="0.001" nodeId="32" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7"/>
-        </TransformGroup>
-        <TransformGroup name="PneuAV1" translation="-0.180691 0.390154 -5.02463e-05" scale="0.588339 0.400064 0.588121" nodeId="537">
-          <TransformGroup name="VF_agrimaxVFlecto_NRO_540_65R30" translation="0.299777 -0.00371897 0" nodeId="460">
-            <TransformGroup name="lod" translation="-0.44366 0.00718779 0" lodDistance="0 25" clipDistance="200" nodeId="461">
-              <Shape name="lod0" shapeId="6" nodeId="462" castsShadows="true" receiveShadows="true" materialIds="455">
-                <Shape name="mudMesh" shapeId="7" clipDistance="35" nodeId="463" castsShadows="true" receiveShadows="true" materialIds="454"/>
-              </Shape>
-              <Shape name="lod1" shapeId="8" nodeId="464" castsShadows="true" receiveShadows="true" materialIds="455"/>
+    <Shape name="emptyPallet_component1" translation="0.00734284 0 8.54353e-05" shapeId="1" clipDistance="150" nodeId="23" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="7">
+      <TransformGroup name="asScaled" scale="1.6997 2.4996 1.70033" nodeId="24">
+        <Shape name="euroPallet_vis" shapeId="2" clipDistance="200" nodeId="25" castsShadows="true" receiveShadows="true" materialIds="6">
+          <TransformGroup name="collisions" clipDistance="10" nodeId="26">
+            <Shape name="floorCollision01" translation="-0.3 5.7e-05 0" shapeId="3" nodeId="27" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="8"/>
+            <Shape name="floorCollision02" translation="0.3 5.7e-05 0" shapeId="4" nodeId="28" castsShadows="true" receiveShadows="true" nonRenderable="true" materialIds="8"/>
+          </TransformGroup>
+          <TransformGroup name="PneuAV1" translation="-0.180691 0.390154 -5.02463e-05" scale="0.588339 0.400064 0.588121" nodeId="29">
+            <TransformGroup name="VF_agrimaxVFlecto_NRO_540_65R30" translation="0.299777 -0.00371897 0" nodeId="30">
+              <TransformGroup name="lod" translation="-0.44366 0.00718779 0" lodDistance="0 25" clipDistance="200" nodeId="31">
+                <Shape name="lod0" shapeId="5" nodeId="32" castsShadows="true" receiveShadows="true" materialIds="5">
+                  <Shape name="mudMesh" shapeId="6" clipDistance="35" nodeId="33" castsShadows="true" receiveShadows="true" materialIds="9"/>
+                </Shape>
+                <Shape name="lod1" shapeId="7" nodeId="34" castsShadows="true" receiveShadows="true" materialIds="5"/>
+              </TransformGroup>
+            </TransformGroup>
+            <TransformGroup name="dw_inner_hole02" translation="-0.351854 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="35">
+              <Shape name="dw_inner_holeLeft02" shapeId="8" clipDistance="200" nodeId="36" castsShadows="true" receiveShadows="true" materialIds="10"/>
+              <Shape name="dw_inner_holeRight02" shapeId="9" clipDistance="200" nodeId="37" castsShadows="true" receiveShadows="true" materialIds="10"/>
+            </TransformGroup>
+            <TransformGroup name="dw_inner_hole02" translation="0.052077 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="38">
+              <Shape name="dw_inner_holeLeft02" shapeId="8" clipDistance="200" nodeId="39" castsShadows="true" receiveShadows="true" materialIds="10"/>
+              <Shape name="dw_inner_holeRight02" shapeId="9" clipDistance="200" nodeId="40" castsShadows="true" receiveShadows="true" materialIds="10"/>
             </TransformGroup>
           </TransformGroup>
-          <TransformGroup name="dw_inner_hole02" translation="-0.351854 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="525">
-            <Shape name="dw_inner_holeLeft02" shapeId="9" clipDistance="200" nodeId="526" castsShadows="true" receiveShadows="true" materialIds="470"/>
-            <Shape name="dw_inner_holeRight02" shapeId="10" clipDistance="200" nodeId="527" castsShadows="true" receiveShadows="true" materialIds="470"/>
-          </TransformGroup>
-          <TransformGroup name="dw_inner_hole02" translation="0.052077 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="528">
-            <Shape name="dw_inner_holeLeft02" shapeId="9" clipDistance="200" nodeId="529" castsShadows="true" receiveShadows="true" materialIds="470"/>
-            <Shape name="dw_inner_holeRight02" shapeId="10" clipDistance="200" nodeId="530" castsShadows="true" receiveShadows="true" materialIds="470"/>
-          </TransformGroup>
-        </TransformGroup>
-        <TransformGroup name="PneuAV2" translation="0.357122 0.390154 -5.02463e-05" scale="0.588339 0.400064 0.588121" nodeId="538">
-          <TransformGroup name="VF_agrimaxVFlecto_NRO_540_65R30" translation="0.293617 -0.00371897 0" nodeId="465">
-            <TransformGroup name="lod" translation="-0.44366 0.00718779 0" lodDistance="0 25" clipDistance="200" nodeId="466">
-              <Shape name="lod0" shapeId="6" nodeId="467" castsShadows="true" receiveShadows="true" materialIds="455">
-                <Shape name="mudMesh" shapeId="7" clipDistance="35" nodeId="468" castsShadows="true" receiveShadows="true" materialIds="454"/>
-              </Shape>
-              <Shape name="lod1" shapeId="8" nodeId="469" castsShadows="true" receiveShadows="true" materialIds="455"/>
+          <TransformGroup name="PneuAV2" translation="0.357122 0.390154 -5.02463e-05" scale="0.588339 0.400064 0.588121" nodeId="41">
+            <TransformGroup name="VF_agrimaxVFlecto_NRO_540_65R30" translation="0.293617 -0.00371897 0" nodeId="42">
+              <TransformGroup name="lod" translation="-0.44366 0.00718779 0" lodDistance="0 25" clipDistance="200" nodeId="43">
+                <Shape name="lod0" shapeId="5" nodeId="44" castsShadows="true" receiveShadows="true" materialIds="5">
+                  <Shape name="mudMesh" shapeId="6" clipDistance="35" nodeId="45" castsShadows="true" receiveShadows="true" materialIds="9"/>
+                </Shape>
+                <Shape name="lod1" shapeId="7" nodeId="46" castsShadows="true" receiveShadows="true" materialIds="5"/>
+              </TransformGroup>
+            </TransformGroup>
+            <TransformGroup name="dw_inner_hole02" translation="-0.341652 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="47">
+              <Shape name="dw_inner_holeLeft02" shapeId="8" clipDistance="200" nodeId="48" castsShadows="true" receiveShadows="true" materialIds="10"/>
+              <Shape name="dw_inner_holeRight02" shapeId="9" clipDistance="200" nodeId="49" castsShadows="true" receiveShadows="true" materialIds="10"/>
+            </TransformGroup>
+            <TransformGroup name="dw_inner_hole02" translation="0.0480352 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="50">
+              <Shape name="dw_inner_holeLeft02" shapeId="8" clipDistance="200" nodeId="51" castsShadows="true" receiveShadows="true" materialIds="10"/>
+              <Shape name="dw_inner_holeRight02" shapeId="9" clipDistance="200" nodeId="52" castsShadows="true" receiveShadows="true" materialIds="10"/>
             </TransformGroup>
           </TransformGroup>
-          <TransformGroup name="dw_inner_hole02" translation="-0.341652 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="531">
-            <Shape name="dw_inner_holeLeft02" shapeId="9" clipDistance="200" nodeId="532" castsShadows="true" receiveShadows="true" materialIds="470"/>
-            <Shape name="dw_inner_holeRight02" shapeId="10" clipDistance="200" nodeId="533" castsShadows="true" receiveShadows="true" materialIds="470"/>
-          </TransformGroup>
-          <TransformGroup name="dw_inner_hole02" translation="0.0480352 0.00185943 0" scale="1 0.879266 0.879266" clipDistance="200" nodeId="534">
-            <Shape name="dw_inner_holeLeft02" shapeId="9" clipDistance="200" nodeId="535" castsShadows="true" receiveShadows="true" materialIds="470"/>
-            <Shape name="dw_inner_holeRight02" shapeId="10" clipDistance="200" nodeId="536" castsShadows="true" receiveShadows="true" materialIds="470"/>
-          </TransformGroup>
-        </TransformGroup>
-      </Shape>
+        </Shape>
+        <Shape name="decorBox" translation="0 0.3401 0" scale="1.2002 0.6801 0.8822" shapeId="10" static="true" collisionFilterGroup="0x3e" collisionFilterMask="0xfffffbff" staticFriction="1" dynamicFriction="1" nodeId="53" castsShadows="false" receiveShadows="false" nonRenderable="true" materialIds="8"/>
+      </TransformGroup>
     </Shape>
-</Scene>
+  </Scene>
 
 </i3D>
