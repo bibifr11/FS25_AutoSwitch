@@ -153,6 +153,8 @@
         <text name="vtpas_cropCalendar_map" text="Map"/>
         <text name="vtpas_hud_pressFront" text="Front: %.1f bar"/>
         <text name="vtpas_hud_pressRear" text="Rear: %.1f bar"/>
+        <text name="vtpas_slipRoad_label" text="Wheel slip for diff lock on asphalt"/>
+        <text name="vtpas_slipRoad_tip" text="On asphalt and concrete, this wheel slip threshold (%) replaces the front and rear differential thresholds. Unlocks at half this threshold. Off = never lock on hard surfaces."/>
         <text name="vtpas_reqOptional" text="Optional (wear handled by AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differentials"/>
         <text name="vtpas_secTires" text="Tires"/>

@@ -153,6 +153,8 @@
         <text name="vtpas_cropCalendar_map" text="Karte"/>
         <text name="vtpas_hud_pressFront" text="Vorn: %.1f bar"/>
         <text name="vtpas_hud_pressRear" text="Hinten: %.1f bar"/>
+        <text name="vtpas_slipRoad_label" text="Radschlupf für Sperre auf Asphalt"/>
+        <text name="vtpas_slipRoad_tip" text="Auf Asphalt und Beton ersetzt dieser Radschlupf (%) die Werte der vorderen und hinteren Differenzialsperre. Gelöst wird bei der Hälfte dieses Werts. Aus = nie auf festem Untergrund."/>
         <text name="vtpas_reqOptional" text="Optional (Verschleiß über AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differenziale"/>
         <text name="vtpas_secTires" text="Reifen"/>

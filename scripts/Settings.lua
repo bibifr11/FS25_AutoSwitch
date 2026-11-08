@@ -20,6 +20,7 @@ AS_Settings.MOD_DIR = g_currentModDirectory or ""
 AS_Settings.VALUES = { 0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80 }  -- 0 = désactivé
 AS_Settings.slip        = 15     -- (v1.0.0.21) seuil du diff ARRIÈRE
 AS_Settings.slipFront   = 30     -- (v1.0.0.21) seuil du diff AVANT
+AS_Settings.slipRoad    = 50     -- (08/11) seuil des diffs sur l'asphalte / le béton
 AS_Settings.notifyDiff  = true
 AS_Settings.notifyTires = true
 AS_Settings.driveManual = false  -- (v1.0.0.50) différentiels et 4x2 / 4x4 : true = MANUEL, false = AUTO (touche Ctrl droit + Flèche haut)
@@ -113,6 +114,7 @@ function AS_Settings:save()
         if xml ~= nil and xml ~= 0 then
             setXMLInt(xml, "vtpAutoSwitch.diffLock#rearPercent", self.slip)
             setXMLInt(xml, "vtpAutoSwitch.diffLock#frontPercent", self.slipFront)
+            setXMLInt(xml, "vtpAutoSwitch.diffLock#roadPercent", self.slipRoad)
             setXMLBool(xml, "vtpAutoSwitch.notifications#diffs", self.notifyDiff)
             setXMLBool(xml, "vtpAutoSwitch.notifications#tires", self.notifyTires)
             setXMLBool(xml, "vtpAutoSwitch.diffMode#manual", self.driveManual)
@@ -191,6 +193,8 @@ function AS_Settings:load()
                 if v ~= nil then self.slip = math.max(0, math.min(100, v)) end
                 local vf = getXMLInt(xml, "vtpAutoSwitch.diffLock#frontPercent")
                 if vf ~= nil then self.slipFront = math.max(0, math.min(100, vf)) end
+                local vr = getXMLInt(xml, "vtpAutoSwitch.diffLock#roadPercent")
+                if vr ~= nil then self.slipRoad = math.max(0, math.min(100, vr)) end
                 local nd = getXMLBool(xml, "vtpAutoSwitch.notifications#diffs")
                 if nd ~= nil then self.notifyDiff = nd end
                 local nt = getXMLBool(xml, "vtpAutoSwitch.notifications#tires")
@@ -320,6 +324,8 @@ function AS_Settings:apply()
     AS_Diff.SLIP_OFF_PERCENT = math.max(3, v * 0.5)
     AS_Diff.SLIP_ON_FRONT    = vf
     AS_Diff.SLIP_OFF_FRONT   = math.max(3, vf * 0.5)
+    AS_Diff.SLIP_ON_ROAD     = self.slipRoad
+    AS_Diff.SLIP_OFF_ROAD    = math.max(3, self.slipRoad * 0.5)
     AS_Diff.NOTIFY   = self.notifyDiff
     AS_Tires.NOTIFY = self.notifyTires
     AS_Diff.MANUAL = self.driveManual
@@ -403,6 +409,16 @@ function AS_Settings:onSlipFrontChanged(state, element)
         self:apply()
         self:save()
         sprint("seuil de patinage du diff avant réglé sur %s", v == 0 and "désactivé" or (v .. " %"))
+    end
+end
+
+function AS_Settings:onSlipRoadChanged(state, element)
+    local v = self.VALUES[state]
+    if v ~= nil then
+        self.slipRoad = v
+        self:apply()
+        self:save()
+        sprint("seuil de patinage des diffs sur l'asphalte réglé sur %s", v == 0 and "désactivé" or (v .. " %"))
     end
 end
 
@@ -1163,6 +1179,14 @@ function AS_Settings:buildUI(frame)
         callback = AS_Settings.onSlipFrontChanged,
     })
 
+    self.options.slipRoad = self:addRow(layout, template, {
+        label = L("vtpas_slipRoad_label"),
+        tip = L("vtpas_slipRoad_tip"),
+        texts = slipTexts,
+        state = self:getStateForValue(self.slipRoad),
+        callback = AS_Settings.onSlipRoadChanged,
+    })
+
     local sep = L("vtpas_decimal")
     if #sep ~= 1 then sep = "." end
     local delayTexts = {}
@@ -1561,6 +1585,7 @@ function AS_Settings:refreshStates()
     local o = self.options
     if o.slip ~= nil then o.slip:setState(self:getStateForValue(self.slip)) end
     if o.slipFront ~= nil then o.slipFront:setState(self:getStateForValue(self.slipFront)) end
+    if o.slipRoad ~= nil then o.slipRoad:setState(self:getStateForValue(self.slipRoad)) end
     if o.diffDelay ~= nil then o.diffDelay:setState(self:getIndex(self.DIFF_DELAY_LIST, self.diffDelay)) end
     if o.diffMode ~= nil then o.diffMode:setState(self.driveManual and 2 or 1) end
     if o.autoOnHelper ~= nil then o.autoOnHelper:setState(self.autoOnHelper and 2 or 1) end

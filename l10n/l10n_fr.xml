@@ -153,6 +153,8 @@
         <text name="vtpas_cropCalendar_map" text="Carte"/>
         <text name="vtpas_hud_pressFront" text="Av: %.1f Bar"/>
         <text name="vtpas_hud_pressRear" text="Ar: %.1f Bar"/>
+        <text name="vtpas_slipRoad_label" text="Patinage pour blocage sur l'asphalte"/>
+        <text name="vtpas_slipRoad_tip" text="Sur l'asphalte et le béton, ce seuil de patinage (%) remplace ceux des différentiels avant et arrière. Déverrouillage à la moitié du seuil. Désactivé = jamais de blocage sur le dur."/>
         <text name="vtpas_reqOptional" text="Facultatif (usure gérée par AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Différentiels"/>
         <text name="vtpas_secTires" text="Pneus"/>

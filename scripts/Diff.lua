@@ -18,6 +18,8 @@ AS_Diff.SLIP_ON_PERCENT  = 15     -- seuil de verrouillage du diff ARRIÈRE (v1.
 AS_Diff.SLIP_OFF_PERCENT = 7.5    -- déverrouillage arrière = moitié du seuil
 AS_Diff.SLIP_ON_FRONT    = 30     -- (v1.0.0.21) seuil de verrouillage du diff AVANT
 AS_Diff.SLIP_OFF_FRONT   = 15     -- déverrouillage avant = moitié du seuil
+AS_Diff.SLIP_ON_ROAD     = 50     -- (08/11) seuil des deux diffs sur l'asphalte / le béton (0 = jamais sur le dur)
+AS_Diff.SLIP_OFF_ROAD    = 25     -- déverrouillage sur le dur = moitié du seuil
 AS_Diff.SLIP_ON_MS       = 1500    -- patinage maintenu avant de verrouiller
 AS_Diff.SLIP_OFF_MS      = 4000   -- adhérence retrouvée avant de déverrouiller (délais : à revoir plus tard)
 AS_Diff.CHECK_MS         = 100
@@ -313,6 +315,26 @@ function AS_Diff:update(dt)
                 end
             end
 
+            -- (08/11) asphalte / béton sous les roues ? (même détection que la vitesse AutoDrive,
+            -- confirmée sur 2 mesures d'affilée) : seuil de blocage relevé sur le dur
+            if not manual and (g_time - (st.lastRoadCheck or -10000)) >= self.ZONE_CHECK_MS then
+                st.lastRoadCheck = g_time
+                local road = false
+                if AS_AdSpeed ~= nil and AS_AdSpeed.detectZone ~= nil then
+                    local ok, zone = pcall(AS_AdSpeed.detectZone, AS_AdSpeed, vehicle)
+                    road = ok and zone == "road"
+                end
+                if road ~= st.roadCandidate then
+                    st.roadCandidate, st.roadCount = road, 1
+                else
+                    st.roadCount = (st.roadCount or 0) + 1
+                end
+                if st.roadCount >= 2 and st.onRoad ~= road then
+                    st.onRoad = road
+                    dlog("%s : %s", vehicle:getName(), road and "sur le dur -> seuil asphalte" or "hors du dur -> seuils normaux")
+                end
+            end
+
             if not manual and (g_time - st.lastCheck) >= self.CHECK_MS then
                 st.lastCheck = g_time
                 local slip = getMaxSlipPercent(vehicle)
@@ -424,6 +446,12 @@ function AS_Diff:update(dt)
                     if not four then
                         -- pont moteur seul : seuil du blocage arrière
                         axes = { { idx = 1, use = self.LOCK_REAR, on = self.SLIP_ON_PERCENT, off = self.SLIP_OFF_PERCENT } }
+                    end
+                    -- (08/11) sur l'asphalte : seuil asphalte pour chaque différentiel encore actif
+                    if st.onRoad then
+                        for _, ax in ipairs(axes) do
+                            if ax.on > 0 then ax.on, ax.off = self.SLIP_ON_ROAD, self.SLIP_OFF_ROAD end
+                        end
                     end
                     for _, ax in ipairs(axes) do
                         local idx = ax.idx
