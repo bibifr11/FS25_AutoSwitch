@@ -13,6 +13,9 @@ local getVehicles = AS.getVehicles
 --   sont retirés : sans effet visible en jeu.
 -- v1.0.0.83 : option « Phares renforcés » (Oui / Non). Sur Non, les faisceaux
 --   reprennent les valeurs du jeu et plus rien n'est lu à chaque image.
+-- (07/11) faisceaux relus toutes les 250 ms au lieu de chaque image : le jeu ne change
+--   la portée et la couleur des phares qu'à l'allumage et à l'extinction. Clignotants et
+--   gyros, réécrits par le jeu à chaque image, restent presque à x1 (facteur 1,1).
 -------------------------------------------------------------------------------
 -- v1.0.1.7 : un facteur par type de feu (portée et luminosité ensemble), x1,1 à x2,5.
 --   Le type vient des listes du jeu (spec_lights) :
@@ -29,6 +32,8 @@ AS_LightRange.ENABLED    = true  -- (v1.0.0.83) phares renforcés
 AS_LightRange.TYPES      = { "road", "workFront", "workBack", "beacon", "signal", "other" }
 AS_LightRange.FACTORS    = { road = 2, workFront = 2, workBack = 2, beacon = 1.1, signal = 1.1, other = 1.1 }
 AS_LightRange.SCAN_MS = 2000     -- recherche des nouveaux véhicules
+AS_LightRange.BEAM_MS = 250      -- (07/11) relecture des faisceaux, 4 fois par seconde
+AS_LightRange.beamTimer = AS_LightRange.BEAM_MS
 AS_LightRange.timer   = AS_LightRange.SCAN_MS
 AS_LightRange.done    = {}       -- véhicule -> true quand ses lumières sont trouvées
 AS_LightRange.beams   = {}       -- véhicule -> { { node, kind, range, rangeW, r, g, b, rW, gW, bW } }
@@ -225,15 +230,22 @@ end
 
 function AS_LightRange:update(dt)
     if not self.ENABLED or g_currentMission == nil or g_client == nil then return end
-    pcall(self.updateBeams, self)
+    self.beamTimer = self.beamTimer + (dt or 0)
+    if self.beamTimer >= self.BEAM_MS then
+        self.beamTimer = 0
+        pcall(self.updateBeams, self)
+    end
     self.timer = self.timer + (dt or 0)
     if self.timer < self.SCAN_MS then return end
     self.timer = 0
     pcall(self.scan, self)
+    -- nouveaux véhicules trouvés : leurs phares renforcés dès l'image suivante
+    self.beamTimer = self.BEAM_MS
 end
 
 function AS_LightRange:deleteMap()
     self.timer = self.SCAN_MS
+    self.beamTimer = self.BEAM_MS
     self.done, self.beams = {}, {}
 end
 

@@ -15,6 +15,7 @@ local getWheelSlips = AS.getWheelSlips
 --       vitesse maxi = limite douce de la boue / limite des pneus champ,
 --   - le patinage mesuré (plus on patine, plus la vitesse mini monte).
 -------------------------------------------------------------------------------
+local renderOverlay = (AS ~= nil and AS.renderOverlay) or renderOverlay   -- (perf 07/11) voir Common.lua
 AS_SpeedHint = {}
 AS_SpeedHint.ENABLED    = true
 AS_SpeedHint.BOTTOM_CM  = 1.5     -- hauteur du bas de l'affichage au-dessus du bord bas de l'écran (cm)

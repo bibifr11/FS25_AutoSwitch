@@ -138,13 +138,15 @@ local function isTradeInFinancing()
     return finance.pending ~= nil or finance.purchaseInProgress == true
 end
 
-function AS_Overdraft:applyBoost()
+-- (v1.0.3.6) farmId : ferme qui paie (engin d'ADS) ; sinon la ferme du joueur
+function AS_Overdraft:applyBoost(farmId)
     if isTradeInFinancing() then return end
-    local farm = getFarm(currentFarmId())
+    local farm = getFarm(farmId or currentFarmId())
     if farm == nil or type(farm.money) ~= "number" then return end
     local limit = self:getLimit(farm.farmId)
     if limit <= 0 then return end
     self.boostFarm, self.boost = farm, limit
+    self.boostQuiet, self.boostChanged = farmId ~= nil, false
     farm.money = farm.money + limit
 end
 
@@ -152,8 +154,9 @@ function AS_Overdraft:removeBoost()
     local farm = self.boostFarm
     if farm ~= nil and type(farm.money) == "number" then
         farm.money = farm.money - self.boost
-        -- les affichages du solde (magasin, HUD) reprennent le vrai solde
-        if g_messageCenter ~= nil and MessageType ~= nil and MessageType.MONEY_CHANGED ~= nil then
+        -- les affichages du solde (magasin, HUD) reprennent le vrai solde ; (v1.0.3.6) pour
+        -- ADS (appelé à chaque image pendant un entretien) seulement si de l'argent a bougé
+        if (not self.boostQuiet or self.boostChanged) and g_messageCenter ~= nil and MessageType ~= nil and MessageType.MONEY_CHANGED ~= nil then
             pcall(g_messageCenter.publish, g_messageCenter, MessageType.MONEY_CHANGED, farm.farmId, farm.money)
         end
     end
@@ -164,6 +167,7 @@ if Farm ~= nil and Farm.changeBalance ~= nil then
     Farm.changeBalance = Utils.overwrittenFunction(Farm.changeBalance, function(farm, superFunc, ...)
         if farm ~= nil and farm == AS_Overdraft.boostFarm then
             local boost = AS_Overdraft.boost
+            AS_Overdraft.boostChanged = true
             farm.money = farm.money - boost
             superFunc(farm, ...)
             farm.money = farm.money + boost
@@ -233,7 +237,35 @@ local SCOPES = {
     { "RMS_MaintenanceTwoOptionsDialog",   { "^onclickstartservice$" }, "FS25_RealisticMechanicalSystems" },
     { "RMS_MaintenanceThreeOptionsDialog", { "^onclickstartservice$" }, "FS25_RealisticMechanicalSystems" },
     { "RMS_FluidWorkshop",                 { "^trystartservice$" },     "FS25_RealisticMechanicalSystems" },
+    -- v1.0.3.6 : Advanced Damage System (ignoré s'il est absent). Graissage par l'ouvrier,
+    -- atelier (ordre de travail, travaux ajoutés après inspection) et achat de pièces :
+    -- ADS compare le prix au vrai solde. Le découvert est compté sur la ferme qui paie.
+    { "ADS_AIWorker",   { "^servicevehicle$" },                      "FS25_AdvancedDamageSystem", farm = "vehicle" },
+    { "ADS_Maintenance", { "^startworkorder$", "^processworkorder$" }, "FS25_AdvancedDamageSystem", farm = "service" },
+    { "ADS_PartsShop",  { "^purchase$" },                            "FS25_AdvancedDamageSystem", farm = "arg3" },
 }
+
+-- (v1.0.3.6) ferme qui paie, d'après les arguments de la fonction d'ADS
+local function payingFarm(kind, ...)
+    if kind == "arg3" then
+        local _, _, farmId = ...
+        return farmId
+    end
+    local vehicle = ...
+    if type(vehicle) ~= "table" then return nil end
+    if kind == "service" then
+        local ws = AS.modGlobal("FS25_AdvancedDamageSystem", "ADS_Workshop")
+        if type(ws) == "table" and ws.getServiceFarmId ~= nil then
+            local ok, id = pcall(ws.getServiceFarmId, vehicle, nil)
+            if ok and id ~= nil then return id end
+        end
+    end
+    if vehicle.getOwnerFarmId ~= nil then
+        local ok, id = pcall(vehicle.getOwnerFarmId, vehicle)
+        if ok then return id end
+    end
+    return nil
+end
 
 local function matches(name, patterns)
     local low = string.lower(name)
@@ -252,14 +284,16 @@ end
 local wrapped = {}   -- fonction d'AutoSwitch -> true (pas de double enrobage)
 local origToWrap = {} -- fonction du jeu -> fonction d'AutoSwitch
 
-local function wrapScope(className, class, funcName)
+local function wrapScope(className, class, funcName, farmKind)
     local orig = class[funcName]
     if wrapped[orig] then return false end
     local label = className .. "." .. funcName
     local f = function(...)
         if AS_Overdraft.PERCENT <= 0 then return orig(...) end
         AS_Overdraft.depth = AS_Overdraft.depth + 1
-        if AS_Overdraft.depth == 1 then AS_Overdraft:applyBoost() end
+        if AS_Overdraft.depth == 1 then
+            AS_Overdraft:applyBoost(farmKind ~= nil and payingFarm(farmKind, ...) or nil)
+        end
         if not AS_Overdraft.logged[label] then
             AS_Overdraft.logged[label] = true
             print("[AutoSwitch] Découvert compté dans " .. label)
@@ -290,7 +324,7 @@ function AS_Overdraft:installScopes()
                 end
             end
             for _, k in ipairs(names) do
-                if wrapScope(s[1], class, k) then count = count + 1 end
+                if wrapScope(s[1], class, k, s.farm) then count = count + 1 end
             end
         end
     end

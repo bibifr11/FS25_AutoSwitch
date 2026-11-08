@@ -14,6 +14,7 @@
 -- sauvegardées avec la partie (AutoSwitch_fields.xml). Un passage n'est noté que
 -- quand au moins 10 % du champ a été travaillé (passages de bordure ignorés).
 -------------------------------------------------------------------------------
+local renderOverlay = (AS ~= nil and AS.renderOverlay) or renderOverlay   -- (perf 07/11) voir Common.lua
 AS_Fields = {}
 AS_Fields.FILE_NAME     = "AutoSwitch_fields.xml"
 AS_Fields.MIN_SHARE     = 0.10    -- part du champ à travailler pour noter une date

@@ -26,6 +26,7 @@
 local getVehicles, isLockedValue, asState, L, showTimedNotification, shGetControlledVehicle
     = AS.getVehicles, AS.isLockedValue, AS.asState, AS.L, AS.showTimedNotification, AS.shGetControlledVehicle
 
+local renderOverlay = (AS ~= nil and AS.renderOverlay) or renderOverlay   -- (perf 07/11) voir Common.lua
 AS_Steer = {}
 AS_Steer.ENABLED       = true
 AS_Steer.FACTOR_4X2    = 1.00

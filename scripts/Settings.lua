@@ -82,6 +82,7 @@ AS_Settings.noOvertake = true      -- (v1.0.0.84) les voitures du trafic ne doub
 AS_Settings.cpResume = true        -- (v1.0.3.0) Courseplay relancé au chargement de la partie
 AS_Settings.shopBlockTwins = true  -- (v1.0.0.89) roues jumelées retirées du magasin (montage par palette)
 AS_Settings.weatherWidget = true   -- (v1.0.0.61) mini-météo à gauche de l'horloge
+AS_Settings.cropCalMap = true      -- (08/11) calendrier des cultures : carte (true) ou Climate Profiles (false)
 AS_Settings.weatherPosX = nil      -- position déplacée à la souris (nil = par défaut)
 AS_Settings.weatherPosY = nil
 AS_Settings.overdraftPercent = 20  -- (v1.0.0.67) découvert : plafond en % de la valeur de revente des biens (0 = jeu de base)
@@ -140,6 +141,7 @@ function AS_Settings:save()
             setXMLInt(xml, "vtpAutoSwitch.tireTracks#maxPoints", self.tracksMax)
             setXMLInt(xml, "vtpAutoSwitch.windSway#factor10", self.windSway)
             setXMLBool(xml, "vtpAutoSwitch.weatherWidget#enabled", self.weatherWidget)
+            setXMLBool(xml, "vtpAutoSwitch.cropCalendar#map", self.cropCalMap)
             setXMLBool(xml, "vtpAutoSwitch.hudDedup#enabled", self.hudDedup)
             setXMLBool(xml, "vtpAutoSwitch.coopPay#enabled", self.coopPay)
             setXMLBool(xml, "vtpAutoSwitch.noOvertake#enabled", self.noOvertake)
@@ -290,6 +292,8 @@ function AS_Settings:load()
                 for tag in (getXMLString(xml, "vtpAutoSwitch.logs#on") or ""):gmatch("[%w_]+") do AS_LOGS[tag] = true end
                 local ww = getXMLBool(xml, "vtpAutoSwitch.weatherWidget#enabled")
                 if ww ~= nil then self.weatherWidget = ww end
+                local cc = getXMLBool(xml, "vtpAutoSwitch.cropCalendar#map")
+                if cc ~= nil then self.cropCalMap = cc end
                 local wx = getXMLFloat(xml, "vtpAutoSwitch.weatherWidget#x")
                 local wy = getXMLFloat(xml, "vtpAutoSwitch.weatherWidget#y")
                 if wx ~= nil and wy ~= nil then
@@ -365,6 +369,7 @@ function AS_Settings:apply()
         AS_Overdraft.PERCENT = self.overdraftPercent
         AS_Overdraft.RATE = self.overdraftRate
     end
+    if AS_CropCalendar ~= nil and AS_CropCalendar.USE_MAP ~= self.cropCalMap then AS_CropCalendar:setUseMap(self.cropCalMap) end
     if AS_Weather ~= nil then
         AS_Weather.WIDGET = self.weatherWidget
         AS_Weather.WIDGET_X, AS_Weather.WIDGET_Y = self.weatherPosX, self.weatherPosY
@@ -569,6 +574,13 @@ function AS_Settings:onSlipIconChanged(state, element)
     self:apply()
     self:save()
     sprint("icône de patinage : %s", self.slipIcon and "affichée" or "masquée")
+end
+
+function AS_Settings:onCropCalendarChanged(state, element)
+    self.cropCalMap = (state == 1)
+    self:apply()
+    self:save()
+    sprint("calendrier des cultures : %s", self.cropCalMap and "carte" or "Climate Profiles")
 end
 
 function AS_Settings:onWeatherWidgetChanged(state, element)
@@ -1400,6 +1412,14 @@ function AS_Settings:buildUI(frame)
         callback = AS_Settings.onWeatherWidgetChanged,
     })
 
+    self.options.cropCalendar = self:addRow(layout, template, {
+        label = L("vtpas_cropCalendar_label"),
+        tip = L("vtpas_cropCalendar_tip"),
+        texts = { L("vtpas_cropCalendar_map"), "Climate Profiles" },
+        state = self.cropCalMap and 1 or 2,
+        callback = AS_Settings.onCropCalendarChanged,
+    })
+
     self.options.hudDedup = self:addRow(layout, template, {
         label = L("vtpas_hudDedup_label"),
         tip = L("vtpas_hudDedup_tip"),
@@ -1545,6 +1565,7 @@ function AS_Settings:refreshStates()
     for k, opt in pairs(o.lights or {}) do opt:setState(self:getIndex(self.LIGHT_LIST, self.lights[k])) end
     if o.windSway ~= nil then o.windSway:setState(self:getIndex(self.WIND_SWAY_LIST, self.windSway)) end
     if o.weatherWidget ~= nil then o.weatherWidget:setState(self.weatherWidget and 2 or 1) end
+    if o.cropCalendar ~= nil then o.cropCalendar:setState(self.cropCalMap and 1 or 2) end
     if o.hudDedup ~= nil then o.hudDedup:setState(self.hudDedup and 2 or 1) end
     if o.coopPay ~= nil then o.coopPay:setState(self.coopPay and 2 or 1) end
     if o.noOvertake ~= nil then o.noOvertake:setState(self.noOvertake and 2 or 1) end
@@ -1571,6 +1592,36 @@ function AS_Settings:onSettingsFrameOpen(frame)
     pcall(self.syncTab, self, frame)
 end
 
+-- (04/11) onglet créé dès le début de la partie, avant la 1re ouverture des Paramètres :
+-- créé à l'ouverture, il arrivait après la préparation de la barre par le jeu et
+-- n'était pas surligné en vert tant qu'on n'avait pas fermé et rouvert le menu.
+local function findSettingsFrame()
+    local menu = g_inGameMenu
+    if menu == nil or InGameMenuSettingsFrame == nil then return nil end
+    if menu.pageSettings ~= nil then return menu.pageSettings end
+    for _, v in pairs(menu) do
+        if type(v) == "table" and v.isa ~= nil and v.subCategoryPaging ~= nil then
+            local ok, is = pcall(v.isa, v, InGameMenuSettingsFrame)
+            if ok and is then return v end
+        end
+    end
+    return nil
+end
+
+function AS_Settings:update(dt)
+    if self.built or self.earlyTried then return end
+    -- attendre la liste des mods requis (faite au premier update de la partie, ou dans loadMap depuis le 07/11)
+    if AS_ModCheck ~= nil and not AS_ModCheck.done then return end
+    self.earlyTried = true
+    local frame = findSettingsFrame()
+    if frame == nil then
+        print("[AS_Settings] page Paramètres introuvable au démarrage : onglet créé à la 1re ouverture")
+        return
+    end
+    local ok, err = pcall(self.buildUI, self, frame)
+    if not ok then sprint("ERREUR menu : %s", tostring(err)) end
+end
+
 -- Commande console de repli : vtpSlip <0-100>
 function AS_Settings:consoleSetSlip(value)
     local v = tonumber(value)
@@ -1592,6 +1643,17 @@ function AS_Settings:loadMap()
     sprint("réglages chargés : patinage %d %%, conduite manuelle : différentiels %s, pneus %s ; notif. différentiels %s, notif. pneus %s",
            self.slip, self.driveManual and "manuel" or "auto", self.tiresUserAuto and "auto" or "manuel",
            tostring(self.notifyDiff), tostring(self.notifyTires))
+    -- (perf 07/11) onglet construit dès l'écran de chargement (0,9 s, invisible ici) ; sans page Paramètres
+    -- prête à ce moment, update() le fait à la 1re image comme avant
+    if not self.built and AS_ModCheck ~= nil and g_currentMission ~= nil and g_modIsLoaded ~= nil then
+        if not AS_ModCheck.done then pcall(AS_ModCheck.update, AS_ModCheck, 0) end
+        local frame = findSettingsFrame()
+        if frame ~= nil and AS_ModCheck.done then
+            self.earlyTried = true
+            local ok, err = pcall(self.buildUI, self, frame)
+            if not ok then sprint("ERREUR menu : %s", tostring(err)) end
+        end
+    end
 end
 
 function AS_Settings:delete()

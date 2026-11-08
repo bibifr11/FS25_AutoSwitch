@@ -148,6 +148,9 @@
         <text name="vtpas_rvBlockedNotif" text="Real Physics - Tire Wear: disabled and blocked by AutoSwitch (tire wear is handled by AutoSwitch)"/>
         <text name="vtpas_rmsBlockedNotif" text="Realistic Mechanical Systems: blocked by AutoSwitch (Advanced Damage System is the breakdown mod)"/>
         <text name="vtpas_keyLock_taken" text="Keys reserved for AutoSwitch, taken back from: %s"/>
+        <text name="vtpas_cropCalendar_label" text="Crop calendar"/>
+        <text name="vtpas_cropCalendar_tip" text="Sowing and harvest dates. Map: the map's own dates. Climate Profiles: the dates of the Climate Profiles mod (its weather stays active either way). Without Climate Profiles, this setting changes nothing."/>
+        <text name="vtpas_cropCalendar_map" text="Map"/>
         <text name="vtpas_reqOptional" text="Optional (wear handled by AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differentials"/>
         <text name="vtpas_secTires" text="Tires"/>

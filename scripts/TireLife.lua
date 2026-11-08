@@ -27,6 +27,7 @@ local vtpInfo, L, showTimedNotification, getVehicles, shClamp, shGetControlledVe
 --   - Sauvegarde : autoswitch_tires.xml dans la partie, par véhicule et par jeu de
 --     roues (changer de jeu de roues garde l'usure de chaque jeu).
 -------------------------------------------------------------------------------
+local renderOverlay = (AS ~= nil and AS.renderOverlay) or renderOverlay   -- (perf 07/11) voir Common.lua
 AS_TireLife = {}
 AS_TireLife.ENABLED = true
 AS_TireLife.LIFE_KM = 1500           -- durée de vie d'un pneu de 2 m sur route, charge normale (réglage)
@@ -574,6 +575,7 @@ function AS_TireLife:getHolderMaterials()
         return nil
     end
     self.holderMat, self.holderMudMat = matOf(0), matOf(1)
+    self.holderGlossMat = matOf(2)   -- (70j) gomme avec image de brillance (absente : comme avant)
     if self.holderMat == nil then
         sprint("ERREUR matériau des pneus usés illisible")
         return nil
@@ -632,6 +634,9 @@ function AS_TireLife:getWornMaterial(recipe, mud, smooth)
     end
     local base, baseMud = self:getHolderMaterials()
     if mud then base = baseMud end
+    -- (70j) pneu avec image de brillance : départ d'une gomme qui en a déjà une (sinon le jeu écrit
+    -- « gloss map added by script ») ; pneu lisse ou sans image : gomme sans, rien n'est ajouté
+    if not mud and recipe.gloss ~= nil and not smooth and self.holderGlossMat ~= nil then base = self.holderGlossMat end
     if base == nil then return nil end
     local m = base
     if mud then
@@ -2136,6 +2141,7 @@ function AS_TireLife:deleteMap()
     end
     if self.holderNode ~= nil and delete ~= nil then pcall(delete, self.holderNode) end
     self.holderNode, self.holderReq, self.holderMat, self.holderMudMat, self.holderFailed, self.wornMats = nil, nil, nil, nil, nil, nil
+    self.holderGlossMat = nil
     self.nodeRecipe = nil
     self.vehicles = setmetatable({}, { __mode = "k" })
     self.pending = {}

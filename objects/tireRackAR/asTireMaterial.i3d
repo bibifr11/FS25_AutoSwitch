@@ -28,6 +28,12 @@
       <Normalmap fileId="6"/>
       <Glossmap fileId="7"/>
     </Material>
+    <!-- (70j) gomme avec image de brillance (remplacée par celle du pneu) : pas d'ajout par le script -->
+    <Material name="asTireWearG_mat" materialId="3" customShaderId="1" customShaderVariation="tirePressureDeformation">
+      <Texture fileId="2"/>
+      <Normalmap fileId="3"/>
+      <Glossmap fileId="7"/>
+    </Material>
   </Materials>
 
   <Shapes externalShapesFile="tireRackAR.i3d.shapes">
@@ -36,6 +42,7 @@
   <Scene>
     <Shape name="asTireMaterialHolder" shapeId="6" nodeId="1" castsShadows="false" receiveShadows="false" materialIds="1"/>
     <Shape name="asTireMudMaterialHolder" shapeId="7" nodeId="2" castsShadows="false" receiveShadows="false" materialIds="2"/>
+    <Shape name="asTireMaterialHolderG" shapeId="6" nodeId="3" castsShadows="false" receiveShadows="false" materialIds="3"/>
   </Scene>
 
 </i3D>

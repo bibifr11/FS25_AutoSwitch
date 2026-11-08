@@ -148,6 +148,9 @@
         <text name="vtpas_rvBlockedNotif" text="Real Physics - Reifenverschleiß: von AutoSwitch deaktiviert und blockiert (der Reifenverschleiß wird von AutoSwitch übernommen)"/>
         <text name="vtpas_rmsBlockedNotif" text="Realistic Mechanical Systems: von AutoSwitch blockiert (Advanced Damage System ist der Pannen-Mod)"/>
         <text name="vtpas_keyLock_taken" text="Tasten für AutoSwitch reserviert, übernommen von: %s"/>
+        <text name="vtpas_cropCalendar_label" text="Anbaukalender"/>
+        <text name="vtpas_cropCalendar_tip" text="Saat- und Erntetermine. Karte: die Termine der Karte. Climate Profiles: die Termine der Mod Climate Profiles (ihr Wetter bleibt in beiden Fällen aktiv). Ohne Climate Profiles ändert diese Einstellung nichts."/>
+        <text name="vtpas_cropCalendar_map" text="Karte"/>
         <text name="vtpas_reqOptional" text="Optional (Verschleiß über AutoSwitch)"/>
         <text name="vtpas_secDiff" text="Differenziale"/>
         <text name="vtpas_secTires" text="Reifen"/>

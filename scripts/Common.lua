@@ -3,6 +3,16 @@
 
 AS = AS or {}
 
+-- (perf 07/11) image 2D dessinée seulement quand le jeu a fini de la charger : sinon le jeu écrit
+-- « renderOverlay(...) called too soon, ensure getIsOverlayReady(overlay) returns true » dans log.txt
+local rawRenderOverlay = renderOverlay
+function AS.renderOverlay(o, ...)
+    if o == nil or o == 0 then return end
+    if getIsOverlayReady ~= nil and not getIsOverlayReady(o) then return end
+    return rawRenderOverlay(o, ...)
+end
+local renderOverlay = AS.renderOverlay
+
 AS_MOD_DIR = g_currentModDirectory or ""   -- dossier du mod (pour l'icône de patinage)
 
 AS_VERBOSE = false

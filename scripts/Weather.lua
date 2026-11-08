@@ -28,6 +28,7 @@ local L = AS.L
 --   Quatre parties : maintenant, prochaines 24 h (tranches de 3 h),
 --   événements à venir, jours suivants.
 -------------------------------------------------------------------------------
+local renderOverlay = (AS ~= nil and AS.renderOverlay) or renderOverlay   -- (perf 07/11) voir Common.lua
 AS_Weather = {}
 AS_Weather.DAY_MS       = 24 * 60 * 60 * 1000
 AS_Weather.HOUR_MS      = 60 * 60 * 1000

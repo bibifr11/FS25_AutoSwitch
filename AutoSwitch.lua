@@ -113,6 +113,7 @@ local FILES = {
     "scripts/GrassTrample.lua",
     "scripts/Puddles.lua",
     "scripts/Weather.lua",
+    "scripts/CropCalendar.lua",
     "scripts/Fields.lua",
     "scripts/Overdraft.lua",
     "scripts/CoopPay.lua",
