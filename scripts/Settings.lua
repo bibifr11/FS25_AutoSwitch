@@ -881,17 +881,21 @@ function AS_Settings:createTab(frame)
     setElementText(tab, "AUTOSWITCH")
 
     -- la barre (subCategoryPaging) a pour textes les numéros des pages affichées
+    -- un autre mod (ex. LooseLoad) peut insérer sa page avant la nôtre : on retrouve
+    -- toujours notre page par elle-même, jamais par un numéro mémorisé
     local function ensureState()
         if paging == nil or type(paging.texts) ~= "table" then return nil end
+        local nr = AS_Settings:currentTabIndex(frame)
         for state, val in ipairs(paging.texts) do
-            if tonumber(val) == pageNr then return state end
+            if tonumber(val) == nr then return state end
         end
         local texts = {}
         for i, t in ipairs(paging.texts) do texts[i] = t end
-        texts[#texts + 1] = tostring(pageNr)
+        texts[#texts + 1] = tostring(nr)
         pcall(paging.setTexts, paging, texts)
         return #texts
     end
+    self.tabPage, self.tabIndex = page, pageNr
     ensureState()
     if box.invalidateLayout ~= nil then box:invalidateLayout() end
     if paging ~= nil and paging.setSize ~= nil and box.maxFlowSize ~= nil and g_pixelSizeScaledX ~= nil then
@@ -946,15 +950,33 @@ function AS_Settings:createTab(frame)
         if currentGui ~= nil then pcall(FocusManager.setGui, FocusManager, currentGui) end
     end
     self.tabPage, self.tabButton, self.tabIndex, self.tabLayout = page, tab, pageNr, layout
+    self.ensureTabState = ensureState
     print(string.format("[AS_Settings] onglet AUTOSWITCH créé (page %d)", pageNr))
     return layout
+end
+
+-- numéro actuel de notre page (il change si un autre mod insère une page avant)
+function AS_Settings:currentTabIndex(frame)
+    local pages = frame ~= nil and frame.subCategoryPages or nil
+    if self.tabPage ~= nil and type(pages) == "table" then
+        for i, p in ipairs(pages) do
+            if p == self.tabPage then
+                self.tabIndex = i
+                return i
+            end
+        end
+    end
+    return self.tabIndex
 end
 
 -- notre page affichée : la barre de défilement et la molette agissent sur notre liste
 function AS_Settings:syncTab(frame)
     local layout, paging = self.tabLayout, frame ~= nil and frame.subCategoryPaging or nil
     if layout == nil or paging == nil or type(paging.texts) ~= "table" or paging.getState == nil then return end
-    if tonumber(paging.texts[paging:getState()]) ~= self.tabIndex then return end
+    local nr = self:currentTabIndex(frame)
+    local SC = InGameMenuSettingsFrame ~= nil and InGameMenuSettingsFrame.SUB_CATEGORY or nil
+    if SC ~= nil and nr ~= nil then SC.AUTOSWITCH = nr end
+    if tonumber(paging.texts[paging:getState()]) ~= nr then return end
     self.tabPage:setVisible(true)
     layout:setVisible(true)
     layout:updateAbsolutePosition()
