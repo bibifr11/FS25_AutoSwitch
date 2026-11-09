@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<l10n>
+    <translationContributors>HSayar</translationContributors>
+    <texts>
+        <text name="vtpas_on" text="Etkin"/>
+        <text name="vtpas_off" text="Devre Dışı"/>
+        <text name="vtpas_auto" text="Otomatik"/>
+        <text name="vtpas_manual" text="Manuel"/>
+        <text name="vtpas_slip_label" text="Arka diferansiyel kilidi için patinaj eşiği"/>
+        <text name="vtpas_slip_tip" text="Arka diferansiyelin otomatik olarak kilitleneceği patinaj yüzdesi (%) (Enhanced Vehicle). Bu eşiğin yarısına düşüldüğünde kilit açılır. Devre Dışı = asla."/>
+        <text name="vtpas_slipFront_label" text="Ön diferansiyel kilidi için patinaj eşiği"/>
+        <text name="vtpas_slipFront_tip" text="Ön diferansiyelin otomatik olarak kilitleneceği patinaj yüzdesi (%) (Enhanced Vehicle). Bu eşiğin yarısına düşüldüğünde kilit açılır. Devre Dışı = asla."/>
+        <text name="vtpas_diff_label" text="Diferansiyeller ve şanzıman"/>
+        <text name="vtpas_diff_tip" text="Auto = AutoSwitch patinaja göre diferansiyelleri kilitler, 4x2 / 4x4 seçimi yapar ve virajlarda kilitleri devre dışı bırakır. Manuel = her şeyi siz yönetirsiniz; devreye giren kilit artık kapanmaz, traktör yalnızca kendi eşiğinde döner (tekerlekler tam kısıksa sürüklenir) (%50 arka, %20 ön, %10 her ikisi). Tuş: Sağ Ctrl + Yukarı Ok."/>
+        <text name="vtpas_tire_label" text="Lastik basıncı (manuel sürüş)"/>
+        <text name="vtpas_tire_tip" text="AutoDrive veya Courseplay ile şişirme ve indirme işlemleri her zaman otomatiktir. Bu ayar kendiniz sürerken geçerlidir: Otomatik = yolda lastikler şişirilir, tarlada indirilir; Manuel = modun tuşunu kullanırsınız."/>
+        <text name="vtpas_notifDiff_label" text="Diferansiyel bildirimleri"/>
+        <text name="vtpas_notifDiff_tip" text="Bir araç diferansiyellerini kilitlediğinde veya kilitlerini açtığında bildirim gösterir."/>
+        <text name="vtpas_notifTires_label" text="Lastik bildirimleri"/>
+        <text name="vtpas_notifTires_tip" text="Bir araç lastiklerini şişirdiğinde veya indirdiğinde bildirim gösterir."/>
+        <text name="vtpas_notif_diffLocked" text="%s : diferansiyeller kilitlendi (patinaj %.0f %%)"/>
+        <text name="vtpas_notif_diffUnlocked" text="%s : diferansiyellerin kilidi açıldı"/>
+        <text name="vtpas_notif_diffRearLocked" text="%s : arka diferansiyel kilitlendi (patinaj %.0f %%)"/>
+        <text name="vtpas_notif_diffRearUnlocked" text="%s : arka diferansiyelin kilidi açıldı"/>
+        <text name="vtpas_notif_diffRearPlowLocked" text="%s : arka diferansiyel kilitlendi (pulluk toprakta)"/>
+        <text name="vtpas_notif_diffFrontLocked" text="%s : ön diferansiyel kilitlendi (patinaj %.0f %%)"/>
+        <text name="vtpas_notif_diffFrontUnlocked" text="%s : ön diferansiyelin kilidi açıldı"/>
+        <text name="vtpas_notif_tiresInflated" text="%s : lastikler şişirildi (yol basıncı)"/>
+        <text name="vtpas_notif_tiresDeflated" text="%s : lastikler indirildi (tarla basıncı)"/>
+        <text name="vtpas_alert_pct_label" text="Patinaj uyarısı: eşik"/>
+        <text name="vtpas_alert_pct_tip" text="Bir aracın patinajı ayarlanan süre boyunca bu yüzdenin üzerinde kaldığında kırmızı bir mesaj gösterir. Devre Dışı = uyarı yok."/>
+        <text name="vtpas_alert_sec_label" text="Patinaj uyarısı: süre"/>
+        <text name="vtpas_alert_sec_tip" text="Uyarının görüntülenmesi için patinajın eşik değerin üzerinde kalması gereken süre (saniye cinsinden)."/>
+        <text name="vtpas_alert_slip" text="%s : %d saniyeden uzun süredir aşırı patinaj (%.0f %%)!"/>
+        <text name="vtpas_alert_diffSteer" text="Tekerlekleri düzeltin"/>
+        <text name="vtpas_diffdelay_label" text="Diferansiyeller: kilitleme öncesi gecikme"/>
+        <text name="vtpas_diffdelay_tip" text="Diferansiyeller otomatik olarak kilitlenmeden önce patinajın eşik değerin üzerinde kalması gereken süre (saniye cinsinden)."/>
+        <text name="vtpas_decimal" text=","/>
+        <text name="vtpas_tiredelay_label" text="Lastikler: iki değişiklik arası gecikme"/>
+        <text name="vtpas_tiredelay_tip" text="Çok sık geçişleri önlemek için basınç değişiklikleri (şişirme / indirme) arasındaki minimum süre (saniye cinsinden). Devre Dışı = gecikme yok."/>
+        <text name="vtpas_hintShow_label" text="Önerilen hız aralığı (tarlalarda)"/>
+        <text name="vtpas_hintShow_tip" text="Hız göstergesinin üzerinde; bölgeye (tarla / yol), lastik basıncına, toprağa, toprak nemine ve patinaja göre sürekli yeniden hesaplanan önerilen hız aralığını gösterir."/>
+        <text name="vtpas_hint_range" text="Önerilen aralık: %d - %d km/s"/>
+        <text name="vtpas_hint_min" text="Önerilen hız: en az %d km/s"/>
+        <text name="vtpas_hint_max" text="Önerilen hız: en çok %d km/s"/>
+        <text name="vtpas_hint_free" text="Serbest hız"/>
+        <text name="vtpas_hint_risk" text="Batma riski: durmaksızın en az %d km/s"/>
+        <text name="vtpas_hint_field" text="Tarla"/>
+        <text name="vtpas_hint_road" text="Tarla dışı"/>
+        <text name="vtpas_hint_soil" text="nem %%%d"/>
+        <text name="vtpas_hint_frozen" text="donmuş toprak"/>
+        <text name="vtpas_hint_tiresField" text="tarla lastikleri"/>
+        <text name="vtpas_hint_tiresRoad" text="yol lastikleri"/>
+        <text name="vtpas_hint_slip" text="patinaj %%%d"/>
+        <text name="vtpas_gt_StubbleTillage" text="anız işlenmiş"/>
+        <text name="vtpas_gt_Cultivated" text="sürülmüş/kültivatör çekilmiş"/>
+        <text name="vtpas_gt_Seedbed" text="ekim yatağı"/>
+        <text name="vtpas_gt_Plowed" text="pullukla sürülmüş"/>
+        <text name="vtpas_gt_RolledSeedbed" text="silindirlenmiş ekim yatağı"/>
+        <text name="vtpas_gt_Ridge" text="sırt yapılmış (ridge)"/>
+        <text name="vtpas_gt_Sown" text="ekilmiş"/>
+        <text name="vtpas_gt_DirectSown" text="doğrudan ekim"/>
+        <text name="vtpas_gt_Planted" text="dikilmiş"/>
+        <text name="vtpas_gt_RidgeSown" text="sırtlara ekilmiş"/>
+        <text name="vtpas_gt_Rollerlines" text="silindirlenmiş"/>
+        <text name="vtpas_gt_HarvestReady" text="hasada hazır ürün"/>
+        <text name="vtpas_gt_HarvestReadyO" text="hasada hazır ürün"/>
+        <text name="vtpas_gt_Grass" text="çim"/>
+        <text name="vtpas_gt_GrassCut" text="biçilmiş çim"/>
+        <text name="vtpas_hint_riskShort" text="BATMA RİSKİ"/>
+        <text name="vtpas_durDiffs_label" text="Diferansiyel bildirimleri: süre"/>
+        <text name="vtpas_durTires_label" text="Lastik bildirimleri: süre"/>
+        <text name="vtpas_durAlert_label" text="Patinaj uyarısı: görüntülenme süresi"/>
+        <text name="vtpas_dur_tip" text="Mesajın ekranda kalacağı süre (saniye cinsinden)."/>
+        <text name="vtpas_protectSeed_label" text="Ekimi koru (geri vites / ekim makinesi)"/>
+        <text name="vtpas_protectSeed_tip" text="Araç geri giderken ve bir ekim veya dikim makinesinin tekerlekleri altındayken Mud System Physics'in tekerlek altındaki mahsulü silmesini engeller. Çamurdaki diğer bozulmalar korunur."/>
+        <text name="vtpas_slipIcon_label" text="Patinaj simgesi"/>
+        <text name="vtpas_slipIcon_tip" text="Araç içindeyken üstten görünüşüyle traktörü (kilitli akslar kırmızı, 4x4 yeşil) ve her tekerleğin patinajını ya da kilitli aks başına tek bir yüzdesini gösterir; hız aralığından bağımsız olarak fareyle taşınabilir. Renkler: beyaz, %10'dan itibaren sarı, diferansiyel eşiğinde turuncu, uyarı eşiğinde kırmızı."/>
+        <text name="vtpas_seedCoverFill_label" text="Kapak kapalıyken ekim makinesini doldur"/>
+        <text name="vtpas_seedCoverFill_tip" text="Hazne kapağı kapalı olsa bile ekim makinelerini ve dikim makinelerini tohumla (büyük çuval, palet, römork, helezon, istasyon) doldurmayı sağlar. Devre Dışı = ana oyunun davranışı."/>
+        <text name="vtpas_wetGrip_label" text="Nemli zemin tutuşu (MoreRealistic)"/>
+        <text name="vtpas_wetGrip_tip" text="MoreRealistic, Mud System Physics ve Tractor Terrain Dynamics tarafından hesaplanan yol tutuşunu yok sayar. Bu ayar, yerel neme (%20'den itibaren, %70'te maksimum) ve toprak türüne göre tarlalardaki tekerlek tutuşunu azaltır ve MoreRealistic'in 'ıslak tarla' tutuşunu %20 düşürür. %60 nemde: yaklaşık -34% (Acemi), -45% (Kolay), -56% (Normal), -67% (Zor), -78% (Aşırı)."/>
+        <text name="vtpas_wetGrip_beginner" text="Acemi"/>
+        <text name="vtpas_wetGrip_easy" text="Kolay"/>
+        <text name="vtpas_wetGrip_normal" text="Normal"/>
+        <text name="vtpas_wetGrip_hard" text="Zor"/>
+        <text name="vtpas_wetGrip_extreme" text="Aşırı"/>
+        <text name="vtpas_auto4wd_label" text="Şanzıman: asfalt ve betonda 4x2, diğer yerlerde 4x4"/>
+        <text name="vtpas_auto4wd_tip" text="Sert zeminlerde (asfalt yol, beton) otomatik olarak 2 çeker (4x2) moduna geçer, diğer her yerde (tarlalar, çakıl veya toprak yollar, çim) 4 çeker (4x4) olur (Enhanced Vehicle). 2 çekerdeyken arka aks eşik değerin üzerinde patinaj yaparsa önce 4x4 devreye girer, patinaj devam ederse diferansiyeller kilitlenir; yolda tutuş geri geldiğinde tekrar 4x2'ye dönülür. Manuel ayar, sonraki zemin değişimine kadar geçerliliğini korur."/>
+        <text name="input_AS_DRIVE_MODE" text="Diferansiyeller ve şanzıman: Oto / Manuel"/>
+        <text name="vtpas_autoOnHelper_label" text="AutoDrive / Courseplay ile Oto'ya dönüş"/>
+        <text name="vtpas_autoOnHelper_tip" text="Manuel moddayken, AutoDrive veya Courseplay traktörün kontrolünü ele aldığı anda otomatik olarak Oto moda geri döner."/>
+        <text name="vtpas_notif_modeManual" text="Diferansiyeller ve şanzıman: MANUEL"/>
+        <text name="vtpas_notif_modeAuto" text="Diferansiyeller ve şanzıman: OTO"/>
+        <text name="vtpas_hud_manual" text="MANUEL"/>
+        <text name="vtpas_hud_auto" text="OTO"/>
+        <text name="input_AS_DUAL_SWITCH" text="Çift tekerlekleri tak / sök"/>
+        <text name="as_dual_store_function" text="Paletin yanında yaya olarak, traktör yanına park edilmişken: Sağ Ctrl + İ. Dolu palet = çift tekerlek takılması, boş palet = sökülmesi. 1 saat çalışma, her 15 dakikada bir tekerlek."/>
+        <text name="as_dual_mounting" text="Çift tekerlek montajı başladı: tahmini bitiş %s"/>
+        <text name="as_dual_unmounting" text="Çift tekerlek sökümü başladı: tahmini bitiş %s"/>
+        <text name="as_dual_done_on" text="Çift tekerlekler takıldı"/>
+        <text name="as_dual_done_off" text="Tek tekerlekler geri takıldı"/>
+        <text name="as_dual_none" text="Bu traktör için uygun çift tekerlek yok"/>
+        <text name="as_dual_nosingle" text="Tek tekerlek konfigürasyonu bulunamadı"/>
+        <text name="as_dual_norack" text="Yakınlarda lastik paleti yok"/>
+        <text name="as_dual_stop" text="Tekerlekleri değiştirmek için traktörü durdurun"/>
+        <text name="as_dual_money" text="Yetersiz bakiye (%s)"/>
+        <text name="as_dual_cancel" text="Traktör hareket ettirildi: tekerlek değişimi iptal edildi"/>
+        <text name="as_dual_failed" text="Tekerlek değişimi yapılamadı"/>
+        <text name="as_dual_mp" text="Tekerlek değişimi yalnızca tek oyunculuda (solo) kullanılabilir"/>
+        <text name="as_dual_notractor" text="Paletin yakınında çift tekerlekli traktör park edilmemiş"/>
+        <text name="as_dual_alreadytwin" text="Bu traktör zaten çift tekerleklerle donatılmış: palet yalnızca çift tekerlek sağlar"/>
+        <text name="as_dual_running" text="Tekerlek değişimi zaten devam ediyor: tahmini bitiş %s"/>
+        <text name="as_dual_rackempty" text="Bu palet boş (veya eksik).&#10;&#10;Lastikleri başka bir traktöre takılmış: önce o traktörden sökün veya dolu bir palet kullanın."/>
+        <text name="as_dual_rackfull" text="Bu palet boş değil: sökülen lastikleri alamaz.&#10;&#10;Boş bir palet kullanın."/>
+        <text name="as_dual_rackbusy" text="Bu palet devam eden başka bir tekerlek değişimi için zaten kullanılıyor."/>
+        <text name="as_dual_store_function_ar" text="Jantlar üzerinde 2 adet BKT Agrimax V-Flecto 650/65R42 lastik. Paletin yanında yaya olarak, traktör yanına park edilmişken: Sağ Ctrl + İ. Tek başına = arka çift tekerlek; ön paletle birlikte = ön + arka çift tekerlek. 30 dk montaj (lastik başına 15 dk)."/>
+        <text name="as_dual_store_function_av" text="Jantlar üzerinde 2 adet BKT Agrimax V-Flecto 540/65R30 lastik. Ön + arka çift tekerlek takmak için arka paletle birlikte kullanılır (Paletlerin yanında yaya olarak Sağ Ctrl + İ)."/>
+        <text name="as_dual_needar" text="Bu traktörün yakınında dolu arka çift tekerlek paleti yok.&#10;&#10;Boş palet, lastiklerinin başka bir traktörde takılı olduğu anlamına gelir: önce o traktörden sökün veya yeni bir palet satın alın."/>
+        <text name="as_dual_needav" text="Bu traktör yalnızca ön + arka çift tekerlek konfigürasyonunda mevcuttur.&#10;&#10;Traktörün yanına dolu bir ön çift tekerlek paleti ekleyin."/>
+        <text name="as_dual_needar_empty" text="Çift tekerlekleri sökmek için lastikleri koymak üzere traktör yakınında boş bir arka palet gereklidir.&#10;&#10;Hâlâ dolu olan bir palet başka lastik kabul edemez."/>
+        <text name="as_dual_needav_empty" text="Bu traktörün ön tarafında da çift tekerlek var: bunları bırakmak için ayrıca traktör yakınında boş bir ön palet gerekiyor."/>
+        <text name="as_dual_confirm_title" text="Tekerlek Değişimi"/>
+        <text name="as_dual_confirm_on" text="Çift tekerlek montajı: %d lastik, %d dk çalışma (tahmini %s).&#10;&#10;Değişim süresince traktör sabitlenecek: binmek veya işçi başlatmak mümkün olmayacak. Taşınırsa değişim iptal edilecektir.&#10;&#10;Montaja başlansın mı?"/>
+        <text name="as_dual_confirm_off" text="Çift tekerlek sökümü: %d lastik, %d dk çalışma (tahmini %s).&#10;&#10;Değişim süresince traktör sabitlenecek: binmek veya işçi başlatmak mümkün olmayacak. Taşınırsa değişim iptal edilecektir.&#10;&#10;Söküme başlansın mı?"/>
+        <text name="as_dual_brand" text="Bu traktör için %s marka çift tekerlek yok: atölyeden lastik markasını değiştirin (mevcut: %s)"/>
+        <text name="as_dual_locked" text="Traktör sabitlendi: tekerlek değişimi devam ediyor (tahmini bitiş %s)"/>
+        <text name="as_dual_zone" text="Traktörü montaj alanına yerleştirin (paletin yanındaki zeminde yer alan dikdörtgen)"/>
+        <text name="as_dual_marker" text="Burada durun"/>
+        <text name="as_dual_marker_on" text="Sağ Ctrl + İ: tekerlekleri değiştir"/>
+        <text name="as_dual_timer_title" text="Tekerlek Değişimi"/>
+        <text name="as_dual_timer_on" text="%s : çift tekerlek montajı - %d dk (tahmini %s) - lastik %d/%d"/>
+        <text name="as_dual_timer_off" text="%s : çift tekerlek sökümü - %d dk (tahmini %s) - lastik %d/%d"/>
+        <text name="vtpas_adField_label" text="AutoDrive: tarladaki hız"/>
+        <text name="vtpas_adField_tip" text="AutoDrive'ın kendi ayarı yerine tarlada zorunlu kıldığı hız. AutoDrive virajlarda ve varışlarda her zaman yavaşlar."/>
+        <text name="vtpas_adPath_label" text="AutoDrive: yollardaki (arazi) hız"/>
+        <text name="vtpas_adPath_tip" text="AutoDrive'ın ara yollarda (çakıl, toprak, çim) zorunlu kıldığı hız."/>
+        <text name="vtpas_adRoad_label" text="AutoDrive: yoldaki (asfalt) hız"/>
+        <text name="vtpas_adRoad_tip" text="AutoDrive'ın asfalt yolda zorunlu kıldığı hız. Limitsiz: traktörün maksimum hızı."/>
+        <text name="vtpas_adNoLimit" text="Limitsiz"/>
+        <text name="vtpas_tabTitle" text="AutoSwitch"/>
+        <text name="vtpas_reqTitle" text="Gerekli Modlar"/>
+        <text name="vtpas_reqTip" text="Minimum sürüm: %s"/>
+        <text name="vtpas_reqOk" text="Tamam (%s)"/>
+        <text name="vtpas_reqAbsent" text="X  Eksik"/>
+        <text name="vtpas_reqInactive" text="X  Etkin değil"/>
+        <text name="vtpas_reqOld" text="X  Sürüm %s (Gereken: %s)"/>
+        <text name="vtpas_reqBlockedMod" text="X  AutoSwitch tarafından engellendi"/>
+        <text name="vtpas_rvBlockedNotif" text="Real Physics - Tire Wear: devre dışı bırakıldı ve AutoSwitch tarafından engellendi (lastik aşınması AutoSwitch tarafından yönetilir)"/>
+        <text name="vtpas_rmsBlockedNotif" text="Realistic Mechanical Systems: AutoSwitch tarafından engellendi (Arıza modu olarak Advanced Damage System kullanılmaktadır)"/>
+        <text name="vtpas_keyLock_taken" text="Tuşlar AutoSwitch'e ayrılmıştır, şuradan geri alındı: %s"/>
+        <text name="vtpas_cropCalendar_label" text="Ekim Takvimi"/>
+        <text name="vtpas_cropCalendar_tip" text="Ekim ve hasat tarihleri. Harita: haritanın kendi takvimi. Climate Profiles: Climate Profiles modunun takvimi (hava durumu her iki durumda da aktif kalır). Climate Profiles olmadan bu ayar hiçbir şeyi değiştirmez."/>
+        <text name="vtpas_cropCalendar_map" text="Harita"/>
+        <text name="vtpas_hud_pressFront" text="Ön: %.1f Bar"/>
+        <text name="vtpas_hud_pressRear" text="Arka: %.1f Bar"/>
+        <text name="vtpas_slipRoad_label" text="Asfaltta kilitlenme için patinaj eşiği"/>
+        <text name="vtpas_slipRoad_tip" text="Asfalt ve betonda, bu patinaj yüzdesi (%) ön ve arka diferansiyellerin eşiklerinin yerini alır. Eşiğin yarısına düşüldüğünde kilit açılır. Devre Dışı = sert zeminlerde asla kilitlenmez."/>
+        <text name="vtpas_reqOptional" text="İsteğe bağlı (aşınma AutoSwitch tarafından yönetilir)"/>
+        <text name="vtpas_secDiff" text="Diferansiyeller"/>
+        <text name="vtpas_secTires" text="Lastikler"/>
+        <text name="vtpas_secAlerts" text="Bildirimler ve uyarılar"/>
+        <text name="vtpas_secAD" text="AutoDrive"/>
+        <text name="vtpas_secHud" text="Görünüm / Arayüz"/>
+        <text name="vtpas_secGround" text="Zemin ve mahsuller"/>
+        <text name="vtpas_secWorld" text="Işıklar, rüzgar, izler ve hava durumu"/>
+        <text name="vtpas_secMoney" text="Finans"/>
+        <text name="vtpas_secTraffic" text="Trafik ve mağaza"/>
+        <text name="vtpas_sleepHours" text="+%d sa"/>
+        <text name="vtpas_sleepDay" text="+%d gün"/>
+        <text name="vtpas_sleepDays" text="+%d gün"/>
+        <text name="vtpas_sleepText" text="Ne kadar uyumak istediğinizi seçin: saat ve gün olarak."/>
+        <text name="vtpas_sleepHoursTitle" text="Saat cinsinden süre"/>
+        <text name="vtpas_sleepDaysTitle" text="Gün cinsinden süre"/>
+        <text name="vtpas_lightRange_base" text="x1 (temel oyun)"/>
+        <text name="vtpas_windSway_label" text="Rüzgar Hareketi"/>
+        <text name="vtpas_windSway_tip" text="Rüzgarda ağaçların, mahsullerin ve çimlerin hareket kuvveti. x1 = temel oyun (57 km/s hızda oyun yaprakları yalnızca hafif bir esinti gibi hareket ettirir). Rüzgar hızı değişmez."/>
+        <text name="vtpas_hudDedup_label" text="Tekrarlayan arayüz öğelerini gizle"/>
+        <text name="vtpas_hudDedup_tip" text="Diğer modların tekrarladığı bilgileri gizler (örn. Enhanced Vehicle: Aşınma | Boya ve Yakıt). Bu modların ayarları değiştirilmez."/>
+        <text name="vtpas_overdraft_label" text="İzin verilen eksi bakiye (Kredili mevduat)"/>
+        <text name="vtpas_overdraft_tip" text="Hesap eksi bakiyedeyken, sahip olduğunuz varlıkların (satın alınan ekipman, araziler, binalar) yeniden satış değerinin bu yüzdesine kadar satın alma ve kiralama yapılabilir. Devre Dışı = temel oyun."/>
+        <text name="vtpas_overdraft_off" text="Devre Dışı"/>
+        <text name="vtpas_overdraftRate_label" text="Gecikme faizi (yıllık oran)"/>
+        <text name="vtpas_overdraftRate_tip" text="Yılla (12 ay) orantılı olarak, her oyun günü negatif bakiye üzerinden kesilen faiz. Finans menüsünde 'Faiz' satırı."/>
+        <text name="vtpas_overdraftRate_none" text="Yok"/>
+        <text name="finance_asOverdraftInterest" text="Kredili mevduat faizi"/>
+        <!-- v1.0.0.81 : coopératives payées en fin de mois -->
+        <text name="vtpas_coopPay_label" text="Kooperatif ödemeleri ay sonu"/>
+        <text name="vtpas_coopPay_tip" text='Sales to co-ops (selling points whose name contains "coop") are marked "To be paid" in the register (Right Ctrl + R) and paid at the end of the month, "Co-ops" line in Finances. Editable list: modSettings/FS25_AutoSwitch/cooperatives.xml.'/>
+        <text name="vtpas_coopPay_paid" text="Kooperatifler: ay için %s ödendi"/>
+        <text name="finance_asCoopPayment" text="Kooperatifler"/>
+        <text name="vtpas_secHours" text="Çalışma Saatleri"/>
+        <text name="vtpas_hours_label" text="Çalışma saatleri"/>
+        <text name="vtpas_hours_tip" text='Shop and selling points closed outside their opening hours. Exceptions per selling point: modSettings/FS25_AutoSwitch/horaires.xml (open="0" close="24": open 24/7).'/>
+        <text name="vtpas_hours_shopOpen" text="Mağaza: açılış"/>
+        <text name="vtpas_hours_shopClose" text="Mağaza: kapanış"/>
+        <text name="vtpas_hours_shop_tip" text="Çalışma saatleri dışında mağazaya göz atılabilir ancak satın alma, kiralama, satma veya inşa etme işlemleri reddedilir."/>
+        <text name="vtpas_hours_sellOpen" text="Satış noktaları: açılış"/>
+        <text name="vtpas_hours_sellClose" text="Satış noktaları: kapanış"/>
+        <text name="vtpas_hours_sell_tip" text="Silolar, değirmenler, fabrikalar... Çalışma saatleri dışında hiçbir şey kabul edilmez; bir AutoDrive kamyonu açılış saatini bekler."/>
+        <text name="vtpas_hours_shopClosed" text="Mağaza kapalı. Açılış saatleri: %s - %s."/>
+        <text name="vtpas_hours_stationClosed" text="%s : kapalı, açılış saati %s"/>
+        <text name="vtpas_noOvertake_label" text="Traktörleri solumayı yasakla"/>
+        <text name="vtpas_noOvertake_tip" text="Trafikteki arabalar yolda giden traktörlerin (AutoDrive veya manuel sürülen) arkasında kalır. Traktör 10 saniyedir duruyorsa veya dörtlü flaşörleri açıksa geçebilirler."/>
+        <text name="vtpas_cpResume_label" text="Yüklemede Courseplay'i yeniden başlat"/>
+        <text name="vtpas_cpResume_tip" text="Kayıt sırasında Courseplay'in çalıştığı araçlar oyun yüklendiğinde hareket eder: tarlada kaldığı noktada (aksi takdirde en yakın noktada) çalışma, boşaltıcılar ve diğer işler ayarlarıyla birlikte devam eder."/>
+        <text name="vtpas_shopBlockTwins_label" text="Mağazada çift tekerlekler engellendi"/>
+        <text name="vtpas_shopBlockTwins_tip" text="Mağaza ve atölye artık çift tekerlek sunmuyor: tekerlekler paletler yardımıyla takılır. Üzerinde çift tekerlek olan traktörler bunları korur ve palet bunları tek tekerleğe dönüştürebilir."/>
+        <!-- v1.0.0.59 : fenêtre Météo -->
+        <text name="vtpas_weatherWidget_label" text="Saatin yanında mini hava durumu"/>
+        <text name="vtpas_weatherWidget_tip" text="Saatin sol tarafında mevcut havayı ve bir sonraki değişimi gösterir. İmleç görünür durumdayken fareyle taşınabilir; tıklandığında Hava Durumu penceresi açılır (Sağ Ctrl + M)."/>
+        <text name="input_AS_WEATHER" text="Hava Durumu: aç / kapat"/>
+        <text name="input_AS_REGISTER" text="Tartım ve satış defteri: aç / kapat"/>
+        <text name="input_AS_FIELDS" text="Tarlalar: aç / kapat"/>
+        <text name="vtpas_wx_title" text="Hava Durumu"/>
+        <text name="vtpas_wx_now" text="Şu an"/>
+        <text name="vtpas_wx_nowShort" text="Şu an"/>
+        <text name="vtpas_wx_next24" text="Önümüzdeki 24 sa"/>
+        <text name="vtpas_wx_events" text="Beklenen Değişiklikler"/>
+        <text name="vtpas_wx_days" text="Önümüzdeki Günler"/>
+        <text name="vtpas_wx_sun" text="Güneşli"/>
+        <text name="vtpas_wx_partly" text="Parçalı Bulutlu"/>
+        <text name="vtpas_wx_cloudy" text="Bulutlu"/>
+        <text name="vtpas_wx_rain" text="Yağmurlu"/>
+        <text name="vtpas_wx_snow" text="Karlı"/>
+        <text name="vtpas_wx_hail" text="Dolu"/>
+        <text name="vtpas_wx_thunder" text="Fırtınalı / Gök Gürültülü"/>
+        <text name="vtpas_wx_twister" text="Hortum"/>
+        <text name="vtpas_wx_unknown" text="Bilinmiyor"/>
+        <text name="vtpas_wx_today" text="Bugün"/>
+        <text name="vtpas_wx_tomorrow" text="Yarın"/>
+        <text name="vtpas_wx_afterTomorrow" text="Yarından sonra"/>
+        <text name="vtpas_wx_inDays" text="%d gün içinde"/>
+        <text name="vtpas_wx_durDays" text="%d g %d sa"/>
+        <text name="vtpas_wx_minMax" text="En az %s / en çok %s"/>
+        <text name="vtpas_wx_wind" text="Rüzgar"/>
+        <text name="vtpas_wx_from" text="%s yönünden"/>
+        <text name="vtpas_wx_precip" text="Yağış"/>
+        <text name="vtpas_wx_none" text="Yok"/>
+        <text name="vtpas_wx_light" text="hafif"/>
+        <text name="vtpas_wx_moderate" text="orta"/>
+        <text name="vtpas_wx_heavy" text="kuvvetli"/>
+        <text name="vtpas_wx_mmPerHour" text="yaklaşık %.1f mm/sa"/>
+        <text name="vtpas_wx_ground" text="Toprak Nemi"/>
+        <text name="vtpas_wx_change" text="Sonraki Değişiklik"/>
+        <text name="vtpas_wx_nextChange" text="%s - %s (%s içinde)"/>
+        <text name="vtpas_wx_endAt" text="Bitiş: %s"/>
+        <text name="vtpas_wx_noForecast" text="Oyun tahmini yok"/>
+        <text name="vtpas_wx_fromTo" text="%s ile %s arası"/>
+        <text name="vtpas_wx_dayPlus" text="G+%d"/>
+        <text name="vtpas_wx_clickMe" text="Bana tıkla"/>
+        <text name="vtpas_wx_forecastShort" text="Tahmin"/>
+        <text name="vtpas_wx_until" text="%s kadarki"/>
+        <text name="vtpas_wx_rainDay" text="%s içinde %s"/>
+        <text name="vtpas_wx_dry" text="Kuru"/>
+        <text name="vtpas_wx_footer" text="%s üzerinde oyun tahminleri. Yoğunluğa göre tahmini miktarlar. * = günün tamamı tahmin edilmedi"/>
+        <text name="vtpas_wx_dir_N" text="K"/>
+        <text name="vtpas_wx_dir_NE" text="KD"/>
+        <text name="vtpas_wx_dir_E" text="D"/>
+        <text name="vtpas_wx_dir_SE" text="GD"/>
+        <text name="vtpas_wx_dir_S" text="G"/>
+        <text name="vtpas_wx_dir_SW" text="GB"/>
+        <text name="vtpas_wx_dir_W" text="B"/>
+        <text name="vtpas_wx_dir_NW" text="KB"/>
+        <text name="vtpas_beamEnabled_label" text="Güçlendirilmiş Farlar"/>
+        <text name="vtpas_beamEnabled_tip" text="Evet: far menzili ve parlaklığı aşağıda ayarlandığı gibi olur. Hayır: temel oyun farları, hesaplama yapılmaz (daha iyi performans)."/>
+        <text name="vtpas_light_road_label" text="Yol Farları"/>
+        <text name="vtpas_light_road_tip" text="Kısa ve uzun farlar, tavan lambaları. Menzil ve parlaklık birlikte x1,1 ile x2,5 arasında."/>
+        <text name="vtpas_light_workFront_label" text="Ön Çalışma Farları"/>
+        <text name="vtpas_light_workFront_tip" text="Öne bakan çalışma farları (ve araca özel çalışma farları)."/>
+        <text name="vtpas_light_workBack_label" text="Arka Çalışma Farları"/>
+        <text name="vtpas_light_workBack_tip" text="Arkaya bakan çalışma farları."/>
+        <text name="vtpas_light_beacon_label" text="Tepe Lambaları (Giyrofarlar)"/>
+        <text name="vtpas_light_beacon_tip" text="Tepe lambalarının yansıttığı ışık."/>
+        <text name="vtpas_light_signal_label" text="Sinyalizasyon"/>
+        <text name="vtpas_light_signal_tip" text="Sinyaller, fren lambaları ve geri vites lambaları."/>
+        <text name="vtpas_light_other_label" text="Diğer Işıklar"/>
+        <text name="vtpas_light_other_tip" text="İç aydınlatma ve oyunun hiçbir listesinde yer almayan ışıklar."/>
+        <text name="vtpas_tracksMax_label" text="Saklanan Lastik İzleri (noktalar)"/>
+        <text name="vtpas_tracksMax_tip" text="Kayıt dosyasıyla birlikte saklanan lastik izi nokta sayısı. Daha az = daha az bellek ve hesaplama yükü."/>
+        <!-- Aide (menu Échap > Aide) : help/helpLine.xml -->
+        <text name="as_help_title" text="AutoSwitch"/>
+        <text name="as_help_subTitle" text="Gerçekçi yapın"/>
+        <text name="as_help_intro_title" text="Genel Bakış"/>
+        <text name="as_help_intro_p1_title" text="AutoSwitch Ne Yapar"/>
+        <text name="as_help_intro_p1_text" text="AutoSwitch; Variable Tire Pressure, Enhanced Vehicle, MoreRealistic, Mud System Physics ve Tractor Terrain Dynamics modlarının birbirini modifiye etmeden birlikte çalışmasını sağlar.&#10;&#10;Lastik basıncını ve diferansiyelleri tamamen otomatik olarak yönetir, zemin ile neme bağlı gerçekçi yol tutuşu sunar ve Hava Durumu, Tarlalar ile Defter gibi kullanışlı pencereler ekler.&#10;&#10;Ayrıca MoreRealistic, DynamicDrivePro, Enhanced Vehicle ve Recovery Winch arasındaki çakışmaları çözer; hiçbir mod devre dışı bırakılmaz."/>
+        <text name="as_help_intro_p2_title" text="OTO / MANUEL Mod"/>
+        <text name="as_help_intro_p2_text" text="Araç içindeyken Sağ Ctrl + Yukarı Ok tuşuna basın. Aktif mod traktörün üzerinde gösterilir.&#10;&#10;- OTO: AutoSwitch, patinaja göre diferansiyelleri kilitler ve araziye göre 4x2 veya 4x4 seçimi yapar.&#10;- MANUEL: Diferansiyelleri ve 4x2 / 4x4 geçişlerini kendiniz yönetirsiniz. Devreye giren kilit artık kapanmaz ve traktör yalnızca direksiyon sınırına kadar döner (tekerlekler tam kısıksa sürüklenir).&#10;&#10;AutoDrive veya Courseplay kontrolü ele aldığında traktör otomatik olarak OTO moda geri döner (ayarlanabilir)."/>
+        <text name="as_help_intro_p3_title" text="Kısayollar"/>
+        <text name="as_help_intro_p3_text" text="- Sağ Ctrl + Yukarı Ok: OTO / MANUEL modu (araç içindeyken)&#10;- Sağ Ctrl + M: Hava Durumu penceresi&#10;- Sağ Ctrl + C: Tarlalar penceresi&#10;- Sağ Ctrl + R: Tartım ve Satış Defteri&#10;- Sağ Ctrl + I: Çift tekerlek takma / sökme (yaya olarak, lastik paleti yanında)&#10;&#10;Tüm bu tuşlar Seçenekler &gt; Kontroller menüsünden değiştirilebilir."/>
+        <text name="as_help_intro_p4_title" text="Ayarlar ve Gerekli Modlar"/>
+        <text name="as_help_intro_p4_text" text="Tüm ayarlar Escape &gt; Parametreler, AUTOSWITCH sekmesinde yer alır. Her satırın bir ipucu balonu vardır.&#10;&#10;Sekmenin altında:&#10;- yeşil onay işareti (Tamam) veya kırmızı çarpı (eksik, etkin değil ya da çok eski) içeren gerekli modlar listesi bulunur. Eksik bir gerekli mod oyunu bloke etmez: yalnızca buna bağlı fonksiyonlar devre dışı kalır;&#10;- 'Log.txt içindeki kayıtlar': varsayılan olarak kapalı olan, fonksiyon başına bir anahtar. Hatalar her zaman kaydedilir.&#10;&#10;Gerekli Modlar: VariableTirePressure, EnhancedVehicle, AutoDrive, Courseplay, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, TractorTerrainDynamics, DynamicDrivePro, RealisticHarvesting, MoistureSystem.&#10;Lastik aşınması entegre edilmiştir: ayrı bir lastik modu gerekmez."/>
+        <text name="as_help_diff_title" text="Diferansiyeller ve 4x4"/>
+        <text name="as_help_diff_p1_title" text="Otomatik Kilitleme"/>
+        <text name="as_help_diff_p1_text" text="OTO modunda AutoSwitch, tekerlekler patinaj yaptığında diferansiyelleri (Enhanced Vehicle) kilitler:&#10;- önce %15 patinajda arka, ardından %30 patinajda ön (eşikler ayarlanabilir);&#10;- kilitlenmeden önce patinajın 1,5 saniye sürmesi gerekir (ayarlanabilir);&#10;- patinaj eşik değerin yarısına düştüğünde kilit açılır.&#10;&#10;Her kilitlenme ve kilit açılma işleminde bir bildirim görüntülenir (kapatılabilir). Kilitler oyun yüklendiğinde sıfırlanır."/>
+        <text name="as_help_diff_p2_title" text="Yolda 4x2, Diğer Yerlerde 4x4"/>
+        <text name="as_help_diff_p2_text" text="Traktör asfalt ve betonda 4x2'ye, tarlalar, çakıl veya toprak yollar ile çim gibi diğer tüm yerlerde 4x4'e geçer.&#10;&#10;4x2 modundayken arka aks patinaj yaparsa önce 4x4 devreye girer, patinaj devam ederse diferansiyeller kilitlenir. Yola çıkıldığında tutuş geri geldiğinde tekrar 4x2'ye dönülür.&#10;&#10;Manuel olarak yapılan bir seçim, sonraki zemin değişimine kadar geçerliliğini korur."/>
+        <text name="as_help_diff_p3_title" text="Virajlarda"/>
+        <text name="as_help_diff_p3_text" text="- 4x4 modunda direksiyon açısı %90 ile sınırlıdır.&#10;- Direksiyon açısı %50'yi (yalnızca arka), %20'yi (yalnızca ön) veya %10'u (her ikisi) geçtiğinde kilitler devre dışı kalır.&#10;- Tekerlekler tam dönmüşken kilitlenme reddedilir: 'Tekerlekleri düzeltin' mesajı görüntülenir."/>
+        <text name="as_help_diff_p4_title" text="Toprak Sürme (Pulluk)"/>
+        <text name="as_help_diff_p4_text" text="OTO modunda bir pulluk indirildiğinde (başka bir ekipmanın arkasında olsa dahi) arka diferansiyel kilitlenir ve pulluk toprakta olduğu sürece kilitli kalır. MANUEL modda bunu siz yönetirsiniz."/>
+        <text name="as_help_diff_p5_title" text="Biçerdöverler, Ensileme Makineleri ve 4x2 Olmayan Makineler"/>
+        <text name="as_help_diff_p5_text" text="4x4 özelliği olmayan makineler tam direksiyon açısını korur, 4x2 / 4x4 moduna sahip değildir ve yalnızca motorlu aksları kilitlenir. Bu durumda arayüzde traktör yerine bir biçerdöver veya silaj makinesi simgesi gösterilir.&#10;&#10;Her makinenin gerçek aktarma organı yapısı MoreRealistic sonrasında okunur ('Dosyalar ve gelişmiş ayarlar' sayfasına bakın)."/>
+        <text name="as_help_tires_title" text="Lastikler ve Çift Tekerlekler"/>
+        <text name="as_help_tires_p1_title" text="Lastik Basıncı"/>
+        <text name="as_help_tires_p1_text" text="AutoDrive veya Courseplay ile birlikte lastikler (Variable Tire Pressure) her zaman otomatik olarak tarlada indirilir ve yolda şişirilir.&#10;&#10;Aracı kendiniz sürerken 'Lastik basıncı' ayarı geçerli olur: Otomatik (yardımcı işçi ile olduğu gibi) veya Manuel (Variable Tire Pressure tuşunu kullanırsınız).&#10;&#10;Variable Tire Pressure modunun 30 km/s hızda otomatik şişirme özelliği devre dışı bırakılmıştır. İki basınç değişikliği arasında en az 4 saniye gecikme bulunur (ayarlanabilir)."/>
+        <text name="as_help_tires_p2_title" text="Çift Tekerlek Montajı"/>
+        <text name="as_help_tires_p2_text" text="Mağaza ve atölye artık çift tekerlek seçeneği sunmaz (ayarlanabilir): çift tekerlekler, mağazadan ve inşaat menüsünden temin edilen lastik paletleri yardımıyla takılır.&#10;- Arka Palet: Jantlar üzerinde 2 adet BKT 650/65R42 lastik.&#10;- Ön Palet: Ön ve arka çift tekerlek kombinasyonu için arka paletle birlikte kullanılan 2 adet BKT 540/65R30 lastik.&#10;&#10;1. Traktörü, paletin yanındaki zeminde yer alan dikdörtgen montaj alanına park edip durdurun.&#10;2. Yaya olarak sarı işaretin üzerine gidin.&#10;3. Sağ Ctrl + I tuşlarına basıp onaylayın.&#10;&#10;Dolu palet = montaj, boş palet = söküm (sökülen lastikler buraya yerleştirilir). Her lastik için 15 oyun dakikası sürer; işlem süresince traktör sabitlenir ve hareket ettirilirse değişim iptal olur. Yalnızca tek oyunculu (solo) mod için geçerlidir."/>
+        <text name="as_help_tires_p3_title" text="Çift Tekerleklerin Avantajları"/>
+        <text name="as_help_tires_p3_text" text="Çift tekerleklerin gerçek genişliği Mud System Physics tarafından hesaba katılır (daha az batma) ve nemli zeminlerde daha iyi tutuş sağlarlar. Farklı marka varyantına sahip lastikler için Variable Tire Pressure düzeltmesi uygulanır."/>
+        <text name="as_help_tires_p4_title" text="Aşınma ve Kirlenme"/>
+        <text name="as_help_tires_p4_text" text="Lastikler ve paletler AutoSwitch ile aşınır: kat edilen mesafe, patinaj (patinaj yapan tekerlek çok daha hızlı aşınır), gerçek tekerlek yükü, zemin türü (asfalt yolda aşınma tarlaya göre yaklaşık 3 kat daha fazladır), basınç (yolda inik lastik = hızlı aşınma), yol hızı ve sıcaklık. Her tekerlek seti kendi aşınma değerini korur.&#10;&#10;Aşınmış bir lastik tarlada, toprakta ve karda daha az tutunur; kuru yolda biraz daha iyi tutunurken (slick lastik etkisi) ıslak yolda daha kötü tutunur. Yarıçapı biraz azalır.&#10;&#10;Arayüzdeki traktör her tekerlek için bir çubuk gösterir (yeşil, sarı, turuncu, kırmızı = kalan lastik ömrü), kauçuk kısmı aşınmış bir görünüme bürünür, araç bilgi kutusu yüzdeyi gösterir ve %75 ile %90'da uyarı verilir. Atölyede 'Yeni lastikler' düğmesi %25 veya daha fazla aşınmış lastikleri yeniler. Ayarlar AUTOSWITCH sekmesinden yapılır (açma/kapama, kullanım ömrü).&#10;&#10;Çamurla kirlenen lastikler sürüş sırasında çok daha uzun süre kirli kalır (en az bir saatlik yol); su, yağmur ve yıkama lastikleri her zaman temizler."/>
+        <text name="as_help_ground_title" text="Tutuş, Zemin ve Çamur"/>
+        <text name="as_help_ground_p1_title" text="Nemli Zeminde Tutuş"/>
+        <text name="as_help_ground_p1_text" text="MoreRealistic, Mud System Physics ve Tractor Terrain Dynamics tarafından hesaplanan yol tutuşunu dikkate almaz. Bu nedenle AutoSwitch, yerel neme (%20'den başlayıp %70'te maksimuma ulaşan) ve zemin türüne göre tarladaki tutuşu azaltır.&#10;&#10;Beş seviye bulunur: Acemi, Kolay, Normal (varsayılan), Zor, Aşırı. %60 nem oranında tutuş kaybı yaklaşık %34'ten (Acemi) %78'e (Aşırı) kadar değişir."/>
+        <text name="as_help_ground_p2_title" text="Tutuş Bonusları"/>
+        <text name="as_help_ground_p2_text" text="- Tarlada inik lastikler (Variable Tire Pressure): bonus tekerleklerde +%15'e (çift tekerlekte +%20'ye) düşer.&#10;- Kilitli diferansiyeller: arka tekerleklerde +%4, ön tekerleklerde +%3."/>
+        <text name="as_help_ground_p3_title" text="Puddles"/>
+        <text name="as_help_ground_p3_text" text="The Precision Farming soil type counts in Mud System Physics moisture: sand dries quickly, clay stays wet.&#10;&#10;When it rains on saturated ground, water gathers in the hollows of the terrain (fields, tracks, meadows; never on asphalt, concrete or in water) and forms visible puddles. They slowly disappear through seepage and evaporation."/>
+        <text name="as_help_ground_p4_title" text="Çim ve İzler"/>
+        <text name="as_help_ground_p4_text" text="Mud System Physics, %12 nem oranından itibaren her tekerleğin altındaki çimleri biçiyordu. Bunun yerine ezilen çim bir aşama geri çekilir; bu ihtimal hız ve nem ile artar, 30 km/s hızın üzerinde ise tamamen sıfıra kesilir.&#10;&#10;Lastik izleri kayıt dosyasıyla birlikte saklanır: oyun yeniden yüklendiğinde kaybolmazlar (varsayılan 60.000 nokta, ayarlanabilir)."/>
+        <text name="as_help_ground_p5_title" text="Ekipmanlar, Çamur ve Ekim"/>
+        <text name="as_help_ground_p5_text" text="- Ekipmanlar dururken dengede kalır: Mud System Physics ve MoreRealistic yüzünden artık zıplamazlar.&#10;- Çamur, freni olmayan römorkları ve ekipmanları da yavaşlatır.&#10;- Ekimi koruma: Geri giderken ya da bir ekim veya dikim makinesinin tekerlekleri altındayken mahsul artık silinmez.&#10;- Ekim ve dikim makineleri kapakları kapalıyken bile doldurulabilir.&#10;- Ezilen şeritler üzerinde doğrudan yeniden ekim yapılabilir.&#10;- AutoSwitch'in Mud System Physics ve Tractor Terrain Dynamics parametreleri otomatik olarak uygulanır."/>
+        <text name="as_help_hud_title" text="Arayüz / Göstergeler"/>
+        <text name="as_help_hud_p1_title" text="Üstten Görünüm Traktör"/>
+        <text name="as_help_hud_p1_text" text="Araç içindeyken göstergenin yanında üstten görünüşlü bir traktör simgesi görüntülenir: kilitli akslar kırmızı, 4x4 yeşil renktedir ve her tekerleğin patinajı (veya kilitli aks başına tek bir yüzde) gösterilir.&#10;&#10;Patinaj rengi: beyaz, %10'dan itibaren sarı, diferansiyel eşiğinde turuncu, uyarı eşiğinde kırmızıdır. Fare ile taşınabilir."/>
+        <text name="as_help_hud_p2_title" text="Önerilen Hız"/>
+        <text name="as_help_hud_p2_text" text="Hız göstergesinin üzerinde önerilen hız aralığı; bölgeye (tarla/yol), lastik basıncına, zemine, neme ve patinaja göre sürekli yeniden hesaplanır. 'BATMA RİSKİ' uyarısı durulmaması gereken durumları bildirir."/>
+        <text name="as_help_hud_p3_title" text="Uyarılar ve Bildirimler"/>
+        <text name="as_help_hud_p3_text" text="- Patinaj 5 saniye boyunca %80'in üzerinde kaldığında kırmızı patinaj uyarısı verilir (eşik ve süre ayarlanabilir, kapatılabilir).&#10;- Görüntülenme süresi ayarlanabilen diferansiyel ve lastik bildirimleri.&#10;- 'Tekrarlayan arayüz öğelerini gizle' seçeneği, diğer modların tekrarladığı bilgileri (örneğin Enhanced Vehicle) kendi ayarlarını değiştirmeden gizler."/>
+        <text name="as_help_weather_title" text="Hava Durumu"/>
+        <text name="as_help_weather_p1_title" text="Hava Durumu Penceresi"/>
+        <text name="as_help_weather_p1_text" text="Sağ Ctrl + M tuş kombinasyonu Hava Durumu penceresini dört bölümde açar: şu an, önümüzdeki 24 saat (3 saatlik dilimler halinde), beklenen değişiklikler ve önümüzdeki günler.&#10;&#10;Bunlar oyunun gerçek tahminleridir: gösterilenler kesinlikle gerçekleşecektir. Oyun yalnızca yağış yoğunluğu verir; milimetre değerleri tahminidir. Tam olarak tahmin edilemeyen günler '*' işaretiyle belirtilir."/>
+        <text name="as_help_weather_p2_title" text="Mini Hava Durumu"/>
+        <text name="as_help_weather_p2_text" text="Saatin sol tarafında mini hava durumu; mevcut havayı, sonraki değişimi, rüzgarı ve yönünü gösterir. İmleç görünür durumdayken fare ile taşınabilir; üzerine tıklandığında ('Bana tıkla') Hava Durumu penceresi açılır. Kapatılabilir."/>
+        <text name="as_help_weather_p3_title" text="Görünür Rüzgar"/>
+        <text name="as_help_weather_p3_text" text="Ağaçlar, mahsuller ve çimler rüzgarda daha şiddetli sallanır (varsayılan x2,2; x1 = temel oyun). Yalnızca görsel görünüm değişir; gerçek rüzgar hızı oyunun kendi hızı olarak kalır."/>
+        <text name="as_help_fields_title" text="Tarlalar"/>
+        <text name="as_help_fields_p1_title" text="Tarlalar Penceresi"/>
+        <text name="as_help_fields_p1_text" text="Sağ Ctrl + C tuşları veya altında 'Bana tıkla' yazan tarla simgesine tıklamak tarlalarınızın listesini açar. Sahip olunan her tarla için bir satır bulunur:&#10;- Tarla: oyun içi numara;&#10;- Mahsul ve Gelişim Evresi;&#10;- Ekim, Gübre, İlaçlama: son geçiş tarihi;&#10;- Hasat: mahsulün ne zaman hazır olacağı.&#10;&#10;Fare tekerleği ile liste kaydırılabilir; üstteki çarpı işareti pencereyi kapatır."/>
+        <text name="as_help_fields_p2_title" text="Tarihler"/>
+        <text name="as_help_fields_p2_text" text="Oyun hiçbir tarihi saklamaz: AutoSwitch, mod yüklendikten sonra tarlanın en az %10'u işlendiğinde (kenar geçişleri sayılmaz) tarihleri kendisi kaydeder. Bundan önce kutucukta 'takip öncesi' yazar. Tarihler kayıt dosyasıyla birlikte saklanır."/>
+        <text name="as_help_fields_p3_title" text="Hasat Durumu"/>
+        <text name="as_help_fields_p3_text" text="- Bir ay ('Ay 8 civarı'): mahsul takvimine göre tahmini hasat zamanı.&#10;- 'Hazır': mahsul hasat edilebilir.&#10;- 'Hazır (ideal 5/7)': hasat edilebilir ancak en iyi olgunluk evresine henüz ulaşılmamıştır (silajlık mısır gibi birden fazla evrede hasat edilebilen ürünler).&#10;- 'İdeal': hasat için en iyi zaman.&#10;- Hasat sonrasında: 'Hasat edildi' veya anız durumu."/>
+        <text name="as_help_fields_p4_title" text="Birleştirilmiş Tarlalar"/>
+        <text name="as_help_fields_p4_text" text="Oyun içerisindeki birleştirilmiş tarlalar (tek bir işlenmiş toprak sınırı olan) tek bir satırda gösterilir, örneğin 'Tarla 12 (2 tarla)'.&#10;- Mavi çarpı işaretine tıklamak grubun tarla listesini açar.&#10;- Bu listedeki bir tarlaya tıklamak onu ana tarla yapar (numarası görüntülenen tarla).&#10;&#10;Tarla sınırı oyunu yavaşlatmamak adına birden fazla kareye bölünerek yalnızca bir kez hesaplanır ve ardından kayıt dosyasıyla birlikte saklanır."/>
+        <text name="as_help_register_title" text="Defter"/>
+        <text name="as_help_register_p1_title" text="Tartım ve Satış Defteri"/>
+        <text name="as_help_register_p1_text" text="Sağ Ctrl + R tuşları defteri üç sekme halinde açar:&#10;- Tartımlar: AutoDrive Addon tarafından gönderilen, kantar üzerindeki her geçiş (yer bilgisi ve tartımı yapan kişi: AutoDrive veya oyuncu);&#10;- Satışlar: ürün, miktar, tutar ve satış noktası bilgileriyle birlikte her satış. Römork boşaltması küçük parçalar halinde gelir: bunlar tek bir satırda gruplandırılır;&#10;- Toplamlar: aya ve ürüne göre.&#10;&#10;Her sekmenin altında genel toplamlar görüntülenir."/>
+        <text name="as_help_register_p2_title" text="Yıllar ve Silme İşlemi"/>
+        <text name="as_help_register_p2_text" text="Yıl başına bir sayfa: defter mevcut yıl ile açılır; &lt; &gt; okları önceki yılları gösterir (hiçbir şey silinmez).&#10;&#10;Bir satırın sonundaki çarpı simgesi o satırı siler: onaylamak için ikinci kez tıklayın.&#10;&#10;Defter kayıt dosyasıyla birlikte saklanır."/>
+        <text name="as_help_money_title" text="Para"/>
+        <text name="as_help_money_p1_title" text="Kredili Mevduat (Eksi Bakiye) ve Faiz"/>
+        <text name="as_help_money_p1_text" text="Hesabınız eksi bakiyedeyken satın alma veya kiralama yapabilirsiniz; sahip olduğunuz varlıkların (satın alınan ekipmanlar, tarlalar ve binalar - kiralıklar hariç) yeniden satış değerinin %20'sine kadar limit tanınır (ayarlanabilir; Devre Dışı = temel oyun).&#10;&#10;Negatif bakiye üzerinden her oyun günü faiz kesilir: varsayılan olarak yılda %10, yılın günlerine bölünerek uygulanır. Finans menüsünde 'Faiz' satırı olarak yer alır."/>
+        <text name="as_help_money_p2_title" text="Ay Sonu Ödenen Kooperatifler"/>
+        <text name="as_help_money_p2_text" text="Adında 'coop' geçen bir kooperatif satış noktasına yapılan satış her zamanki gibi gerçekleşir ancak para hemen hesaba yatmaz: defterde 'Ödenecek' olarak not edilir ve ayın toplamı ay sonunda Finans menüsündeki 'Kooperatifler' satırından ödenir. Kapatılabilir."/>
+        <text name="as_help_hours_title" text="Çalışma Saatleri ve Uyku"/>
+        <text name="as_help_hours_p1_title" text="Çalışma Saatleri"/>
+        <text name="as_help_hours_p1_text" text="- Mağaza: 08:00 - 19:00 arası. Bu saatler dışında mağazaya göz atılabilir ancak satın alma, kiralama, satma veya inşa etme işlemleri reddedilir.&#10;- Satış Noktaları (silolar, değirmenler, fabrikalar vb.): 06:00 - 22:00 arası. Bu saatler dışında hiçbir ürün kabul edilmez; bir AutoDrive kamyonu açılış saatine kadar yerinde bekler.&#10;&#10;Çalışma saatleri AUTOSWITCH sekmesinden ayarlanabilir ve kapatılabilir."/>
+        <text name="as_help_hours_p2_title" text="Uyku"/>
+        <text name="as_help_hours_p2_text" text="Uyku penceresi iki liste sunar: saatler (+0 ila +23 sa) ve günler (0 ila 7 gün). Gün seçildiğinde uyanma saati seçilen ek saatlerle birlikte son günün sabahı 08:00 olur. Günler normal şekilde ilerler: mahsuller, satışlar ve maaşlar her zamanki gibi hesaplanır."/>
+        <text name="as_help_road_title" text="Yol, Trafik ve Işıklar"/>
+        <text name="as_help_road_p1_title" text="Trafik"/>
+        <text name="as_help_road_p1_text" text="- Trafikteki araçlar yolda seyreden traktörleri (AutoDrive veya manuel sürülen) artık sollamaz. Traktör 10 saniyedir duruyorsa, geri gidiyorsa veya dörtlü flaşörleri yanıksa geçebilirler.&#10;- Araç sensörleri genişliklerinin %80'ine düşürülmüştür: bir traktörle karşılaştıklarında artık gerekece yavaşlamazlar.&#10;&#10;Traffic Density Control tarafından eklenen trafikle de çalışır."/>
+        <text name="as_help_road_p2_title" text="AutoDrive Hızı"/>
+        <text name="as_help_road_p2_text" text="AutoSwitch, AutoDrive hızını araziye göre zorunlu kılar: tarlada 20 km/s, yollarda 30 km/s, yolda limitsiz (ayarlanabilir). AutoDrive virajlarda ve varış noktalarında her zaman yavaşlar."/>
+        <text name="as_help_road_p3_title" text="Farlar"/>
+        <text name="as_help_road_p3_text" text="Kendi aracınız dahil tüm araçların farları, ışık türüne göre yapılan ayarlarla daha uzağı ve daha güçlü aydınlatır (menzil ve parlaklık birlikte x1,1 ile x2,5 arasında):&#10;- uzun/kısa farlar: x2;&#10;- ön ve arka çalışma farları: x2;&#10;- tepe lambaları, sinyalizasyon (sinyal, fren, geri vites lambaları) ve diğer ışıklar: x1,1.&#10;&#10;'Phares renforcés: Non' (Güçlendirilmiş farlar: Hayır) seçeneği, hiçbir hesaplama yapmadan temel oyun farlarına geri döndürür."/>
+        <text name="as_help_files_title" text="Dosyalar ve Gelişmiş Ayarlar"/>
+        <text name="as_help_files_p1_title" text="modSettings/FS25_AutoSwitch Klasörü"/>
+        <text name="as_help_files_p1_text" text="Bu dosyalar AutoSwitch tarafından oluşturulur ve oyun kapalıyken elle düzenlenebilir:&#10;- transmissions.xml: Her makinenin aktarma organı. 'detected' kısmı AutoSwitch'in okuduğu değerdir; kendi tercihinizi zorlamak için 'forced' kısmına 4x4, front (yalnızca ön) veya rear (yalnızca arka) yazabilirsiniz.&#10;- cooperatives.xml: Kooperatif olan yerleri düzeltmek için coop='true' veya 'false' değerine sahip her satış noktası.&#10;- horaires.xml: Belirli bir satış noktasına özel çalışma saatleri. -1 = menü saatleri; open='0' close='24' = 7/24 açık."/>
+        <text name="as_help_files_p2_title" text="Kayıt Dosyası İçerisinde"/>
+        <text name="as_help_files_p2_text" text="- AutoSwitch_fields.xml: Tarlalar penceresinin tarihleri ve birleştirilmiş tarlaları.&#10;- AutoSwitch_register.xml: Defterin tartım ve satış kayıtları.&#10;- AutoSwitch_coop.xml: Kooperatiflerin kalan borç ödemeleri.&#10;&#10;Lastik izleri ve AUTOSWITCH sekmesindeki ayarlar da oyun kayıt dosyasıyla birlikte saklanır."/>
+        <!-- fin de l'aide -->
+        <text name="vtpas_tireLife_label" text="Lastik aşınması"/>
+        <text name="vtpas_tireLife_tip" text="Lastikler ve paletler mesafeye, patinaja, yüke, zemine, basınca ve havaya göre aşınır. Aşınmış lastik: tarlada daha az tutunur, kuru yolda biraz daha fazla tutunur."/>
+        <text name="vtpas_tireLife_uyt" text="Use Your Tyres etkin: aşınmayı bu mod yönetir, bu ayarın herhangi bir etkisi yoktur."/>
+        <text name="vtpas_tireLifeKm_label" text="Lastik ömrü"/>
+        <text name="vtpas_tireLifeKm_tip" text="2 metrelik bir lastiği aşındırmak için normal yük altında yolda kat edilmesi gereken mesafe. Tarla yaklaşık 3 kat daha az, patinaj ise çok daha fazla aşındırır."/>
+        <text name="vtpas_tl_info" text="Lastik aşınması"/>
+        <text name="vtpas_tl_front" text="ÖN"/>
+        <text name="vtpas_tl_rear" text="ARKA"/>
+        <text name="vtpas_tl_alertWorn" text="%s : lastikler aşınmış (%%%d)"/>
+        <text name="vtpas_tl_alertCritical" text="%s : lastiklerin değiştirilmesi gerekiyor (%%%d), atölyeye gidin"/>
+        <text name="vtpas_tl_trackCut" text="%s : palet kesilmiş/hasarlı, atölyede değiştirilmeli"/>
+        <text name="vtpas_tl_replace" text="Yeni lastikler"/>
+        <text name="vtpas_tl_replaceAsk" text="%s karşılığında %d adet yeni lastik takılsın mı?"/>
+    </texts>
+</l10n>

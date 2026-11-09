@@ -2,6 +2,7 @@
 
 | Version | Changements |
 | --- | --- |
+| 1.0.3.10 | Traduction turque, merci à HSayar / Turkish translation, thanks to HSayar |
 | 1.0.3.9 | Crevaisons (Mud System Physics) : 2 % de risque par tranche de 10 km au lieu de 2 % par km avec des pneus neufs (le risque monte toujours avec l'usure). Commentaires du code nettoyés |
 | 1.0.3.8 | Différentiels : nouveau réglage « Patinage pour blocage sur l'asphalte » (50 % par défaut, désactivable) ; sur l'asphalte et le béton il remplace les seuils avant et arrière, déverrouillage à la moitié |
 | 1.0.3.7 | Onglet AUTOSWITCH : retrouvé même quand un autre mod (ex. LooseLoad) ajoute sa page avant dans les Paramètres |
