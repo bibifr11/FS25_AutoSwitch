@@ -15,7 +15,7 @@
 --   Les véhicules pilotés par AutoDrive ne sont pas notés (AutoDrive les gère).
 --   Un véhicule déjà relancé à la main est laissé tel quel.
 --   Serveur seulement (les ouvriers tournent sur le serveur).
--- v1.0.3.0 (2) : toujours le point le plus proche (Fabien : le « dernier point » de CP
+-- v1.0.3.0 (2) : toujours le point le plus proche (le « dernier point » de CP
 --   le faisait repartir en arrière). Lignes [AS_CpResume] toujours écrites dans log.txt.
 -- v1.0.3.0 (3) : le plus proche prenait la mauvaise ligne là où les lignes se croisent.
 --   On note le point exact de la course (sans le recul de 10 m que CP ajoute) et on

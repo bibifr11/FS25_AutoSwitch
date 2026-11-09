@@ -1,4 +1,4 @@
--- AutoSwitch : touches Ctrl droit réservées à AutoSwitch (01/11, demande de Fabien)
+-- AutoSwitch : touches Ctrl droit réservées à AutoSwitch (01/11)
 --
 -- 1) Lecture directe du clavier : nos combinaisons (Ctrl droit + I, Flèche haut, M, R, C) marchent
 --    toujours, même si le jeu a écarté notre touche à cause d'un doublon avec un autre mod.

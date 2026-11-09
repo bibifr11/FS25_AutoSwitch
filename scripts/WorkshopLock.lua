@@ -4,7 +4,7 @@
 -- v1.0.3.2 : pendant un entretien, ADS comme RMS garent l'engin : il sort de la liste
 --   Tab (enterable#isTabbable="false" dans vehicles.xml) jusqu'à la fin des travaux.
 --   Si on passe de RMS à ADS pendant un entretien, la fin de l'entretien de RMS n'arrive
---   jamais : l'engin reste hors de la liste Tab pour toujours (MF 7S, Fendt 700 de Fabien).
+--   jamais : l'engin reste hors de la liste Tab pour toujours (MF 7S, Fendt 700).
 --   Au chargement de la partie, AutoSwitch rend la liste Tab à un engin quand :
 --     - son fichier de véhicule le met dans la liste Tab (valeur d'origine) ;
 --     - la sauvegarde l'en a sorti ;

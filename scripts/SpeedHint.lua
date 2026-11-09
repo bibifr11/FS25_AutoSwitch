@@ -561,7 +561,7 @@ function AS_SpeedHint:draw()
             renderOverlay(ov, iconX, by, iconW, iconH)
         end
         -- ponts dans l'image (256 px) : tracteur avant à 55 px du haut, arrière à 195 px ;
-        -- moissonneuse avant à 73 px, arrière à 207 px ; ensileuse 70 / 212 px (dessin de Fabien)
+        -- moissonneuse avant à 73 px, arrière à 207 px ; ensileuse 70 / 212 px (d'après le dessin)
         local ws = st.wheelVehicle == vehicle and st.wheelSlip or nil
         if ws ~= nil then
             local lpX, lpY = pxw(3), py(1.5)

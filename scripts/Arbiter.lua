@@ -4,7 +4,7 @@
 local vtpInfo = AS.vtpInfo
 
 -------------------------------------------------------------------------------
--- v1.0.0.07 : AutoSwitch reprend les arbitrages que ModMixer faisait pour Fabien,
+-- v1.0.0.07 : AutoSwitch reprend les arbitrages que faisait ModMixer,
 --   pour pouvoir retirer ModMixer. Aucun mod n'est désactivé : seul le crochet
 --   choisi est écarté sur la fonction concernée, le reste du mod fonctionne.
 --   - blocages : le crochet d'un mod sur une fonction n'est pas installé ;

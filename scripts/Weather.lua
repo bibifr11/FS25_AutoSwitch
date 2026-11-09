@@ -287,7 +287,7 @@ local function dayName(offset)
     return string.format(L("vtpas_wx_inDays"), offset)
 end
 
--- « 14h00 » aujourd'hui, sinon « J+1 14h00 » (v1.0.0.60, demande de Fabien)
+-- « 14h00 » aujourd'hui, sinon « J+1 14h00 » (v1.0.0.60)
 function AS_Weather:fmtWhen(t, today)
     t = math.floor(t / 900000 + 0.5) * 900000
     local off = math.floor(t / self.DAY_MS) - today
@@ -603,7 +603,7 @@ end
 -------------------------------------------------------------------------------
 
 -- (v1.0.0.63) place de la mini-météo : à la place de la météo du jeu, dans la barre de
--- l'horloge (demande de Fabien). getPosition() de la barre = coin haut-droit (vu en jeu,
+-- l'horloge. getPosition() de la barre = coin haut-droit (vu en jeu,
 -- comme Enhanced Vehicle qui pose ses blocs sous baseY - infoBgScale.height).
 -- Renvoie le bord droit, le haut et la hauteur du bloc, ou nil si la barre est introuvable.
 local function gameInfo()
@@ -699,7 +699,7 @@ if GameInfoDisplay ~= nil and GameInfoDisplay.draw ~= nil then
         -- weatherNextIconSpacing ; le jeu place les éléments au moment du dessin)
         local savedNum
         -- (v1.0.3.0) case refermée aussi quand la mini-météo est à sa place : sinon le fond
-        -- vide de la barre restait visible derrière « Prévision » (capture de Fabien 25/10)
+        -- vide de la barre restait visible derrière « Prévision »
         if true then
             savedNum = GW_NUM
             savedNum[1], savedNum[2] = self.weatherNextIconOffsetX, self.weatherNextIconSpacing

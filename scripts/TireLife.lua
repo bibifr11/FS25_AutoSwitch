@@ -842,7 +842,7 @@ end
 -- TRACK_LUG. La boue de la chenille est coupée pareil, MUD_GAP plus bas.
 -------------------------------------------------------------------------------
 AS_TireLife.TRACK_LUG = 0.04          -- crampons d'une chenille caoutchouc (m) si l'épaisseur est inconnue
-AS_TireLife.TRACK_KEEP = 0            -- part des crampons qui reste à 100 % (Fabien : lisse à 100 %)
+AS_TireLife.TRACK_KEEP = 0            -- part des crampons qui reste à 100 % (lisse à 100 %)
 AS_TireLife.TRACK_SETTLE_MS = 3000    -- attente après le chargement (machine posée)
 
 local BELT_PARAMS, BELT_MUD_PARAMS = {}, {}
@@ -1312,7 +1312,7 @@ end
 -- icônes des pneus des outils arrière, sous le bloc du tracteur (SpeedHint.lua) : le
 -- tracteur monte de rearToolsHeight quand un outil est attelé, redescend quand il part
 local TOOL_ROW, TOOL_PAD, TOOL_BAR, TOOL_GAP = 16, 5, 9, 4
--- images de Fabien pour 1 à 4 essieux (hud/as_toolN.dds, 256 x 512, dessin en haut sur h px) ;
+-- images pour 1 à 4 essieux (hud/as_toolN.dds, 256 x 512, dessin en haut sur h px) ;
 -- ax : milieu de chaque essieu, de l'avant vers l'arrière, en part de h. Au-delà : dessin.
 local TOOL_IMG_W = 54
 local TOOL_IMAGES = {
@@ -1373,7 +1373,7 @@ function AS_TireLife:rearToolsHeight(vehicle, py)
     return h
 end
 
--- outil de 1 à 4 essieux : image de Fabien, barre d'usure contre chaque pneu, % sur les côtés
+-- outil de 1 à 4 essieux : image, barre d'usure contre chaque pneu, % sur les côtés
 function AS_TireLife:drawToolImage(ov, axles, iconX, iconW, bx, labelW, topY, pxw, py, size)
     local img = TOOL_IMAGES[#axles]
     local w, imgH = pxw(TOOL_IMG_W), py(toolImageH(#axles))

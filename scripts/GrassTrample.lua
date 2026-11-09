@@ -11,7 +11,7 @@ local getMudClass, getVehicles = AS.getMudClass, AS.getVehicles
 --     monte avec la vitesse (10 % à 11, 15 % à 15, 30 % à 25, 50 % à 36 km/h) ;
 --   - humide (12 à 30 %) : dès 7 km/h, chance x1,5, un stade ;
 --   - très humide (> 30 %) ou pluie : dès 7 km/h, chance x1,5, un stade
---     (1.0.0.48 : deux stades et chance doublée étaient trop durs pour Fabien) ;
+--     (1.0.0.48 : deux stades et chance doublée étaient trop durs) ;
 --   - au-delà de 30 km/h : coupée à ras, quel que soit le temps ;
 --   - déjà au stade le plus bas : le passage suivant la coupe à ras.
 --   Un passage = un véhicule (attelage compris) sur un carré de 0,5 m : ses autres

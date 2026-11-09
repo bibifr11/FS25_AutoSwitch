@@ -2,6 +2,7 @@
 
 | Version | Changements |
 | --- | --- |
+| 1.0.3.9 | Crevaisons (Mud System Physics) : 2 % de risque par tranche de 10 km au lieu de 2 % par km avec des pneus neufs (le risque monte toujours avec l'usure). Commentaires du code nettoyés |
 | 1.0.3.8 | Différentiels : nouveau réglage « Patinage pour blocage sur l'asphalte » (50 % par défaut, désactivable) ; sur l'asphalte et le béton il remplace les seuils avant et arrière, déverrouillage à la moitié |
 | 1.0.3.7 | Onglet AUTOSWITCH : retrouvé même quand un autre mod (ex. LooseLoad) ajoute sa page avant dans les Paramètres |
 | 1.0.3.6 | Pressions VTP : « Av: x.x Bar » au-dessus du tracteur et « Ar: x.x Bar » en dessous, en direct, par pont (si le véhicule a VTP). Décor « palette de pneus » du menu construction : solide (on ne passe plus à travers) et supprimable en mode construction. Calendrier des cultures : nouveau réglage dans l'onglet AUTOSWITCH, dates de semis et de récolte de la carte (défaut) ou du mod Climate Profiles. Découvert : avec Advanced Damage System, l'entretien par l'ouvrier, l'atelier et l'achat de pièces tiennent compte du découvert, sur la ferme qui paie. Outils dételés : frein de parking sur les outils dont les roues n'ont pas de frein (ils ne roulent plus tout seuls). Pneus : gomme usée avec image de brillance, plus d'avertissement « gloss map added by script ». Performances : phares relus 4 fois par seconde au lieu de chaque image, onglet AUTOSWITCH préparé au chargement (surligné tout de suite), plus d'avertissement « renderOverlay called too soon » dans log.txt |

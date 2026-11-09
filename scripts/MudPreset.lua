@@ -24,7 +24,7 @@ AS_MudPreset.TTD_RECOMMENDED = "hard"
 
 -- v4 (1.0.0.0) : tous les réglages de Mud System Physics (profils de sol compris), dans l'ordre :
 -- le préréglage de difficulté d'abord, car il réécrit une partie des valeurs.
--- 1.0.0.11 : valeurs reprises de la partie de Fabien avant la 1.0.0.01 (sauvegarde du
+-- 1.0.0.11 : valeurs reprises de la partie avant la 1.0.0.01 (sauvegarde du
 --   07/10 17:10) : avec l'humidité locale des champs coupée (flw_enabled), les pneus
 --   ne se salissaient plus.
 AS_MudPreset.RECOMMENDED = {
@@ -50,7 +50,7 @@ AS_MudPreset.RECOMMENDED = {
     { "puncture_roadGarbageEnabled", true },
     { "puncture_roadGarbagePointCount", 20 },
     { "puncture_chancePerKm", 0.02 },
-    { "puncture_chanceDistanceKm", 1 },
+    { "puncture_chanceDistanceKm", 10 }, -- (09/11) 2 % / 10 km (pneu neuf) ; l'usure monte le risque (TireLife)
     { "puncture_requireJack", true },
     { "puncture_showCarriedWheel", true },
     { "puncture_highlightWheel", true },

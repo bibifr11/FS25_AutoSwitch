@@ -52,7 +52,7 @@ AS_Puddles.MIN_VISIBLE_MM = 3
 AS_Puddles.BUDGET_MS = 2             -- temps de calcul maxi par image pendant la préparation
 AS_Puddles.LOG_GAME_MINUTES = 60
 AS_Puddles.FILE_NAME = "autoSwitchPuddles.xml"
-AS_Puddles.I3D = "objects/puddle/flaque.i3d"   -- flaque faite par Fabien (GIANTS Editor)
+AS_Puddles.I3D = "objects/puddle/flaque.i3d"   -- flaque faite dans GIANTS Editor
 AS_Puddles.LOOKS = { "eau (réglages de Dynamic Puddles)" }   -- ordre des formes dans puddle.i3d
 
 AS_Puddles.modDir = g_currentModDirectory or ""
@@ -109,7 +109,7 @@ function AS_Puddles:getSoilMap()
 end
 
 -- getTypeIndexAtWorldPos ne répond que là où un échantillon a été prélevé (3 % de la
--- carte chez Fabien) : on lit directement la carte des sols (bitVectorMap de PF,
+-- carte) : on lit directement la carte des sols (bitVectorMap de PF,
 -- canaux du type : typeFirstChannel / typeNumChannels de PrecisionFarming.xml).
 function AS_Puddles:findSoilBitMap()
     if self.soilBitMap ~= nil then return self.soilBitMap or nil end

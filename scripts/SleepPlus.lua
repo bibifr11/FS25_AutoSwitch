@@ -24,9 +24,9 @@ local L = AS.L
 AS_SleepPlus = {}
 AS_SleepPlus.MAX_HOURS = 23
 AS_SleepPlus.MAX_DAYS  = 7
-AS_SleepPlus.DEFAULT_HOURS = 0    -- choix proposés à l'ouverture (Fabien) : +0 h et +1 jour
+AS_SleepPlus.DEFAULT_HOURS = 0    -- choix proposés à l'ouverture : +0 h et +1 jour
 AS_SleepPlus.DEFAULT_DAYS  = 1
-AS_SleepPlus.WAKE_HOUR     = 8    -- avec des jours : réveil à 8 h le dernier jour (Fabien, 13/10/2026)
+AS_SleepPlus.WAKE_HOUR     = 8    -- avec des jours : réveil à 8 h le dernier jour (13/10/2026)
 AS_SleepPlus.DAY_MS    = 24 * 60 * 60 * 1000
 -- Mise en page (hauteur d'écran, depuis le bas du contenu) : titre Heures,
 -- curseur Heures, titre Jours, curseur Jours ; fenêtre agrandie de EXTRA_H
@@ -86,8 +86,8 @@ function AS_SleepPlus:createDaysList(dlg, el)
     clone.id = "asSleepDaysElement"
     clone.onClickCallback = nil   -- ne doit pas toucher l'heure de réveil du jeu
     clone.target = nil
-    -- v1.0.0.33 : la copie posée sous la liste débordait sur les boutons (capture
-    -- de Fabien) ; il voulait aussi un titre au-dessus de chaque curseur.
+    -- v1.0.0.33 : la copie posée sous la liste débordait sur les boutons ;
+    -- plus un titre au-dessus de chaque curseur.
     -- Deux titres copiés du texte de la fenêtre, puis tout est replacé.
     local x = el.position ~= nil and el.position[1] or 0
     local daysY = self.DAYS_Y
