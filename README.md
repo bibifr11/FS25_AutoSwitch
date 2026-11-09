@@ -1,13 +1,24 @@
 <img width="2056" height="765" alt="ChatGPT Image 22 oct  2026, 17_12_23" src="https://github.com/user-attachments/assets/bc467ab8-f289-47a8-91c0-67e536e2cdfd" />
 
 
-### Discord https://discord.gg/S7gGzqnSEp
-## LAST VERSION AUTOSWITCH https://github.com/bibifr/FS25_AutoSwitch/releases/latest/download/FS25_AutoSwitch.zip
-## ADDON Autodrive for some Forget function https://github.com/bibifr/FS25_AutoDriveAddon/releases
+### Discord : https://discord.gg/yrFBwCgtA7
+### Téléchargement / Download : [Releases](https://github.com/bibifr11/FS25_AutoSwitch/releases/latest)
+### FarmPilot : [github.com/bibifr11/FS25_FarmPilot](https://github.com/bibifr11/FS25_FarmPilot/releases/latest)
 
 # FS25 AutoSwitch
 
-**Version 1.0.3.5** · Farming Simulator 25 · Auteur : Fabien · FR / EN / DE
+**Version 1.0.3.9** · Farming Simulator 25 · Auteur : Fabien · FR / EN / DE
+
+### Nouveautés 1.0.3.6 à 1.0.3.9
+- Pressions VTP en direct : « Av » au-dessus du tracteur, « Ar » en dessous.
+- Calendrier des cultures : dates de la carte ou de Climate Profiles.
+- Découvert pris en compte par Advanced Damage System (ouvrier, atelier, pièces).
+- Frein de parking automatique sur les outils dételés sans frein.
+- Blocage de différentiel sur l'asphalte : seuil dédié (50 %, désactivable).
+- Onglet AUTOSWITCH retrouvé même avec LooseLoad.
+- Crevaisons moins fréquentes : 2 % par tranche de 10 km avec des pneus neufs.
+- Performances et log.txt allégés.
+
 
 ## French
 
@@ -91,7 +102,18 @@ AutoSwitch fait partie d'un ensemble réaliste global : ces mods sont prévus, a
 
 ## English
 
-**Version 1.0.3.5** · Farming Simulator 25 · Author: Fabien · FR / EN / DE
+**Version 1.0.3.9** · Farming Simulator 25 · Author: Fabien · FR / EN / DE
+
+### What's new 1.0.3.6 to 1.0.3.9
+- Live VTP pressures: "Fr" above the tractor, "Re" below.
+- Crop calendar: dates from the map or from Climate Profiles.
+- Overdraft supported by Advanced Damage System (worker, workshop, parts).
+- Automatic parking brake on detached implements without brakes.
+- Differential lock on asphalt: dedicated threshold (50 %, can be disabled).
+- AUTOSWITCH tab found even with LooseLoad.
+- Fewer punctures: 2 % per 10 km with new tires.
+- Lighter performance and log.txt.
+
 
 Companion mod that **harmonises the information of different mods to make them compatible with each other**!
 
