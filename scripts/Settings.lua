@@ -72,6 +72,11 @@ AS_Settings.windSway = 22          -- (v1.0.0.73) mouvement du feuillage au vent
 AS_Settings.WIND_SWAY_LIST = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 }
 AS_Settings.hudDedup = true        -- (v1.0.0.78) affichages en double des autres mods masqués
 AS_Settings.coopPay = true         -- (v1.0.0.81) coopératives payées en fin de mois
+AS_Settings.fieldLease = true      -- (v1.0.4.0) location de champs (onglet « Location » du menu Échap)
+AS_Settings.leaseRate = 4          -- (v1.0.4.0) loyer : taux annuel en % du prix de la parcelle
+AS_Settings.LEASE_RATE_LIST = { 2, 3, 4, 5, 6, 8, 10, 15, 20, 30, 40, 60 }
+AS_Settings.leaseRenew = 70        -- (v1.0.4.0) probabilité de renouvellement à l'échéance (%)
+AS_Settings.LEASE_RENEW_LIST = { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 }
 AS_Settings.hoursEnabled = true    -- (v1.0.0.95) horaires d'ouverture du magasin et des points de vente
 AS_Settings.shopOpen = 8           -- magasin : ouverture / fermeture (heures)
 AS_Settings.shopClose = 19
@@ -146,6 +151,9 @@ function AS_Settings:save()
             setXMLBool(xml, "vtpAutoSwitch.cropCalendar#map", self.cropCalMap)
             setXMLBool(xml, "vtpAutoSwitch.hudDedup#enabled", self.hudDedup)
             setXMLBool(xml, "vtpAutoSwitch.coopPay#enabled", self.coopPay)
+            setXMLBool(xml, "vtpAutoSwitch.fieldLease#enabled", self.fieldLease)
+            setXMLInt(xml, "vtpAutoSwitch.fieldLease#rate", self.leaseRate)
+            setXMLInt(xml, "vtpAutoSwitch.fieldLease#renew", self.leaseRenew)
             setXMLBool(xml, "vtpAutoSwitch.noOvertake#enabled", self.noOvertake)
             setXMLBool(xml, "vtpAutoSwitch.cpResume#enabled", self.cpResume)
             setXMLBool(xml, "vtpAutoSwitch.hours#enabled", self.hoursEnabled)
@@ -261,6 +269,12 @@ function AS_Settings:load()
                 if hd ~= nil then self.hudDedup = hd end
                 local cp = getXMLBool(xml, "vtpAutoSwitch.coopPay#enabled")
                 if cp ~= nil then self.coopPay = cp end
+                local fle = getXMLBool(xml, "vtpAutoSwitch.fieldLease#enabled")
+                if fle ~= nil then self.fieldLease = fle end
+                local flr = getXMLInt(xml, "vtpAutoSwitch.fieldLease#rate")
+                if flr ~= nil then self.leaseRate = math.max(1, math.min(100, flr)) end
+                local fln = getXMLInt(xml, "vtpAutoSwitch.fieldLease#renew")
+                if fln ~= nil then self.leaseRenew = math.max(0, math.min(100, fln)) end
                 local he = getXMLBool(xml, "vtpAutoSwitch.hours#enabled")
                 if he ~= nil then self.hoursEnabled = he end
                 local h1 = getXMLInt(xml, "vtpAutoSwitch.hours#shopOpen")
@@ -359,6 +373,14 @@ function AS_Settings:apply()
     if AS_WindSway ~= nil then AS_WindSway:setFactor(self.windSway / 10) end
     if AS_HudDedup ~= nil then AS_HudDedup:setEnabled(self.hudDedup) end
     if AS_CoopPay ~= nil then AS_CoopPay.ENABLED = self.coopPay end
+    if AS_FieldLease ~= nil then
+        AS_FieldLease.ENABLED = self.fieldLease
+        AS_FieldLease.RENEW = self.leaseRenew
+        -- multijoueur : le taux vient du serveur
+        if g_currentMission == nil or g_currentMission.getIsServer == nil or g_currentMission:getIsServer() then
+            AS_FieldLease.RATE = self.leaseRate
+        end
+    end
     if AS_NoOvertake ~= nil then AS_NoOvertake:setEnabled(self.noOvertake) end
     if AS_CpResume ~= nil then AS_CpResume.ENABLED = self.cpResume end
     if AS_Hours ~= nil then
@@ -638,6 +660,31 @@ function AS_Settings:onCoopPayChanged(state, element)
     self:apply()
     self:save()
     sprint("coopératives payées en fin de mois : %s", tostring(self.coopPay))
+end
+
+function AS_Settings:onFieldLeaseChanged(state, element)
+    self.fieldLease = (state == 2)
+    self:apply()
+    self:save()
+    sprint("location de champs : %s", tostring(self.fieldLease))
+end
+
+function AS_Settings:onLeaseRateChanged(state, element)
+    local v = self.LEASE_RATE_LIST[state]
+    if v ~= nil then
+        self.leaseRate = v
+        self:apply()
+        self:save()
+    end
+end
+
+function AS_Settings:onLeaseRenewChanged(state, element)
+    local v = self.LEASE_RENEW_LIST[state]
+    if v ~= nil then
+        self.leaseRenew = v
+        self:apply()
+        self:save()
+    end
 end
 
 function AS_Settings:onHoursEnabledChanged(state, element)
@@ -1051,6 +1098,7 @@ AS_Settings.LOG_LIST = {
     { "AS_Champs", "Champs", "Fields" },
     { "AS_Register", "Registre", "Register" },
     { "AS_CoopPay", "Coopératives", "Cooperatives" },
+    { "AS_Location", "Location de champs", "Field lease" },
     { "AS_Hours", "Horaires d'ouverture", "Opening hours" },
     { "AS_TrafficSensor", "Capteurs du trafic", "Traffic sensors" },
     { "AS_Help", "Aide (menu Échap > Aide)", "Help (Esc > Help menu)" },
@@ -1504,6 +1552,33 @@ function AS_Settings:buildUI(frame)
         texts = onOff,
         state = self.coopPay and 2 or 1,
         callback = AS_Settings.onCoopPayChanged,
+    })
+
+    -- (v1.0.4.0) location de champs
+    self.options.fieldLease = self:addRow(layout, template, {
+        label = L("vtpas_fl_label"),
+        tip = L("vtpas_fl_tip"),
+        texts = onOff,
+        state = self.fieldLease and 2 or 1,
+        callback = AS_Settings.onFieldLeaseChanged,
+    })
+    local lrTexts = {}
+    for i, v in ipairs(self.LEASE_RATE_LIST) do lrTexts[i] = v .. " %" end
+    self.options.leaseRate = self:addRow(layout, template, {
+        label = L("vtpas_flRate_label"),
+        tip = L("vtpas_flRate_tip"),
+        texts = lrTexts,
+        state = self:getIndex(self.LEASE_RATE_LIST, self.leaseRate),
+        callback = AS_Settings.onLeaseRateChanged,
+    })
+    local lnTexts = {}
+    for i, v in ipairs(self.LEASE_RENEW_LIST) do lnTexts[i] = v .. " %" end
+    self.options.leaseRenew = self:addRow(layout, template, {
+        label = L("vtpas_flRenew_label"),
+        tip = L("vtpas_flRenew_tip"),
+        texts = lnTexts,
+        state = self:getIndex(self.LEASE_RENEW_LIST, self.leaseRenew),
+        callback = AS_Settings.onLeaseRenewChanged,
     })
 
     -- (v1.0.0.95) horaires d'ouverture

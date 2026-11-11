@@ -384,5 +384,86 @@
         <text name="vtpas_tl_trackCut" text="%s : chenille entaillée, à remplacer à l'atelier"/>
         <text name="vtpas_tl_replace" text="Pneus neufs"/>
         <text name="vtpas_tl_replaceAsk" text="Monter %d pneus neufs pour %s ?"/>
+        <text name="finance_asFieldLease" text="Fermages"/>
+        <text name="vtpas_fl_label" text="Location de champs"/>
+        <text name="vtpas_fl_tip" text="Onglet « Location » du menu Échap : prendre en location les champs des voisins ou mettre les vôtres en location. Désactivé : l'onglet est masqué, les baux en cours vont jusqu'à leur fin."/>
+        <text name="vtpas_flRate_label" text="Loyer des champs (par an)"/>
+        <text name="vtpas_flRate_tip" text="Loyer annuel en pourcentage du prix de la parcelle, payé chaque mois (±15 % selon le champ). Ne change pas les baux déjà signés."/>
+        <text name="vtpas_flRenew_label" text="Renouvellement des baux"/>
+        <text name="vtpas_flRenew_tip" text="Chance que l'autre partie renouvelle le bail à l'échéance. Réponse donnée un mois avant la fin."/>
+        <text name="vtpas_fl_title" text="Location de champs"/>
+        <text name="vtpas_fl_modeOffers" text="Offres des voisins"/>
+        <text name="vtpas_fl_modeIn" text="Mes locations"/>
+        <text name="vtpas_fl_modeOut" text="Mes champs"/>
+        <text name="vtpas_fl_parcel" text="Parcelle %d"/>
+        <text name="vtpas_fl_field" text="Champ %d"/>
+        <text name="vtpas_fl_colField" text="Champ"/>
+        <text name="vtpas_fl_colArea" text="Surface"/>
+        <text name="vtpas_fl_colRent" text="Loyer / mois"/>
+        <text name="vtpas_fl_colTerm" text="Échéance"/>
+        <text name="vtpas_fl_colTermOffer" text="Durée du bail"/>
+        <text name="vtpas_fl_colState" text="État"/>
+        <text name="vtpas_fl_summary" text="Loyers reçus : %s / mois     Loyers payés : %s / mois"/>
+        <text name="vtpas_fl_noOffer" text="Aucune offre ce mois-ci."/>
+        <text name="vtpas_fl_none" text="Aucun champ."/>
+        <text name="vtpas_fl_months" text="%d mois"/>
+        <text name="vtpas_fl_since" text="Depuis %d mois"/>
+        <text name="vtpas_fl_left" text="Dans %d mois"/>
+        <text name="vtpas_fl_stOffer" text="À louer"/>
+        <text name="vtpas_fl_stOwn" text="Libre (peut être mis en annonce)"/>
+        <text name="vtpas_fl_stRyf" text="Géré par RentYourField"/>
+        <text name="vtpas_fl_stNoRenew" text="Pas de renouvellement demandé"/>
+        <text name="vtpas_fl_stRenewYes" text="Renouvellement accepté"/>
+        <text name="vtpas_fl_stRenewNo" text="Pas renouvelé à la fin"/>
+        <text name="vtpas_fl_stHarvest" text="Prolongé jusqu'à la récolte"/>
+        <text name="vtpas_fl_stRunning" text="En cours (bail de %d mois)"/>
+        <text name="vtpas_fl_btnMode" text="Liste suivante"/>
+        <text name="vtpas_fl_btnRenewOn" text="Renouveler : Oui"/>
+        <text name="vtpas_fl_btnRenewOff" text="Renouveler : Non"/>
+        <text name="vtpas_fl_btnTerm" text="Durée : %d mois"/>
+        <text name="vtpas_fl_btnTake" text="Prendre en location"/>
+        <text name="vtpas_fl_btnLeaseOut" text="Mettre en annonce"/>
+        <text name="vtpas_fl_btnTerminate" text="Résilier"/>
+        <text name="vtpas_fl_askTake" text="Prendre %s en location pour %s par mois, bail de %d mois ?"/>
+        <text name="vtpas_fl_askLeaseOut" text="Mettre %s en annonce pour %s par mois ? Un locataire signera dans 1 à 3 mois, pour une durée qu'il choisit ; d'ici là le champ reste à vous."/>
+        <text name="vtpas_fl_askTerminatePen" text="Résilier le bail de %s avant la fin ? Pénalité : %s."/>
+        <text name="vtpas_fl_askTerminate" text="Résilier le bail de %s ?"/>
+        <text name="vtpas_fl_noticeYes" text="%s : le bail sera renouvelé à la fin du mois prochain."/>
+        <text name="vtpas_fl_noticeNo" text="%s : le bail ne sera pas renouvelé, il se termine à la fin du mois prochain."/>
+        <text name="vtpas_fl_renewed" text="%s : bail renouvelé pour %d mois, nouveau loyer %s par mois."/>
+        <text name="vtpas_fl_extended" text="%s : bail prolongé jusqu'à la récolte."/>
+        <text name="vtpas_fl_ended" text="%s : bail terminé."/>
+        <text name="vtpas_fl_cntOwned" text="Champs possédés : %d"/>
+        <text name="vtpas_fl_cntWait" text="(%d en annonce)"/>
+        <text name="vtpas_fl_cntTaken" text="Pris en location : %d"/>
+        <text name="vtpas_fl_cntLeased" text="Loués à des voisins : %d"/>
+        <text name="vtpas_fl_listedSince" text="Annoncé depuis %d mois"/>
+        <text name="vtpas_fl_stWait" text="En attente d'un locataire"/>
+        <text name="vtpas_fl_btnUnlist" text="Retirer l'annonce"/>
+        <text name="vtpas_fl_askUnlist" text="Retirer l'annonce de location de %s ?"/>
+        <text name="vtpas_fl_signed" text="%s : locataire trouvé, bail de %d mois signé à %s par mois."/>
+        <text name="vtpas_fl_endedRelist" text="%s : bail terminé, le champ est remis en annonce."/>
+        <text name="vtpas_fl_termTenant" text="Fixée par le locataire"/>
+        <text name="vtpas_fl_listOwn" text="Mes champs"/>
+        <text name="vtpas_fl_listLease" text="Locations"/>
+        <text name="vtpas_fl_listOffer" text="Annonces des voisins"/>
+        <text name="vtpas_fl_colAreaShort" text="ha"/>
+        <text name="vtpas_fl_leaseOf" text="bail de %d mois"/>
+        <text name="vtpas_fl_stFree" text="Libre"/>
+        <text name="vtpas_fl_stListed" text="En annonce"/>
+        <text name="vtpas_fl_stRyfShort" text="RentYourField"/>
+        <text name="vtpas_fl_dirIn" text="Pris"/>
+        <text name="vtpas_fl_dirOut" text="Loué"/>
+        <text name="vtpas_fl_pick" text="Choisissez un champ dans une liste"/>
+        <text name="vtpas_fl_infoArea" text="Surface : %.2f ha"/>
+        <text name="vtpas_fl_infoRent" text="Loyer : %s / mois"/>
+        <text name="vtpas_fl_btnPick" text="Choisir un champ"/>
+        <text name="vtpas_fl_cntIncome" text="Loyer mensuel à encaisser : %s"/>
+        <text name="vtpas_fl_cntPay" text="Loyer mensuel à payer : %s"/>
+        <text name="vtpas_fl_groupMine" text="Mes propriétés"/>
+        <text name="vtpas_fl_groupNeighbours" text="Mes voisins"/>
+        <text name="vtpas_fl_boxTitle" text="Mon locatif"/>
+        <text name="vtpas_fl_listIn" text="Mes locations"/>
+        <text name="vtpas_fl_listOut" text="Champs loués"/>
     </texts>
 </l10n>

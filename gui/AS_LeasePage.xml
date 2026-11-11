@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!-- AutoSwitch : onglet « Location » du menu Échap (scripts/FieldLease.lua) -->
+<GUI name="asLeaseFrame">
+    <GuiElement profile="fs25_menuContainer">
+        <GuiElement profile="fs25_menuHeaderPanel">
+            <Bitmap profile="fs25_menuHeaderIconBg">
+                <Bitmap profile="asLeaseHeaderIcon" id="headerIcon" size="50px 50px"/>
+            </Bitmap>
+            <Text profile="fs25_menuHeaderTitle" id="headerText" text="" size="700px 32px"/>
+            <!-- encadré en haut à droite « Mon locatif » : champs possédés, pris en location, loués -->
+            <Bitmap profile="asLeaseCountBox" id="countBox" position="-10px 0px" size="460px 104px">
+                <Text profile="asLeaseListTitle" id="countTitle" position="16px -4px" size="430px 24px" text=""/>
+                <Text profile="asLeaseCountText" id="countOwned" position="16px -28px" size="430px 24px" text=""/>
+                <Text profile="asLeaseCountText" id="countTaken" position="16px -52px" size="430px 24px" text=""/>
+                <Text profile="asLeaseCountText" id="countLeased" position="16px -76px" size="430px 24px" text=""/>
+            </Bitmap>
+        </GuiElement>
+
+        <GuiElement id="contentView">
+            <GuiElement id="tableContainer">
+                <!-- en haut à gauche : carte étirée vers la droite (dessinée par le script), champ choisi à droite -->
+                <Bitmap profile="asLeaseMapBox" id="miniMap" position="0px -10px" size="860px 290px"/>
+                <Text profile="asLeaseInfoTitle" id="infoName" position="890px -20px" size="460px 34px" text=""/>
+                <Text profile="asLeaseInfoText" id="infoArea" position="890px -70px" size="460px 28px" text=""/>
+                <Text profile="asLeaseInfoText" id="infoRent" position="890px -105px" size="460px 28px" text=""/>
+                <Text profile="asLeaseInfoWrap" id="infoState" position="890px -140px" size="460px 84px" text=""/>
+
+                <!-- 2 x 2 : à gauche Mes propriétés (Mes champs, Mes locations), à droite Mes voisins
+                     (Annonces des voisins, Champs loués) -->
+                <Text profile="asLeaseGroupTitle" id="groupMine" position="0px -312px" size="664px 30px" text=""/>
+                <Text profile="asLeaseGroupTitle" id="groupNeighbours" position="684px -312px" size="664px 30px" text=""/>
+
+                <Text profile="asLeaseListTitle" id="titleOwn" position="0px -348px" size="664px 26px" text=""/>
+                <Text profile="asLeaseListTitle" id="titleOffer" position="684px -348px" size="664px 26px" text=""/>
+                <GuiElement profile="fs25_statisticsHeaderBox" position="0px -374px">
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colField1" position="16px 0px" size="190px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colArea1" position="210px 0px" size="70px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colRent1" position="284px 0px" size="140px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colInfo1" position="428px 0px" size="232px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colField3" position="700px 0px" size="190px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colArea3" position="894px 0px" size="70px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colRent3" position="968px 0px" size="140px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colInfo3" position="1112px 0px" size="232px 32px" text="" handleFocus="false"/>
+                </GuiElement>
+                <SmoothList profile="asLeaseTable3" onClick="onListClick" id="listOwn" position="0px -408px" size="664px 128px">
+                    <ListItem profile="asLeaseListItem">
+                        <Text profile="asLeaseRowCellLeft" position="16px 0px" size="190px 32px" name="field"/>
+                        <Text profile="asLeaseRowCellLeft" position="210px 0px" size="70px 32px" name="area"/>
+                        <Text profile="asLeaseRowCellLeft" position="284px 0px" size="140px 32px" name="rent"/>
+                        <Text profile="asLeaseRowCellLeft" position="428px 0px" size="232px 32px" name="info"/>
+                    </ListItem>
+                </SmoothList>
+                <ThreePartBitmap profile="asLeaseSliderBoxL" position="668px -408px" size="6px 128px">
+                    <Slider profile="fs25_listSlider" dataElementId="listOwn"/>
+                </ThreePartBitmap>
+                <SmoothList profile="asLeaseTable3" onClick="onListClick" id="listOffer" position="684px -408px" size="664px 128px">
+                    <ListItem profile="asLeaseListItem">
+                        <Text profile="asLeaseRowCellLeft" position="16px 0px" size="190px 32px" name="field"/>
+                        <Text profile="asLeaseRowCellLeft" position="210px 0px" size="70px 32px" name="area"/>
+                        <Text profile="asLeaseRowCellLeft" position="284px 0px" size="140px 32px" name="rent"/>
+                        <Text profile="asLeaseRowCellLeft" position="428px 0px" size="232px 32px" name="info"/>
+                    </ListItem>
+                </SmoothList>
+                <ThreePartBitmap profile="asLeaseSliderBoxL" position="1352px -408px" size="6px 128px">
+                    <Slider profile="fs25_listSlider" dataElementId="listOffer"/>
+                </ThreePartBitmap>
+
+                <Text profile="asLeaseListTitle" id="titleLease" position="0px -546px" size="664px 26px" text=""/>
+                <Text profile="asLeaseListTitle" id="titleOut" position="684px -546px" size="664px 26px" text=""/>
+                <GuiElement profile="fs25_statisticsHeaderBox" position="0px -572px">
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colField2" position="16px 0px" size="190px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colArea2" position="210px 0px" size="70px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colRent2" position="284px 0px" size="140px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colInfo2" position="428px 0px" size="232px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colField4" position="700px 0px" size="190px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colArea4" position="894px 0px" size="70px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colRent4" position="968px 0px" size="140px 32px" text="" handleFocus="false"/>
+                    <Button profile="asLeaseHeader" onClick="onSortClick" id="colInfo4" position="1112px 0px" size="232px 32px" text="" handleFocus="false"/>
+                </GuiElement>
+                <SmoothList profile="asLeaseTable3" onClick="onListClick" id="listLease" position="0px -606px" size="664px 128px">
+                    <ListItem profile="asLeaseListItem">
+                        <Text profile="asLeaseRowCellLeft" position="16px 0px" size="190px 32px" name="field"/>
+                        <Text profile="asLeaseRowCellLeft" position="210px 0px" size="70px 32px" name="area"/>
+                        <Text profile="asLeaseRowCellLeft" position="284px 0px" size="140px 32px" name="rent"/>
+                        <Text profile="asLeaseRowCellLeft" position="428px 0px" size="232px 32px" name="info"/>
+                    </ListItem>
+                </SmoothList>
+                <ThreePartBitmap profile="asLeaseSliderBoxL" position="668px -606px" size="6px 128px">
+                    <Slider profile="fs25_listSlider" dataElementId="listLease"/>
+                </ThreePartBitmap>
+                <SmoothList profile="asLeaseTable3" onClick="onListClick" id="listOut" position="684px -606px" size="664px 128px">
+                    <ListItem profile="asLeaseListItem">
+                        <Text profile="asLeaseRowCellLeft" position="16px 0px" size="190px 32px" name="field"/>
+                        <Text profile="asLeaseRowCellLeft" position="210px 0px" size="70px 32px" name="area"/>
+                        <Text profile="asLeaseRowCellLeft" position="284px 0px" size="140px 32px" name="rent"/>
+                        <Text profile="asLeaseRowCellLeft" position="428px 0px" size="232px 32px" name="info"/>
+                    </ListItem>
+                </SmoothList>
+                <ThreePartBitmap profile="asLeaseSliderBoxL" position="1352px -606px" size="6px 128px">
+                    <Slider profile="fs25_listSlider" dataElementId="listOut"/>
+                </ThreePartBitmap>
+
+                <GuiElement profile="fs25_statisticsHeaderBox" position="0px -746px">
+                    <Text profile="asLeaseHeader" id="summaryText" position="16px 0px" size="1300px 32px" text=""/>
+                </GuiElement>
+            </GuiElement>
+        </GuiElement>
+    </GuiElement>
+</GUI>

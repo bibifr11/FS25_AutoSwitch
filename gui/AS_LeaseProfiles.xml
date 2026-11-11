@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<GUIProfiles>
+    <Profile name="asLeaseHeaderIcon" extends="baseReference" with="anchorMiddleCenter">
+        <imageSliceId value="gui.icon_ingameMenu_contracts" />
+        <imageColor value="$preset_fs25_colorMainDark" />
+    </Profile>
+
+    <Profile name="asLeaseHeader" extends="baseReference">
+        <imageColor value="0 0 0 0" />
+        <textFocusedColor value="$preset_fs25_colorMainHighlight" />
+        <textHighlightedColor value="$preset_fs25_colorMainHighlight" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_colorWhite_50" />
+        <textAlignment value="left" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+
+    <Profile name="asLeaseHeaderRight" extends="baseReference">
+        <imageColor value="0 0 0 0" />
+        <textFocusedColor value="$preset_fs25_colorMainHighlight" />
+        <textHighlightedColor value="$preset_fs25_colorMainHighlight" />
+        <textSize value="16px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textColor value="$preset_colorWhite_50" />
+        <textAlignment value="right" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+
+    <Profile name="asLeaseTable" extends="emptyPanel" with="anchorStretchingYLeft pivotTopLeft" height="600px" />
+
+    <Profile name="asLeaseListItem" extends="baseReference" with="anchorTopStretchingX alternating">
+        <height value="32px"/>
+        <imageColor value="$preset_fs25_colorGrey" />
+        <imageSelectedColor value="$preset_fs25_colorMainHighlight" />
+        <alternateBackgroundColor value="$preset_fs25_colorGreyDark_50" />
+    </Profile>
+
+    <Profile name="asLeaseRowCellLeft" extends="baseReference" with="anchorStretchingYLeft">
+        <textBold value="false" />
+        <textSize value="15px" />
+        <textAlignment value="left" />
+        <textColor value="$preset_fs25_colorMainLight" />
+        <textSelectedColor value="$preset_fs25_colorMainDark" />
+        <textDisabledColor value="$preset_colorDisabled" />
+    </Profile>
+
+    <Profile name="asLeaseRowCellRight" extends="asLeaseRowCellLeft">
+        <textAlignment value="right" />
+    </Profile>
+
+    <Profile name="asLeaseSliderBox" extends="fs25_listSliderBox" with="anchorTopRight" />
+    <!-- encadré des compteurs (haut à droite) -->
+    <Profile name="asLeaseCountBox" extends="baseReference" with="anchorTopRight pivotTopRight">
+        <imageColor value="$preset_fs25_colorGreyDark_50" />
+    </Profile>
+
+    <Profile name="asLeaseCountText" extends="baseReference" with="anchorTopLeft">
+        <imageColor value="0 0 0 0" />
+        <textSize value="18px" />
+        <textBold value="true" />
+        <textAlignment value="left" />
+        <textColor value="$preset_fs25_colorMainLight" />
+    </Profile>
+    <!-- v1.0.4.2 : trois listes, mini-carte, détail du champ -->
+    <Profile name="asLeaseTable3" extends="emptyPanel" with="anchorTopLeft pivotTopLeft" />
+    <Profile name="asLeaseSliderBoxL" extends="fs25_listSliderBox" with="anchorTopLeft" />
+    <Profile name="asLeaseMapBox" extends="baseReference" with="anchorTopLeft pivotTopLeft">
+        <imageColor value="0 0 0 0" />
+    </Profile>
+    <Profile name="asLeaseListTitle" extends="baseReference" with="anchorTopLeft">
+        <imageColor value="0 0 0 0" />
+        <textSize value="20px" />
+        <textBold value="true" />
+        <textUpperCase value="true" />
+        <textAlignment value="left" />
+        <textColor value="$preset_fs25_colorMainHighlight" />
+    </Profile>
+    <Profile name="asLeaseGroupTitle" extends="asLeaseListTitle">
+        <textSize value="24px" />
+        <textColor value="$preset_fs25_colorMainLight" />
+    </Profile>
+    <Profile name="asLeaseInfoTitle" extends="asLeaseListTitle">
+        <textSize value="26px" />
+        <textUpperCase value="false" />
+        <textColor value="$preset_fs25_colorMainLight" />
+    </Profile>
+    <Profile name="asLeaseInfoText" extends="asLeaseCountText">
+        <textSize value="18px" />
+        <textBold value="false" />
+    </Profile>
+    <Profile name="asLeaseInfoWrap" extends="asLeaseInfoText">
+        <textMaxNumLines value="3" />
+        <textVerticalAlignment value="top" />
+    </Profile>
+</GUIProfiles>

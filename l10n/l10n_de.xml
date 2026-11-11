@@ -384,5 +384,86 @@
         <text name="vtpas_tl_trackCut" text="%s: Gummiraupe eingeschnitten, in der Werkstatt ersetzen"/>
         <text name="vtpas_tl_replace" text="Neue Reifen"/>
         <text name="vtpas_tl_replaceAsk" text="%d neue Reifen für %s montieren?"/>
+        <text name="finance_asFieldLease" text="Pachten"/>
+        <text name="vtpas_fl_label" text="Feldpacht"/>
+        <text name="vtpas_fl_tip" text='Reiter „Pacht" im Esc-Menü: Felder der Nachbarn pachten oder eigene verpachten. Aus: Reiter ausgeblendet, laufende Verträge laufen bis zum Ende.'/>
+        <text name="vtpas_flRate_label" text="Pachtzins (pro Jahr)"/>
+        <text name="vtpas_flRate_tip" text="Jährliche Pacht in Prozent des Grundstückspreises, monatlich bezahlt (±15 % je nach Feld). Ändert bestehende Verträge nicht."/>
+        <text name="vtpas_flRenew_label" text="Vertragsverlängerung"/>
+        <text name="vtpas_flRenew_tip" text="Chance, dass die andere Partei den Vertrag am Ende verlängert. Antwort einen Monat vor dem Ende."/>
+        <text name="vtpas_fl_title" text="Feldpacht"/>
+        <text name="vtpas_fl_modeOffers" text="Angebote der Nachbarn"/>
+        <text name="vtpas_fl_modeIn" text="Gepachtete Felder"/>
+        <text name="vtpas_fl_modeOut" text="Meine Felder"/>
+        <text name="vtpas_fl_parcel" text="Grundstück %d"/>
+        <text name="vtpas_fl_field" text="Feld %d"/>
+        <text name="vtpas_fl_colField" text="Feld"/>
+        <text name="vtpas_fl_colArea" text="Fläche"/>
+        <text name="vtpas_fl_colRent" text="Pacht / Monat"/>
+        <text name="vtpas_fl_colTerm" text="Ende"/>
+        <text name="vtpas_fl_colTermOffer" text="Laufzeit"/>
+        <text name="vtpas_fl_colState" text="Status"/>
+        <text name="vtpas_fl_summary" text="Erhaltene Pacht: %s / Monat     Bezahlte Pacht: %s / Monat"/>
+        <text name="vtpas_fl_noOffer" text="Diesen Monat kein Angebot."/>
+        <text name="vtpas_fl_none" text="Kein Feld."/>
+        <text name="vtpas_fl_months" text="%d Monate"/>
+        <text name="vtpas_fl_since" text="Seit %d Monaten"/>
+        <text name="vtpas_fl_left" text="In %d Monaten"/>
+        <text name="vtpas_fl_stOffer" text="Zu verpachten"/>
+        <text name="vtpas_fl_stOwn" text="Frei (kann ausgeschrieben werden)"/>
+        <text name="vtpas_fl_stRyf" text="Von RentYourField verwaltet"/>
+        <text name="vtpas_fl_stNoRenew" text="Keine Verlängerung gewünscht"/>
+        <text name="vtpas_fl_stRenewYes" text="Verlängerung angenommen"/>
+        <text name="vtpas_fl_stRenewNo" text="Wird nicht verlängert"/>
+        <text name="vtpas_fl_stHarvest" text="Bis zur Ernte verlängert"/>
+        <text name="vtpas_fl_stRunning" text="Läuft (Vertrag %d Monate)"/>
+        <text name="vtpas_fl_btnMode" text="Nächste Liste"/>
+        <text name="vtpas_fl_btnRenewOn" text="Verlängern: Ja"/>
+        <text name="vtpas_fl_btnRenewOff" text="Verlängern: Nein"/>
+        <text name="vtpas_fl_btnTerm" text="Laufzeit: %d Monate"/>
+        <text name="vtpas_fl_btnTake" text="Pachten"/>
+        <text name="vtpas_fl_btnLeaseOut" text="Ausschreiben"/>
+        <text name="vtpas_fl_btnTerminate" text="Kündigen"/>
+        <text name="vtpas_fl_askTake" text="%s für %s pro Monat pachten, Laufzeit %d Monate?"/>
+        <text name="vtpas_fl_askLeaseOut" text="%s für %s pro Monat ausschreiben? Ein Pächter unterschreibt in 1 bis 3 Monaten, mit einer Laufzeit nach seiner Wahl; bis dahin bleibt das Feld Ihres."/>
+        <text name="vtpas_fl_askTerminatePen" text="Pacht von %s vorzeitig kündigen? Strafe: %s."/>
+        <text name="vtpas_fl_askTerminate" text="Pacht von %s kündigen?"/>
+        <text name="vtpas_fl_noticeYes" text="%s: Die Pacht wird Ende nächsten Monats verlängert."/>
+        <text name="vtpas_fl_noticeNo" text="%s: Die Pacht wird nicht verlängert, sie endet Ende nächsten Monats."/>
+        <text name="vtpas_fl_renewed" text="%s: Pacht um %d Monate verlängert, neue Pacht %s pro Monat."/>
+        <text name="vtpas_fl_extended" text="%s: Pacht bis zur Ernte verlängert."/>
+        <text name="vtpas_fl_ended" text="%s: Pacht beendet."/>
+        <text name="vtpas_fl_cntOwned" text="Eigene Felder: %d"/>
+        <text name="vtpas_fl_cntWait" text="(%d ausgeschrieben)"/>
+        <text name="vtpas_fl_cntTaken" text="Gepachtet: %d"/>
+        <text name="vtpas_fl_cntLeased" text="Verpachtet: %d"/>
+        <text name="vtpas_fl_listedSince" text="Seit %d Monaten ausgeschrieben"/>
+        <text name="vtpas_fl_stWait" text="Wartet auf einen Pächter"/>
+        <text name="vtpas_fl_btnUnlist" text="Ausschreibung zurückziehen"/>
+        <text name="vtpas_fl_askUnlist" text="Ausschreibung von %s zurückziehen?"/>
+        <text name="vtpas_fl_signed" text="%s: Pächter gefunden, Vertrag über %d Monate zu %s pro Monat."/>
+        <text name="vtpas_fl_endedRelist" text="%s: Pacht beendet, das Feld wird wieder ausgeschrieben."/>
+        <text name="vtpas_fl_termTenant" text="Vom Pächter bestimmt"/>
+        <text name="vtpas_fl_listOwn" text="Meine Felder"/>
+        <text name="vtpas_fl_listLease" text="Pachtverträge"/>
+        <text name="vtpas_fl_listOffer" text="Angebote der Nachbarn"/>
+        <text name="vtpas_fl_colAreaShort" text="ha"/>
+        <text name="vtpas_fl_leaseOf" text="Pacht über %d Monate"/>
+        <text name="vtpas_fl_stFree" text="Frei"/>
+        <text name="vtpas_fl_stListed" text="Inseriert"/>
+        <text name="vtpas_fl_stRyfShort" text="RentYourField"/>
+        <text name="vtpas_fl_dirIn" text="Gepachtet"/>
+        <text name="vtpas_fl_dirOut" text="Verpachtet"/>
+        <text name="vtpas_fl_pick" text="Wähle ein Feld in einer Liste"/>
+        <text name="vtpas_fl_infoArea" text="Fläche: %.2f ha"/>
+        <text name="vtpas_fl_infoRent" text="Pacht: %s / Monat"/>
+        <text name="vtpas_fl_btnPick" text="Feld wählen"/>
+        <text name="vtpas_fl_cntIncome" text="Monatliche Pacht einzunehmen: %s"/>
+        <text name="vtpas_fl_cntPay" text="Monatliche Pacht zu zahlen: %s"/>
+        <text name="vtpas_fl_groupMine" text="Mein Besitz"/>
+        <text name="vtpas_fl_groupNeighbours" text="Meine Nachbarn"/>
+        <text name="vtpas_fl_boxTitle" text="Meine Pachten"/>
+        <text name="vtpas_fl_listIn" text="Meine Pachtflächen"/>
+        <text name="vtpas_fl_listOut" text="Verpachtete Felder"/>
     </texts>
 </l10n>

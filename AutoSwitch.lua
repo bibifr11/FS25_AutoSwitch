@@ -36,6 +36,7 @@
 --   Fields        fenêtre Champs (Ctrl droit + C ou icône) : culture, stade, semis, engrais, herbicide, récolte
 --   Overdraft     découvert : achat / location jusqu'à un plafond, agios chaque jour
 --   CoopPay       coopératives payées en fin de mois (ventes « À payer » dans le registre)
+--   FieldLease    location de champs : prendre / mettre en location, onglet « Location » du menu Échap
 --   Register      registre des pesées (AutoDrive Addon) et des ventes (Ctrl droit + R)
 --   OpeningHours  horaires d'ouverture du magasin et des points de vente
 --   HudDedup      affichages en double des autres mods masqués (Enhanced Vehicle...)
@@ -111,12 +112,14 @@ local FILES = {
     "scripts/LightRange.lua",
     "scripts/WindSway.lua",
     "scripts/GrassTrample.lua",
+    "scripts/AiRuts.lua",
     "scripts/Puddles.lua",
     "scripts/Weather.lua",
     "scripts/CropCalendar.lua",
     "scripts/Fields.lua",
     "scripts/Overdraft.lua",
     "scripts/CoopPay.lua",
+    "scripts/FieldLease.lua",
     "scripts/Register.lua",
     "scripts/OpeningHours.lua",
     "scripts/HudDedup.lua",
@@ -138,11 +141,7 @@ local MSP_CUTS = { "scripts/SeedProtect.lua", "scripts/DirectResow.lua", "script
 local MR_CUTS = { "scripts/WetGrip.lua", "scripts/MudWheelDrag.lua", "scripts/ImplementStabilizer.lua" }
 local REQUIRED = {
     { "FS25_VariableTirePressure",    "1.0.0.13", "Variable Tire Pressure", cuts = { "scripts/Tires.lua", "scripts/VtpFix.lua" } },
-    -- (01/11) FarmPilot (version modifiée d'AutoDrive) accepté à la place d'AutoDrive
-    { anyOf = {
-        { "FS25_AutoDrive",           "3.0.1.4",  "AutoDrive" },
-        { "FS25_FarmPilot",           "1.0.0.0",  "FarmPilot" },
-    }, title = "AutoDrive", cuts = { "scripts/ForageReach.lua" } },
+    -- (v1.0.4.2) AutoDrive / FarmPilot plus requis (portée de goulotte chargée seulement s'il est là, plus bas)
     { "FS25_Courseplay",              "8.1.0.3",  "Courseplay" },
     { "FS25_EnhancedVehicle",         "1.1.7.1",  "Enhanced Vehicle", cuts = { "scripts/Diff.lua", "scripts/SteerLimit.lua", "scripts/HudDedup.lua" } },
     { "FS25_MudSystemPhysics",        "1.3.6.0",  "Mud System Physics", cuts = MSP_CUTS },
@@ -327,13 +326,22 @@ for _, req in ipairs(REQUIRED) do
     end
 end
 
+-- (v1.0.4.2) portée de la goulotte : seulement avec AutoDrive ou FarmPilot, sans rien signaler
+do
+    local ok, bad, _, none = pcall(checkEntry, { anyOf = {
+        { "FS25_AutoDrive", "3.0.1.4", "AutoDrive" },
+        { "FS25_FarmPilot", "1.0.0.0", "FarmPilot" },
+    }, optional = true }, false)
+    if not ok or bad ~= nil or none then skip["scripts/ForageReach.lua"] = true end
+end
+
 for _, file in ipairs(FILES) do
     if skip[file] then
         local global = STUB_NAMES[file] or ("AS_" .. string.match(file, "([%w_]+)%.lua$"))
         local stub = { disabled = true, ENABLED = false }
         for k, v in pairs(STUB_FIELDS[global] or {}) do stub[k] = v end
         _G[global] = stub
-        print("[AutoSwitch] module coupé (mod requis manquant) : " .. file)
+        if file ~= "scripts/ForageReach.lua" then print("[AutoSwitch] module coupé (mod requis manquant) : " .. file) end
     else
         local path = Utils.getFilename(file, modDir)
         if fileExists(path) then

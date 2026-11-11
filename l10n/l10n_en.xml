@@ -384,5 +384,86 @@
         <text name="vtpas_tl_trackCut" text="%s: rubber track cut, replace it at the workshop"/>
         <text name="vtpas_tl_replace" text="New tires"/>
         <text name="vtpas_tl_replaceAsk" text="Fit %d new tires for %s?"/>
+        <text name="finance_asFieldLease" text="Field rents"/>
+        <text name="vtpas_fl_label" text="Field lease"/>
+        <text name="vtpas_fl_tip" text='"Lease" tab in the Esc menu: rent fields from neighbours or lease out your own. Off: the tab is hidden, running leases go on until they end.'/>
+        <text name="vtpas_flRate_label" text="Field rent (per year)"/>
+        <text name="vtpas_flRate_tip" text="Yearly rent as a percentage of the farmland price, paid every month (±15 % depending on the field). Does not change signed leases."/>
+        <text name="vtpas_flRenew_label" text="Lease renewal"/>
+        <text name="vtpas_flRenew_tip" text="Chance that the other party renews the lease when it ends. Answer given one month before the end."/>
+        <text name="vtpas_fl_title" text="Field lease"/>
+        <text name="vtpas_fl_modeOffers" text="Neighbour offers"/>
+        <text name="vtpas_fl_modeIn" text="My rented fields"/>
+        <text name="vtpas_fl_modeOut" text="My fields"/>
+        <text name="vtpas_fl_parcel" text="Farmland %d"/>
+        <text name="vtpas_fl_field" text="Field %d"/>
+        <text name="vtpas_fl_colField" text="Field"/>
+        <text name="vtpas_fl_colArea" text="Area"/>
+        <text name="vtpas_fl_colRent" text="Rent / month"/>
+        <text name="vtpas_fl_colTerm" text="Ends"/>
+        <text name="vtpas_fl_colTermOffer" text="Lease term"/>
+        <text name="vtpas_fl_colState" text="Status"/>
+        <text name="vtpas_fl_summary" text="Rent received: %s / month     Rent paid: %s / month"/>
+        <text name="vtpas_fl_noOffer" text="No offer this month."/>
+        <text name="vtpas_fl_none" text="No field."/>
+        <text name="vtpas_fl_months" text="%d months"/>
+        <text name="vtpas_fl_since" text="For %d months"/>
+        <text name="vtpas_fl_left" text="In %d months"/>
+        <text name="vtpas_fl_stOffer" text="For rent"/>
+        <text name="vtpas_fl_stOwn" text="Free (can be listed)"/>
+        <text name="vtpas_fl_stRyf" text="Managed by RentYourField"/>
+        <text name="vtpas_fl_stNoRenew" text="No renewal wanted"/>
+        <text name="vtpas_fl_stRenewYes" text="Renewal accepted"/>
+        <text name="vtpas_fl_stRenewNo" text="Not renewed at the end"/>
+        <text name="vtpas_fl_stHarvest" text="Extended until harvest"/>
+        <text name="vtpas_fl_stRunning" text="Running (%d-month lease)"/>
+        <text name="vtpas_fl_btnMode" text="Next list"/>
+        <text name="vtpas_fl_btnRenewOn" text="Renew: Yes"/>
+        <text name="vtpas_fl_btnRenewOff" text="Renew: No"/>
+        <text name="vtpas_fl_btnTerm" text="Term: %d months"/>
+        <text name="vtpas_fl_btnTake" text="Rent this field"/>
+        <text name="vtpas_fl_btnLeaseOut" text="List for lease"/>
+        <text name="vtpas_fl_btnTerminate" text="Terminate"/>
+        <text name="vtpas_fl_askTake" text="Rent %s for %s per month, %d-month lease?"/>
+        <text name="vtpas_fl_askLeaseOut" text="List %s for lease at %s per month? A tenant will sign within 1 to 3 months, for a term of their choice; until then the field stays yours."/>
+        <text name="vtpas_fl_askTerminatePen" text="Terminate the lease of %s early? Penalty: %s."/>
+        <text name="vtpas_fl_askTerminate" text="Terminate the lease of %s?"/>
+        <text name="vtpas_fl_noticeYes" text="%s: the lease will be renewed at the end of next month."/>
+        <text name="vtpas_fl_noticeNo" text="%s: the lease will not be renewed, it ends at the end of next month."/>
+        <text name="vtpas_fl_renewed" text="%s: lease renewed for %d months, new rent %s per month."/>
+        <text name="vtpas_fl_extended" text="%s: lease extended until harvest."/>
+        <text name="vtpas_fl_ended" text="%s: lease ended."/>
+        <text name="vtpas_fl_cntOwned" text="Owned fields: %d"/>
+        <text name="vtpas_fl_cntWait" text="(%d listed)"/>
+        <text name="vtpas_fl_cntTaken" text="Rented from neighbours: %d"/>
+        <text name="vtpas_fl_cntLeased" text="Leased to neighbours: %d"/>
+        <text name="vtpas_fl_listedSince" text="Listed for %d months"/>
+        <text name="vtpas_fl_stWait" text="Waiting for a tenant"/>
+        <text name="vtpas_fl_btnUnlist" text="Withdraw listing"/>
+        <text name="vtpas_fl_askUnlist" text="Withdraw the lease listing of %s?"/>
+        <text name="vtpas_fl_signed" text="%s: tenant found, %d-month lease signed at %s per month."/>
+        <text name="vtpas_fl_endedRelist" text="%s: lease ended, the field is listed again."/>
+        <text name="vtpas_fl_termTenant" text="Set by the tenant"/>
+        <text name="vtpas_fl_listOwn" text="My fields"/>
+        <text name="vtpas_fl_listLease" text="Leases"/>
+        <text name="vtpas_fl_listOffer" text="Neighbours' listings"/>
+        <text name="vtpas_fl_colAreaShort" text="ha"/>
+        <text name="vtpas_fl_leaseOf" text="%d-month lease"/>
+        <text name="vtpas_fl_stFree" text="Free"/>
+        <text name="vtpas_fl_stListed" text="Listed"/>
+        <text name="vtpas_fl_stRyfShort" text="RentYourField"/>
+        <text name="vtpas_fl_dirIn" text="Taken"/>
+        <text name="vtpas_fl_dirOut" text="Leased"/>
+        <text name="vtpas_fl_pick" text="Select a field in a list"/>
+        <text name="vtpas_fl_infoArea" text="Area: %.2f ha"/>
+        <text name="vtpas_fl_infoRent" text="Rent: %s / month"/>
+        <text name="vtpas_fl_btnPick" text="Select a field"/>
+        <text name="vtpas_fl_cntIncome" text="Monthly rent to collect: %s"/>
+        <text name="vtpas_fl_cntPay" text="Monthly rent to pay: %s"/>
+        <text name="vtpas_fl_groupMine" text="My properties"/>
+        <text name="vtpas_fl_groupNeighbours" text="My neighbours"/>
+        <text name="vtpas_fl_boxTitle" text="My leases"/>
+        <text name="vtpas_fl_listIn" text="My leases"/>
+        <text name="vtpas_fl_listOut" text="Leased fields"/>
     </texts>
 </l10n>

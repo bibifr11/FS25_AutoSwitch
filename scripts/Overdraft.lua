@@ -72,9 +72,15 @@ function AS_Overdraft:getAssetValue(farmId)
     end
     if g_farmlandManager ~= nil and g_farmlandManager.getFarmlands ~= nil then
         for _, fl in pairs(g_farmlandManager:getFarmlands()) do
-            if g_farmlandManager:getFarmlandOwner(fl.id) == farmId and type(fl.price) == "number" then
+            -- (v1.0.4.0) parcelle prise en location : pas un bien de la ferme
+            if g_farmlandManager:getFarmlandOwner(fl.id) == farmId and type(fl.price) == "number"
+                and not (AS_FieldLease ~= nil and AS_FieldLease.isLeasedIn ~= nil and AS_FieldLease:isLeasedIn(fl.id, farmId)) then
                 total = total + fl.price
             end
+        end
+        -- (v1.0.4.0) parcelle mise en location : reste un bien de la ferme
+        if AS_FieldLease ~= nil and AS_FieldLease.leasedOutValue ~= nil then
+            total = total + AS_FieldLease:leasedOutValue(farmId)
         end
     end
     local ps = mission.placeableSystem
@@ -243,6 +249,10 @@ local SCOPES = {
     { "ADS_AIWorker",   { "^servicevehicle$" },                      "FS25_AdvancedDamageSystem", farm = "vehicle" },
     { "ADS_Maintenance", { "^startworkorder$", "^processworkorder$" }, "FS25_AdvancedDamageSystem", farm = "service" },
     { "ADS_PartsShop",  { "^purchase$" },                            "FS25_AdvancedDamageSystem", farm = "arg3" },
+    -- v1.0.3.7 : les écrans d'ADS refusaient avant même d'envoyer la demande : bouton Acheter
+    -- du shop de pièces grisé, « pas assez d'argent » à la confirmation des travaux d'atelier.
+    { "ADS_PartsDialog", { "^updatesummary$" },                       "FS25_AdvancedDamageSystem", farm = "partsDialog" },
+    { "ADS_WorkOrderConfirmationDialog", { "^onclickconfirm$" },     "FS25_AdvancedDamageSystem", farm = "dialogService" },
 }
 
 -- (v1.0.3.6) ferme qui paie, d'après les arguments de la fonction d'ADS
@@ -252,6 +262,15 @@ local function payingFarm(kind, ...)
         return farmId
     end
     local vehicle = ...
+    -- écrans d'ADS : le premier argument est l'écran, qui garde l'engin concerné
+    if kind == "partsDialog" or kind == "dialogService" then
+        local dialog = vehicle
+        if type(dialog) ~= "table" or (kind == "partsDialog" and dialog.shopTarget ~= nil) then
+            return nil   -- shop de pièces ouvert depuis le magasin : ferme du joueur
+        end
+        vehicle = dialog.vehicle
+        if kind == "dialogService" then kind = "service" end
+    end
     if type(vehicle) ~= "table" then return nil end
     if kind == "service" then
         local ws = AS.modGlobal("FS25_AdvancedDamageSystem", "ADS_Workshop")
