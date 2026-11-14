@@ -52,6 +52,9 @@ AS_Settings.durAlert = 5
 AS_Settings.DURATION_LIST = { 2, 3, 4, 5, 6, 8, 10, 15, 20 }
 AS_Settings.protectSeed = true   -- protection du semis (Mud System Physics)
 AS_Settings.slipIcon = true      -- icône de patinage permanente
+AS_Settings.ballast = true       -- (1.0.6.0) bloc poids / masse avant conseillée
+AS_Settings.ballastPosX = nil
+AS_Settings.ballastPosY = nil
 AS_Settings.seedCoverFill = true  -- remplir le semoir couvercle fermé
 AS_Settings.wetGrip = 3   -- (v1.0.0.21) adhérence sol humide : 1 Débutant, 2 Facile, 3 Normal, 4 Dur, 5 Extrême
 AS_Settings.WETGRIP_LEVELS = { 0.45, 0.60, 0.75, 0.90, 1.05 }   -- Normal = ancienne « Très forte »
@@ -136,6 +139,7 @@ function AS_Settings:save()
             setXMLInt(xml, "vtpAutoSwitch.notifDuration#tires", self.durTires)
             setXMLBool(xml, "vtpAutoSwitch.seedProtect#enabled", self.protectSeed)
             setXMLBool(xml, "vtpAutoSwitch.slipIcon#enabled", self.slipIcon)
+            setXMLBool(xml, "vtpAutoSwitch.ballast#enabled", self.ballast)
             setXMLInt(xml, "vtpAutoSwitch.wetGrip#difficulty", self.wetGrip)
             setXMLBool(xml, "vtpAutoSwitch.drive#auto4wd", self.auto4wd)
             setXMLBool(xml, "vtpAutoSwitch.seedCoverFill#enabled", self.seedCoverFill)
@@ -182,6 +186,10 @@ function AS_Settings:save()
             if self.iconPosX ~= nil and self.iconPosY ~= nil then
                 setXMLFloat(xml, "vtpAutoSwitch.slipIcon#posX", self.iconPosX)
                 setXMLFloat(xml, "vtpAutoSwitch.slipIcon#posY", self.iconPosY)
+            end
+            if self.ballastPosX ~= nil and self.ballastPosY ~= nil then
+                setXMLFloat(xml, "vtpAutoSwitch.ballast#posX", self.ballastPosX)
+                setXMLFloat(xml, "vtpAutoSwitch.ballast#posY", self.ballastPosY)
             end
             saveXMLFile(xml)
             delete(xml)
@@ -243,6 +251,13 @@ function AS_Settings:load()
                 end
                 local si = getXMLBool(xml, "vtpAutoSwitch.slipIcon#enabled")
                 if si ~= nil then self.slipIcon = si end
+                local ba = getXMLBool(xml, "vtpAutoSwitch.ballast#enabled")
+                if ba ~= nil then self.ballast = ba end
+                local bx = getXMLFloat(xml, "vtpAutoSwitch.ballast#posX")
+                local by = getXMLFloat(xml, "vtpAutoSwitch.ballast#posY")
+                if bx ~= nil and by ~= nil then
+                    self.ballastPosX, self.ballastPosY = math.max(0, math.min(1, bx)), math.max(0, math.min(1, by))
+                end
                 local ps = getXMLBool(xml, "vtpAutoSwitch.seedProtect#enabled")
                 if ps ~= nil then self.protectSeed = ps end
                 local d1 = getXMLInt(xml, "vtpAutoSwitch.notifDuration#tires")
@@ -365,6 +380,10 @@ function AS_Settings:apply()
     AS_NotifyDuration.alert = self.durAlert * 1000
     AS_SpeedHint.POS_X, AS_SpeedHint.POS_Y = self.hintPosX, self.hintPosY
     AS_SpeedHint.ICON_X, AS_SpeedHint.ICON_Y = self.iconPosX, self.iconPosY
+    if AS_Ballast ~= nil then
+        AS_Ballast.ENABLED = self.ballast
+        AS_Ballast.POS_X, AS_Ballast.POS_Y = self.ballastPosX, self.ballastPosY
+    end
     local f = {}
     for _, k in ipairs(self.LIGHT_TYPES) do f[k] = self.lights[k] / 10 end
     AS_LightRange:setFactors(f)
@@ -605,6 +624,13 @@ function AS_Settings:onWetGripChanged(state, element)
     self:apply()
     self:save()
     sprint("adhérence sol humide : niveau %d", self.wetGrip)
+end
+
+function AS_Settings:onBallastChanged(state, element)
+    self.ballast = (state == 2)
+    self:apply()
+    self:save()
+    sprint("bloc poids : %s", self.ballast and "affiché" or "masqué")
 end
 
 function AS_Settings:onSlipIconChanged(state, element)
@@ -1089,6 +1115,7 @@ AS_Settings.LOG_LIST = {
     { "AS_TireTracksSave", "Traces de pneus", "Tire tracks" },
     { "AS_MudPreset", "Réglages Mud / TTD", "Mud / TTD presets" },
     { "AS_MudWheelDrag", "Résistance de la boue", "Mud wheel drag" },
+    { "AS_RollerWidth", "Largeur des rouleaux", "Roller width" },
     { "AS_TtdBridge", "Pont MSP -> TTD", "MSP -> TTD bridge" },
     { "AS_ImplementStabilizer", "Outils stables à l'arrêt", "Implement stabilizer" },
     { "AS_AdSpeed", "Vitesse AutoDrive", "AutoDrive speed" },
@@ -1426,6 +1453,14 @@ function AS_Settings:buildUI(frame)
         callback = AS_Settings.onSlipIconChanged,
     })
 
+    self.options.ballast = self:addRow(layout, template, {
+        label = L("as_ballast_label"),
+        tip = L("as_ballast_tip"),
+        texts = onOff,
+        state = self.ballast and 2 or 1,
+        callback = AS_Settings.onBallastChanged,
+    })
+
     if layout ~= srcLayout then self:addHeader(layout, headerTemplate, L("vtpas_secGround")) end
     self.options.wetGrip = self:addRow(layout, template, {
         label = L("vtpas_wetGrip_label"),
@@ -1677,6 +1712,7 @@ function AS_Settings:refreshStates()
     if o.wetGrip ~= nil then o.wetGrip:setState(self.wetGrip) end
     if o.seedCoverFill ~= nil then o.seedCoverFill:setState(self.seedCoverFill and 2 or 1) end
     if o.slipIcon ~= nil then o.slipIcon:setState(self.slipIcon and 2 or 1) end
+    if o.ballast ~= nil then o.ballast:setState(self.ballast and 2 or 1) end
     if o.protectSeed ~= nil then o.protectSeed:setState(self.protectSeed and 2 or 1) end
     if o.durTires ~= nil then o.durTires:setState(self:getIndex(self.DURATION_LIST, self.durTires)) end
     if o.durDiffs ~= nil then o.durDiffs:setState(self:getIndex(self.DURATION_LIST, self.durDiffs)) end

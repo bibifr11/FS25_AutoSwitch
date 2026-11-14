@@ -7,7 +7,7 @@
 
 # FS25 AutoSwitch
 
-**Version 1.0.5.0** · Farming Simulator 25 · Auteur : Fabien · FR / EN / DE
+**Version 1.0.6.6** · Farming Simulator 25 · Auteur : Fabien · FR / EN / DE
 
 ### Nouveautés 1.0.3.6 à 1.0.3.9
 - Pressions VTP en direct : « Av » au-dessus du tracteur, « Ar » en dessous.
@@ -102,7 +102,7 @@ AutoSwitch fait partie d'un ensemble réaliste global : ces mods sont prévus, a
 
 ## English
 
-**Version 1.0.5.0** · Farming Simulator 25 · Author: Fabien · FR / EN / DE
+**Version 1.0.6.6** · Farming Simulator 25 · Author: Fabien · FR / EN / DE
 
 ### What's new 1.0.3.6 to 1.0.3.9
 - Live VTP pressures: "Fr" above the tractor, "Re" below.

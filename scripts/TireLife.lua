@@ -1507,7 +1507,16 @@ function AS_TireLife:replaceTires(vehicle)
     local farmId = vehicle.getOwnerFarmId ~= nil and vehicle:getOwnerFarmId() or nil
     if farmId ~= nil and g_currentMission.getMoney ~= nil then
         local ok, money = pcall(g_currentMission.getMoney, g_currentMission, farmId)
-        if ok and type(money) == "number" and money < plan.price then
+        -- (14/11) découvert d'AutoSwitch admis, comme au magasin : le solde peut descendre jusqu'à -plafond
+        local limit = 0
+        if AS_Overdraft ~= nil and AS_Overdraft.getLimit ~= nil then
+            local okL, l = pcall(AS_Overdraft.getLimit, AS_Overdraft, farmId)
+            if okL and type(l) == "number" and l > 0 then limit = l end
+        end
+        if ok and type(money) == "number" then
+            sprint("Pneus neufs : solde %d, découvert permis %d, prix %d", math.floor(money), math.floor(limit), plan.price)
+        end
+        if ok and type(money) == "number" and money + limit < plan.price then
             if InfoDialog ~= nil and InfoDialog.show ~= nil then
                 InfoDialog.show(text("shop_messageNotEnoughMoneyToBuy", "Pas assez d'argent"))
             end
@@ -1566,16 +1575,44 @@ end
 function AS_TireLife:onReplaceClick(screen)
     local vehicle = screen.vehicle
     local plan = vehicle ~= nil and self:getReplacePlan(vehicle) or nil
-    if plan == nil or YesNoDialog == nil or YesNoDialog.show == nil then return end
+    sprint("clic Pneus neufs : %s, %s", vehicle ~= nil and tostring(vehicle:getName()) or "aucun véhicule",
+        plan ~= nil and string.format("%d pneus, %d", #plan.wheels, plan.price) or "rien à changer")
+    if plan == nil then return end
     local money = g_i18n ~= nil and g_i18n:formatMoney(plan.price, 0, true, true) or tostring(plan.price)
     local msg = string.format(text("vtpas_tl_replaceAsk", "Monter %d pneus neufs pour %s ?"), #plan.wheels, money)
     -- avec une cible, le jeu rappelle callback(cible, oui)
-    YesNoDialog.show(function(self, yes)
+    local function answer(self, yes)
+        sprint("Pneus neufs : réponse %s", tostring(yes))
         if yes then
             self:replaceTires(vehicle)
             self:refreshButton(screen)
         end
-    end, self, msg)
+    end
+    local ok, err = false, "YesNoDialog absent"
+    if YesNoDialog ~= nil and YesNoDialog.show ~= nil then
+        ok, err = pcall(YesNoDialog.show, answer, self, msg)
+    end
+    if not ok then
+        -- (13/11) question impossible : pneus montés directement, le prix reste affiché sur le bouton
+        sprint("ERREUR question Pneus neufs : %s, pneus montés sans question", tostring(err))
+        answer(self, true)
+    end
+end
+
+-- (13/11) touche du bouton : la première action de menu que les autres boutons de l'atelier n'ont pas
+AS_TireLife.BUTTON_ACTIONS = { "MENU_EXTRA_2", "MENU_EXTRA_1", "MENU_CANCEL", "MENU_ACTIVATE" }
+
+local function freeMenuAction(box, own)
+    if InputAction == nil then return nil end
+    local used = {}
+    for _, el in ipairs(box.elements or {}) do
+        if el ~= own and el.inputActionName ~= nil then used[el.inputActionName] = true end
+    end
+    for _, name in ipairs(AS_TireLife.BUTTON_ACTIONS) do
+        local action = InputAction[name]
+        if action ~= nil and not used[action] and not used[name] then return action end
+    end
+    return nil
 end
 
 -- bouton ajouté dans la barre de boutons de l'atelier, à partir d'un bouton du jeu
@@ -1587,10 +1624,15 @@ function AS_TireLife:addButton(screen)
     end
     if template == nil then return end
     local btn = template:clone(screen.buttonsBox)
-    btn.inputActionName = nil
+    -- (13/11) le bouton copié n'avait pas de touche et le clic souris ne passait pas chez tous :
+    -- il prend une touche libre (clavier et manette, affichée comme les autres) et la cible du clic
+    btn.target = AS_TireLife
     btn.onClickCallback = function() AS_TireLife:onReplaceClick(screen) end
+    local action = freeMenuAction(screen.buttonsBox, btn)
+    btn.inputActionName = action
+    if action ~= nil and btn.setInputAction ~= nil then pcall(btn.setInputAction, btn, action) end
     screen.__asTireButton = btn
-    sprint("bouton Pneus neufs ajouté à l'atelier")
+    sprint("bouton Pneus neufs ajouté à l'atelier (touche %s)", tostring(action))
 end
 
 function AS_TireLife:installWorkshop()

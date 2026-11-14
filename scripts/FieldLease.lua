@@ -32,6 +32,32 @@
 --     et reçoivent la liste des baux.
 -------------------------------------------------------------------------------
 AS_FieldLease = {}
+
+-- (13/11) contour d'un champ (points de son polygone), gardé en cache
+local borderCache = {}
+local function fieldBorder(field)
+    if field == nil then return nil end
+    local b = borderCache[field]
+    if b ~= nil then return b or nil end
+    b = false
+    local nodes = nil
+    if type(field.getPolygonPoints) == "function" then
+        local ok, r = pcall(field.getPolygonPoints, field)
+        if ok then nodes = r end
+    end
+    nodes = nodes or field.polygonPoints
+    if type(nodes) == "table" and #nodes >= 3 then
+        b = {}
+        for _, n in ipairs(nodes) do
+            local ok, x, _, z = pcall(getWorldTranslation, n)
+            if ok and x ~= nil then b[#b + 1] = { x, z } end
+        end
+        if #b < 3 then b = false end
+    end
+    borderCache[field] = b
+    return b or nil
+end
+
 AS_FieldLease.ENABLED     = true    -- réglage « Location de champs » (onglet + nouveaux baux)
 AS_FieldLease.RATE        = 4       -- taux annuel du loyer (% du prix de la parcelle)
 AS_FieldLease.RENEW       = 70      -- probabilité de renouvellement (%)
@@ -1302,7 +1328,7 @@ function AS_LeaseFrame:targetView(info)
         zoom = self.ZOOM_FIELD
         local p = AS_FieldLease:getParcels()[r.id]
         for _, f in ipairs(p ~= nil and p.fields or {}) do
-            local border = AS_TerminalMap ~= nil and AS_TerminalMap.fieldBorder ~= nil and AS_TerminalMap.fieldBorder(f) or nil
+            local border = fieldBorder(f)
             for _, b in ipairs(border or {}) do add(b[1], b[2], 0) end
             if f.posX ~= nil then add(f.posX, f.posZ, 0) end
         end
@@ -1412,7 +1438,7 @@ function AS_LeaseFrame:drawMiniMap()
         local c = MAP_COL.sel
         local px = h * 0.008
         for _, f in ipairs(p ~= nil and p.fields or {}) do
-            local border = AS_TerminalMap ~= nil and AS_TerminalMap.fieldBorder ~= nil and AS_TerminalMap.fieldBorder(f) or nil
+            local border = fieldBorder(f)
             if border ~= nil then
                 -- contour : points le long des bords
                 for i = 1, #border do

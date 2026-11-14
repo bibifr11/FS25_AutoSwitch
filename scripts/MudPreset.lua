@@ -20,7 +20,7 @@ AS_MudPreset.done = false
 -- v2 (v1.17) : difficulté +20 % (enfoncement, frein de roue, charge moteur, profondeur d'ornière, perte d'adhérence)
 -- v3 (v1.18) : + Tractor Terrain Dynamics en difficulté "Difficile" (c'est TTD qui gère le patinage des tracteurs)
 AS_MudPreset.RECOMMENDED_VERSION = 4
-AS_MudPreset.TTD_RECOMMENDED = "hard"
+AS_MudPreset.TTD_RECOMMENDED = "hard"   -- plus appliqué depuis le 11/11 (choix du joueur gardé)
 
 -- v4 (1.0.0.0) : tous les réglages de Mud System Physics (profils de sol compris), dans l'ordre :
 -- le préréglage de difficulté d'abord, car il réécrit une partie des valeurs.
@@ -360,7 +360,8 @@ function AS_MudPreset:apply()
     end
     mpFinish(mss)
     vtpInfo(string.format("[AS_MudPreset] paramètres conseillés appliqués à Mud System Physics (%d valeurs)", n))
-    self:setTTDDifficulty(self.TTD_RECOMMENDED)
+    -- (11/11) la difficulté de Tractor Terrain Dynamics n'est plus forcée :
+    --   le choix fait dans le menu de TTD est gardé
     return true
 end
 

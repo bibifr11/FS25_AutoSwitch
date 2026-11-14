@@ -93,6 +93,13 @@
         <text name="vtpas_notif_modeAuto" text="Differentiale und Antrieb: AUTO"/>
         <text name="vtpas_hud_manual" text="MANUELL"/>
         <text name="vtpas_hud_auto" text="AUTO"/>
+        <text name="as_ballast_weight" text="Gewicht %s t"/>
+        <text name="as_ballast_split" text="Vorn %d %%"/>
+        <text name="as_ballast_ideal" text="Empfohlener Frontballast: %s kg"/>
+        <text name="as_ballast_line" text="Frontballast %s / %s kg"/>
+        <text name="as_ballast_current" text="aktuell: %s kg"/>
+        <text name="as_ballast_label" text="Gewicht und Frontballast"/>
+        <text name="as_ballast_tip" text="Zeigt unter dem Tacho (mit der Maus verschiebbar) das Gesamtgewicht, die Achslastverteilung vorn / hinten und den empfohlenen Frontballast für das angebaute Gerät: grün = passend, orange = zu leicht oder zu schwer, rot = weniger als 20 % des Gewichts auf der Vorderachse bei angehobenem Gerät. Ausgeblendet, wenn Realistic Mechanical Systems aktiv ist."/>
         <text name="input_AS_DUAL_SWITCH" text="Zwillingsräder montieren / abbauen"/>
         <text name="as_dual_store_function" text="Zu Fuß neben der Palette, Traktor daneben angehalten: Strg rechts + I. Volle Palette = Zwillingsräder montieren, leere Palette = abbauen. 1 Std. Arbeit, alle 15 Min. ein Reifen."/>
         <text name="as_dual_mounting" text="Montage der Zwillingsräder begonnen: fertig um %s"/>

@@ -10,11 +10,13 @@
 --   SteerLimit    braquage 4x4 limité, blocages coupés / refusés roues braquées
 --   SlipAlert     alerte rouge de patinage
 --   SpeedHint     plage de vitesse conseillée + icône de patinage
+--   Ballast       bloc poids en bas à gauche : poids, répartition Av/Ar, masse avant conseillée
 --   SeedProtect   protection du semis (Mud System Physics)
 --   SeedCoverFill remplissage du semoir couvercle fermé
 --   WetGrip       adhérence en sol humide (MoreRealistic), bonus différentiels, usure
 --   TireLife      usure des pneus et des chenilles (sans Use Your Tyres) : adhérence, rayon, atelier
 --   Duals         roues jumelées (largeur réelle pour Mud, adhérence)
+--   RollerWidth   largeur réelle des rouleaux (pression au sol MR / Mud)
 --   VtpFix        correctif VTP pour pneus à variantes de marques
 --   DualRack      palette de pneus : simple <-> jumelées (Ctrl droit + I)
 --   DirectResow   semis direct sur zones effacées
@@ -91,11 +93,13 @@ local FILES = {
     "scripts/SteerLimit.lua",
     "scripts/SlipAlert.lua",
     "scripts/SpeedHint.lua",
+    "scripts/Ballast.lua",
     "scripts/SeedProtect.lua",
     "scripts/SeedCoverFill.lua",
     "scripts/WetGrip.lua",
     "scripts/TireLife.lua",
     "scripts/Duals.lua",
+    "scripts/RollerWidth.lua",
     "scripts/VtpFix.lua",
     "scripts/DualRack.lua",
     "scripts/DirectResow.lua",

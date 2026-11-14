@@ -379,9 +379,7 @@ local function shVtpFactorToBar(spec, factor, fieldP, roadP)
     return fieldP + (roadP - fieldP) * t
 end
 
-local function shVtpAxleBar(spec, axle)
-    local roadP, fieldP = shVtpPreset(spec, axle, true), shVtpPreset(spec, axle, false)
-    if roadP < fieldP then roadP, fieldP = fieldP, roadP end
+local function shVtpAxleBarRaw(spec, axle, roadP, fieldP)
     if spec.tractorAxleSplitActive == true and type(spec._vtpAxleState) == "table" then
         local st = spec._vtpAxleState[axle]
         if type(st) == "table" then
@@ -396,6 +394,14 @@ local function shVtpAxleBar(spec, axle)
     return spec.isRoadMode == true and roadP or fieldP
 end
 
+-- (11/11) renvoie aussi l'état du pneu : gonflé (plus près de la pression route) ou dégonflé
+local function shVtpAxleBar(spec, axle)
+    local roadP, fieldP = shVtpPreset(spec, axle, true), shVtpPreset(spec, axle, false)
+    if roadP < fieldP then roadP, fieldP = fieldP, roadP end
+    local bar = shVtpAxleBarRaw(spec, axle, roadP, fieldP)
+    return bar, bar >= (roadP + fieldP) * 0.5
+end
+
 -- renvoie pression avant, pression arrière (bar), ou nil si VTP n'agit pas sur ce véhicule
 local function shVtpPressures(vehicle)
     local spec = vehicle ~= nil and vehicle.spec_variableTirePressure or nil
@@ -404,21 +410,50 @@ local function shVtpPressures(vehicle)
         local ok, en = pcall(vehicle.vtpIsEnabledForCurrentWheelConfig, vehicle)
         if ok and en == false then return nil end
     end
-    local okF, f = pcall(shVtpAxleBar, spec, "front")
-    local okR, r = pcall(shVtpAxleBar, spec, "rear")
+    local okF, f, fInfl = pcall(shVtpAxleBar, spec, "front")
+    local okR, r, rInfl = pcall(shVtpAxleBar, spec, "rear")
     if not okF or not okR or type(f) ~= "number" or type(r) ~= "number" then return nil end
-    return f, r
+    return f, r, fInfl == true, rInfl == true
 end
 
--- ligne « Av: 1.2 Bar » centrée sur fond sombre
-local function shDrawPressureRow(x, y, w, h, size, label)
+-- (11/11) petit pneu à côté de la pression : rond = gonflé (route), écrasé = dégonflé (champ)
+local SH_TIRE_ICONS = { [true] = "hud/vtpas_tire_road.dds", [false] = "hud/vtpas_tire_field.dds" }
+function AS_SpeedHint:getTireOverlay(inflated)
+    self.tireOverlays = self.tireOverlays or {}
+    local key = inflated == true
+    local ov = self.tireOverlays[key]
+    if ov == nil then
+        local path = Utils.getFilename(SH_TIRE_ICONS[key], AS_MOD_DIR)
+        local ok, o = pcall(createImageOverlay, path)
+        if ok and o ~= nil and o ~= 0 then
+            ov = o
+        else
+            ov = false
+            print("[AS_SpeedHint] icône introuvable : " .. tostring(path))
+        end
+        self.tireOverlays[key] = ov
+    end
+    return ov or nil
+end
+
+-- ligne « Av: 1.2 Bar » centrée sur fond sombre, (11/11) précédée du petit pneu
+local function shDrawPressureRow(x, y, w, h, size, label, ov, icW, icH, gap)
     if drawFilledRect ~= nil then
         drawFilledRect(x, y, w, h, 0, 0, 0, 0.6)
     end
     setTextAlignment(RenderText.ALIGN_CENTER)
     setTextBold(true)
     setTextColor(0.55, 0.85, 1, 1)
-    renderText(x + w * 0.5, y + (h - size) * 0.5 + size * 0.15, size, label)
+    local cx = x + w * 0.5
+    if ov ~= nil and icW ~= nil then
+        local tw = getTextWidth(size, label)
+        local total = icW + gap + tw
+        local left = cx - total * 0.5
+        setOverlayColor(ov, 0.55, 0.85, 1, 1)
+        renderOverlay(ov, left, y + (h - icH) * 0.5, icW, icH)
+        cx = left + icW + gap + tw * 0.5
+    end
+    renderText(cx, y + (h - size) * 0.5 + size * 0.15, size, label)
 end
 
 -- texte de patinage centré en (cx, cy), sur fond sombre
@@ -521,7 +556,7 @@ function AS_SpeedHint:draw()
             if okH and type(h) == "number" then toolH = h end
         end
         -- (08/11) pressions VTP : « Av » au-dessus du tracteur, « Ar » en dessous
-        local pFront, pRear = shVtpPressures(vehicle)
+        local pFront, pRear, inflFront, inflRear = shVtpPressures(vehicle)
         local presH = 0
         if pFront ~= nil then presH = pctSize + py(5) end
         by = shClamp(by, 0, math.max(0, 1 - iconH - modeH - toolH - presH * 2))
@@ -529,8 +564,11 @@ function AS_SpeedHint:draw()
         local toolY = by
         by = by + toolH
         if presH > 0 then
-            shDrawPressureRow(bx, by, blockW, presH, pctSize, string.format(L("vtpas_hud_pressRear"), pRear))
-            shDrawPressureRow(bx, by + presH + iconH, blockW, presH, pctSize, string.format(L("vtpas_hud_pressFront"), pFront))
+            local tireW, tireH, tireGap = pxw(15), py(15), pxw(4)
+            shDrawPressureRow(bx, by, blockW, presH, pctSize, string.format(L("vtpas_hud_pressRear"), pRear),
+                self:getTireOverlay(inflRear), tireW, tireH, tireGap)
+            shDrawPressureRow(bx, by + presH + iconH, blockW, presH, pctSize, string.format(L("vtpas_hud_pressFront"), pFront),
+                self:getTireOverlay(inflFront), tireW, tireH, tireGap)
             by = by + presH
         end
         local manual = AS_Diff ~= nil and AS_Diff.isManual ~= nil and AS_Diff.isManual(vehicle)
@@ -680,6 +718,10 @@ function AS_SpeedHint:delete()
         if ov then delete(ov) end
     end
     self.driveOverlays = nil
+    for _, ov in pairs(self.tireOverlays or {}) do
+        if ov then delete(ov) end
+    end
+    self.tireOverlays = nil
 end
 
 addModEventListener(AS_SpeedHint)

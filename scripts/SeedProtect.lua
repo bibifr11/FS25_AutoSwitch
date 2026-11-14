@@ -11,6 +11,9 @@ local vtpInfo, L, showTimedNotification, getVtpClass, isAutoDriveActive, isCours
 --   pas de zone (donc rien d'effacé) si le véhicule recule ou si la roue appartient
 --   à un semoir / une planteuse. Sinon, la fonction d'origine est appelée.
 --   Aucun fichier de Mud System Physics n'est modifié.
+-- 1.0.6.1 : les rouleaux sont protégés comme les semoirs. Un rouleau passé juste
+--   après le semis (ex. tournesol) effaçait toute la culture sous ses cylindres,
+--   sur toute sa largeur depuis RollerWidth (largeur échangée par AS_Duals).
 -------------------------------------------------------------------------------
 AS_SeedProtect = {}
 AS_SeedProtect.ENABLED = true
@@ -40,11 +43,35 @@ local function spIsSeeder(vehicle)
     return vehicle.spec_sowingMachine ~= nil or vehicle.spec_treePlanter ~= nil
 end
 
+-- même règle que RollerWidth : spécialisation rouleau ou catégorie « rollers » du magasin
+local function spIsRoller(vehicle)
+    if vehicle.spec_roller ~= nil then return true end
+    local item = g_storeManager ~= nil and vehicle.configFileName ~= nil
+        and g_storeManager:getItemByXMLFilename(vehicle.configFileName) or nil
+    return item ~= nil and string.find(string.lower(tostring(item.categoryName or "")), "roller", 1, true) ~= nil
+end
+
+AS_SeedProtect.rollerCache = setmetatable({}, { __mode = "k" })   -- [vehicle] = true/false
+
+function AS_SeedProtect:isRollerCached(vehicle)
+    local v = self.rollerCache[vehicle]
+    if v == nil then
+        v = spIsRoller(vehicle) == true
+        self.rollerCache[vehicle] = v
+        if v then
+            print(string.format("[AS_SeedProtect] rouleau protégé (culture jamais effacée sous ses roues) : %s",
+                tostring(vehicle.getName ~= nil and vehicle:getName() or vehicle.configFileName)))
+        end
+    end
+    return v
+end
+
 function AS_SeedProtect:shouldProtect(wheel)
     if not self.ENABLED or wheel == nil then return false end
     local vehicle = wheel.vehicle
     if vehicle == nil then return false end
     if spIsSeeder(vehicle) then return true end
+    if self:isRollerCached(vehicle) then return true end
     return spIsReversing(vehicle)
 end
 
@@ -67,7 +94,7 @@ function AS_SeedProtect:install()
         return original(fgSelf, wheel, ...)
     end
     self.installed = true
-    vtpInfo("[AS_SeedProtect] protection du semis installée (marche arrière / roues du semoir)")
+    vtpInfo("[AS_SeedProtect] protection du semis installée (marche arrière / roues du semoir / rouleaux)")
 end
 
 function AS_SeedProtect:loadMap()

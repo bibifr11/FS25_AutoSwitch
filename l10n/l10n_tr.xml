@@ -94,6 +94,13 @@
         <text name="vtpas_notif_modeAuto" text="Diferansiyeller ve şanzıman: OTO"/>
         <text name="vtpas_hud_manual" text="MANUEL"/>
         <text name="vtpas_hud_auto" text="OTO"/>
+        <text name="as_ballast_weight" text="Ağırlık %s t"/>
+        <text name="as_ballast_split" text="Ön %d %%"/>
+        <text name="as_ballast_ideal" text="Önerilen ön ağırlık: %s kg"/>
+        <text name="as_ballast_line" text="Ön ağırlık %s / %s kg"/>
+        <text name="as_ballast_current" text="mevcut: %s kg"/>
+        <text name="as_ballast_label" text="Ağırlık ve ön ağırlık kutusu"/>
+        <text name="as_ballast_tip" text="Hız göstergesinin altında (fareyle taşınabilir) toplam ağırlığı, ön / arka dağılımını ve takılı ekipman için önerilen ön ağırlığı gösterir: yeşil = doğru, turuncu = çok hafif veya çok ağır, kırmızı = ekipman kaldırılmışken ağırlığın %20'sinden azı önde. Realistic Mechanical Systems etkinse gizlenir."/>
         <text name="input_AS_DUAL_SWITCH" text="Çift tekerlekleri tak / sök"/>
         <text name="as_dual_store_function" text="Paletin yanında yaya olarak, traktör yanına park edilmişken: Sağ Ctrl + İ. Dolu palet = çift tekerlek takılması, boş palet = sökülmesi. 1 saat çalışma, her 15 dakikada bir tekerlek."/>
         <text name="as_dual_mounting" text="Çift tekerlek montajı başladı: tahmini bitiş %s"/>

@@ -133,7 +133,8 @@ local function getFarm(farmId)
     return nil
 end
 
--- v1.0.0.76 : financement Trade In choisi (ou en cours) -> pas de découvert pour cet achat.
+-- v1.0.0.76 : financement Trade In choisi (ou en cours) -> pas de découvert pour cet achat
+-- (14/11 : seulement de quoi remonter un solde négatif à 0, voir getTradeInBoost).
 -- Trade In calculait le montant à financer avec le solde augmenté, puis revérifiait
 -- avec le vrai solde : achat refusé alors que le crédit était déjà versé.
 -- Sans le découvert, Trade In finance toute la somme manquante, comme sans AutoSwitch.
@@ -144,12 +145,27 @@ local function isTradeInFinancing()
     return finance.pending ~= nil or finance.purchaseInProgress == true
 end
 
+-- (14/11) compte dans le rouge : Trade In refusait tout financement (« pas assez d'argent »),
+-- car il compare la part payée comptant (0 € quand tout est financé) au vrai solde, négatif.
+-- Pour Trade In, le découvert remonte seulement le solde jusqu'à 0 (sans dépasser le plafond) :
+-- Trade In voit 0 €, finance tout le prix, comme avec un compte à zéro. Le montant financé
+-- ne dépend jamais du découvert (problème de la v1.0.0.76).
+function AS_Overdraft:getTradeInBoost(farmId, money)
+    if type(money) ~= "number" or money >= 0 then return 0 end
+    return math.min(self:getLimit(farmId), -money)
+end
+
 -- (v1.0.3.6) farmId : ferme qui paie (engin d'ADS) ; sinon la ferme du joueur
 function AS_Overdraft:applyBoost(farmId)
-    if isTradeInFinancing() then return end
     local farm = getFarm(farmId or currentFarmId())
     if farm == nil or type(farm.money) ~= "number" then return end
-    local limit = self:getLimit(farm.farmId)
+    if self.extraBoosts[farm] ~= nil then return end   -- mensualité Trade In en cours : déjà compté
+    local limit
+    if isTradeInFinancing() then
+        limit = self:getTradeInBoost(farm.farmId, farm.money)
+    else
+        limit = self:getLimit(farm.farmId)
+    end
     if limit <= 0 then return end
     self.boostFarm, self.boost = farm, limit
     self.boostQuiet, self.boostChanged = farmId ~= nil, false
@@ -169,8 +185,18 @@ function AS_Overdraft:removeBoost()
     self.boostFarm, self.boost = nil, 0
 end
 
+-- (14/11) mensualités Trade In : découvert compté pour chaque ferme qui a un crédit (farm -> montant)
+AS_Overdraft.extraBoosts = {}
+
 if Farm ~= nil and Farm.changeBalance ~= nil then
     Farm.changeBalance = Utils.overwrittenFunction(Farm.changeBalance, function(farm, superFunc, ...)
+        local extra = farm ~= nil and AS_Overdraft.extraBoosts[farm] or nil
+        if extra ~= nil then
+            farm.money = farm.money - extra
+            superFunc(farm, ...)
+            farm.money = farm.money + extra
+            return
+        end
         if farm ~= nil and farm == AS_Overdraft.boostFarm then
             local boost = AS_Overdraft.boost
             AS_Overdraft.boostChanged = true
@@ -253,10 +279,35 @@ local SCOPES = {
     -- du shop de pièces grisé, « pas assez d'argent » à la confirmation des travaux d'atelier.
     { "ADS_PartsDialog", { "^updatesummary$" },                       "FS25_AdvancedDamageSystem", farm = "partsDialog" },
     { "ADS_WorkOrderConfirmationDialog", { "^onclickconfirm$" },     "FS25_AdvancedDamageSystem", farm = "dialogService" },
+    -- (14/11) terrassement, peinture du sol, plantations : le jeu compare le prix au solde de la
+    -- ferme qui modifie le terrain (refus « pas assez d'argent » avec le compte dans le rouge).
+    -- Les pinceaux affichent l'erreur à chaque image : découvert compté sans annonce de solde.
+    { "Landscaping",              { "^onsculptingvalidated$" }, farm = "landscaping" },
+    { "ConstructionBrushPaint",   { "^update$" },               farm = "player" },
+    { "ConstructionBrushFoliage", { "^update$" },               farm = "player" },
+    -- (14/11) remplissage payant (engrais, chaux, semences, phyto, gazole...) : le jeu ne remplit
+    -- que si le solde de la ferme de l'engin est au-dessus de zéro
+    { "BuyingStation",            { "^addfillleveltofillableobject$" }, farm = "fillable" },
 }
 
 -- (v1.0.3.6) ferme qui paie, d'après les arguments de la fonction d'ADS
 local function payingFarm(kind, ...)
+    if kind == "player" then
+        return currentFarmId()
+    end
+    if kind == "fillable" then
+        local _, object = ...
+        if type(object) == "table" and object.getOwnerFarmId ~= nil then
+            local ok, id = pcall(object.getOwnerFarmId, object)
+            if ok then return id end
+        end
+        return nil
+    end
+    if kind == "landscaping" then
+        local landscaping = ...
+        local farm = type(landscaping) == "table" and landscaping.playerFarm or nil
+        return type(farm) == "table" and farm.farmId or nil
+    end
     if kind == "arg3" then
         local _, _, farmId = ...
         return farmId
@@ -379,6 +430,131 @@ function AS_Overdraft:rebindCallbacks()
     return count
 end
 
+-- (14/11) Trade In lit le solde par ses propres fonctions (écran, contrôle d'achat) : elles
+-- rendent le solde remonté jusqu'à 0 (voir getTradeInBoost), jamais le découvert entier,
+-- même appelées pendant un contrôle d'achat du jeu où le découvert entier est compté.
+local TRADEIN_MODS = { "FS25_TradeInMenu", "FS25_TradeIn" }
+local function realMoney(farmId)
+    local farm = getFarm(farmId)
+    if farm == nil or type(farm.money) ~= "number" then return nil end
+    local money = farm.money
+    if farm == AS_Overdraft.boostFarm then money = money - AS_Overdraft.boost end
+    money = money - (AS_Overdraft.extraBoosts[farm] or 0)
+    return money
+end
+local function tradeInValue(value, farmId)
+    if type(value) ~= "number" or AS_Overdraft.PERCENT <= 0 then return value end
+    farmId = farmId or currentFarmId()
+    local farm = getFarm(farmId)
+    local money = realMoney(farmId)
+    if money == nil then return value end
+    if farm == AS_Overdraft.boostFarm then value = value - AS_Overdraft.boost end
+    if farm ~= nil then value = value - (AS_Overdraft.extraBoosts[farm] or 0) end
+    local extra = AS_Overdraft:getTradeInBoost(farmId, money)
+    if extra > 0 and not AS_Overdraft.logged["TradeIn"] then
+        AS_Overdraft.logged["TradeIn"] = true
+        print(string.format("[AutoSwitch] Découvert : Trade In voit le solde remonté à %d (vrai solde %d)",
+            math.floor(money + extra), math.floor(money)))
+    end
+    return value + extra
+end
+function AS_Overdraft:installTradeIn()
+    local count = 0
+    for _, modName in ipairs(TRADEIN_MODS) do
+        local gv = AS.modGlobal(modName, "TradeInGuiVehicles")
+        if type(gv) == "table" and type(gv.getCurrentMoney) == "function" and not wrapped[gv.getCurrentMoney] then
+            local orig = gv.getCurrentMoney
+            local f = function(gui, ...)
+                return tradeInValue(orig(gui, ...), nil)
+            end
+            wrapped[f] = true
+            gv.getCurrentMoney = f
+            count = count + 1
+        end
+        local pg = AS.modGlobal(modName, "TradeInPurchaseGuard")
+        if type(pg) == "table" and type(pg.getAvailableMoney) == "function" and not wrapped[pg.getAvailableMoney] then
+            local orig = pg.getAvailableMoney
+            local f = function(guard, farmId, ...)
+                return tradeInValue(orig(guard, farmId, ...), farmId)
+            end
+            wrapped[f] = true
+            pg.getAvailableMoney = f
+            count = count + 1
+        end
+        -- (14/11) mensualités : Trade In ne prélève que si le solde couvre la mensualité ; le
+        -- découvert entier est compté (mois qui passe, mensualité payée à la main ; pas le
+        -- remboursement anticipé de tout le crédit)
+        local fin = AS.modGlobal(modName, "TradeInFinance")
+        if type(fin) == "table" then
+            if type(fin.processMonth) == "function" and not wrapped[fin.processMonth] then
+                local orig = fin.processMonth
+                local f = function(finance, ...)
+                    return AS_Overdraft:withInstallmentBoost(finance, nil, orig, finance, ...)
+                end
+                wrapped[f] = true
+                fin.processMonth = f
+                count = count + 1
+            end
+            if type(fin.applyPayment) == "function" and not wrapped[fin.applyPayment] then
+                local orig = fin.applyPayment
+                local f = function(finance, agreementId, farmId, fullPayoff, ...)
+                    if fullPayoff == true then return orig(finance, agreementId, farmId, fullPayoff, ...) end
+                    return AS_Overdraft:withInstallmentBoost(finance, farmId, orig, finance, agreementId, farmId, fullPayoff, ...)
+                end
+                wrapped[f] = true
+                fin.applyPayment = f
+                count = count + 1
+            end
+        end
+        if count > 0 then break end
+    end
+    return count
+end
+
+-- (14/11) fermes concernées : celles qui ont un crédit Trade In (ou seulement farmId)
+local function leaveInstallment(boosted, ...)
+    for farm, extra in pairs(boosted) do
+        if AS_Overdraft.extraBoosts[farm] == extra then
+            AS_Overdraft.extraBoosts[farm] = nil
+            farm.money = farm.money - extra
+            if g_messageCenter ~= nil and MessageType ~= nil and MessageType.MONEY_CHANGED ~= nil then
+                pcall(g_messageCenter.publish, g_messageCenter, MessageType.MONEY_CHANGED, farm.farmId, farm.money)
+            end
+        end
+    end
+    return ...
+end
+function AS_Overdraft:withInstallmentBoost(finance, farmId, orig, ...)
+    if self.PERCENT <= 0 then return orig(...) end
+    local ids = {}
+    if farmId ~= nil then
+        ids[farmId] = true
+    elseif type(finance) == "table" and type(finance.agreements) == "table" then
+        for _, a in pairs(finance.agreements) do
+            if type(a) == "table" and a.farmId ~= nil then ids[a.farmId] = true end
+        end
+    end
+    local boosted = {}
+    for id in pairs(ids) do
+        local farm = getFarm(id)
+        if farm ~= nil and type(farm.money) == "number" and farm ~= self.boostFarm and self.extraBoosts[farm] == nil then
+            local limit = self:getLimit(id)
+            if limit > 0 then
+                farm.money = farm.money + limit
+                self.extraBoosts[farm] = limit
+                boosted[farm] = limit
+            end
+        end
+    end
+    if next(boosted) == nil then return orig(...) end
+    if not self.logged["TradeInMonth"] then
+        self.logged["TradeInMonth"] = true
+        print("[AutoSwitch] Découvert compté dans les mensualités Trade In")
+    end
+    -- pas de pcall : une erreur garde sa trace ; update() remet les soldes à chaque image
+    return leaveInstallment(boosted, orig(...))
+end
+
 -- Dès le chargement du fichier (avant que les écrans du jeu ne lient leurs boutons),
 -- puis au chargement de la carte pour les classes créées entre-temps
 AS_Overdraft.scopeCount = AS_Overdraft:installScopes()
@@ -408,8 +584,13 @@ end
 function AS_Overdraft:loadMap()
     getMoneyType()
     self.scopeCount = self.scopeCount + self:installScopes()
+    local okT, tradeIn = pcall(self.installTradeIn, self)
+    if not okT then
+        print("[AutoSwitch] Découvert : Trade In : " .. tostring(tradeIn))
+        tradeIn = 0
+    end
     local rebound = self:rebindCallbacks()
-    print(string.format("[AutoSwitch] Découvert : %d contrôles d'achat du jeu suivis, %d boutons reliés", self.scopeCount, rebound))
+    print(string.format("[AutoSwitch] Découvert : %d contrôles d'achat du jeu suivis, %d boutons reliés, Trade In : %d", self.scopeCount, rebound, tradeIn))
 end
 
 function AS_Overdraft:update(dt)
@@ -417,6 +598,11 @@ function AS_Overdraft:update(dt)
     if self.depth > 0 or self.boostFarm ~= nil then
         self.depth = 0
         self:removeBoost()
+    end
+    if next(self.extraBoosts) ~= nil then
+        local boosted = self.extraBoosts
+        leaveInstallment(boosted)
+        self.extraBoosts = {}
     end
     local mission = g_currentMission
     if mission == nil or not mission:getIsServer() then return end
@@ -440,6 +626,7 @@ function AS_Overdraft:deleteMap()
     self.lastDay = nil
     self.depth = 0
     self.boostFarm, self.boost = nil, 0
+    self.extraBoosts = {}
 end
 
 addModEventListener(AS_Overdraft)

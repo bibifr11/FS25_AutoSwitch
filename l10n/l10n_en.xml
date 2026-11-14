@@ -93,6 +93,13 @@
         <text name="vtpas_notif_modeAuto" text="Differentials and transmission: AUTO"/>
         <text name="vtpas_hud_manual" text="MANUAL"/>
         <text name="vtpas_hud_auto" text="AUTO"/>
+        <text name="as_ballast_weight" text="Weight %s t"/>
+        <text name="as_ballast_split" text="Front %d %%"/>
+        <text name="as_ballast_ideal" text="Recommended front ballast: %s kg"/>
+        <text name="as_ballast_line" text="Front ballast %s / %s kg"/>
+        <text name="as_ballast_current" text="current: %s kg"/>
+        <text name="as_ballast_label" text="Weight and front ballast box"/>
+        <text name="as_ballast_tip" text="Shows below the speedometer (movable with the mouse) the total weight, the front / rear split and the recommended front ballast for the attached implement: green = right ballast, orange = too light or too heavy, red = less than 20 % of the weight on the front axle with the implement raised. Hidden when Realistic Mechanical Systems is active."/>
         <text name="input_AS_DUAL_SWITCH" text="Mount / remove dual wheels"/>
         <text name="as_dual_store_function" text="On foot next to the rack, with a stopped tractor nearby: Right Ctrl + I. Full rack = mount dual wheels, empty rack = remove them. 30 min of work (15 min per tire), one tire every 15 min."/>
         <text name="as_dual_mounting" text="Dual wheel mounting started: ready at %s"/>

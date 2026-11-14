@@ -93,6 +93,13 @@
         <text name="vtpas_notif_modeAuto" text="Différentiels et transmission : AUTO"/>
         <text name="vtpas_hud_manual" text="MANUEL"/>
         <text name="vtpas_hud_auto" text="AUTO"/>
+        <text name="as_ballast_weight" text="Poids %s t"/>
+        <text name="as_ballast_split" text="Av %d %%"/>
+        <text name="as_ballast_ideal" text="Masse avant conseillée : %s kg"/>
+        <text name="as_ballast_line" text="Masse avant %s / %s kg"/>
+        <text name="as_ballast_current" text="actuelle : %s kg"/>
+        <text name="as_ballast_label" text="Bloc poids et masse avant"/>
+        <text name="as_ballast_tip" text="Affiche sous le compteur de vitesse (déplaçable à la souris) le poids total, la répartition avant / arrière et la masse avant conseillée pour l'outil attelé : vert = bonne masse, orange = trop légère ou trop lourde, rouge = moins de 20 % du poids sur l'avant outil levé. Masqué si Realistic Mechanical Systems est actif."/>
         <text name="input_AS_DUAL_SWITCH" text="Monter / démonter les jumelées"/>
         <text name="as_dual_store_function" text="À pied près de la palette, tracteur arrêté à côté : Ctrl droit + I. Palette pleine = montage des jumelées, palette vide = démontage. 1 h de travail, un pneu toutes les 15 min."/>
         <text name="as_dual_mounting" text="Montage des jumelées commencé : prêt à %s"/>
