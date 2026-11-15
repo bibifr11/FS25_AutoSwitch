@@ -436,6 +436,43 @@ function AS_SpeedHint:getTireOverlay(inflated)
     return ov or nil
 end
 
+-- frein de parking d'Enhanced Vehicle : même icône que son HUD (resources/HUD.dds, case 352,32 32x32),
+-- rouge serré / vert desserré comme chez lui ; rien si EV absent ou sa fonction frein coupée
+local SH_EV_PARK_UV = { 352, 32, 32, 32 }
+local SH_EV_PARK_ON = { 1, 0, 0, 1 }
+local SH_EV_PARK_OFF = { 60/255, 118/255, 0, 1 }
+function AS_SpeedHint:getEvParkOverlay()
+    if self.evParkOverlay ~= nil then return self.evParkOverlay or nil end
+    local ev = getEvClass()
+    if ev == nil then return nil end
+    local path = ev.ui_hud ~= nil and ev.ui_hud.uiFilename or nil
+    if path == nil and g_modManager ~= nil then
+        local mod = g_modManager:getModByName("FS25_EnhancedVehicle")
+        if mod ~= nil and mod.modDir ~= nil then path = mod.modDir .. "resources/HUD.dds" end
+    end
+    if path == nil then return nil end
+    local ok, o = pcall(createImageOverlay, path)
+    if ok and o ~= nil and o ~= 0 then
+        local okUv = pcall(function() setOverlayUVs(o, unpack(GuiUtils.getUVs(SH_EV_PARK_UV))) end)
+        if not okUv then print("[AS_SpeedHint] frein de parking EV : UV non appliqués") end
+        self.evParkOverlay = o
+        print("[AS_SpeedHint] icône frein de parking EV chargée : " .. tostring(path))
+    else
+        self.evParkOverlay = false
+        print("[AS_SpeedHint] icône frein de parking EV introuvable : " .. tostring(path))
+    end
+    return self.evParkOverlay or nil
+end
+
+-- renvoie true/false (serré/desserré), ou nil si EV ne gère pas le frein de ce véhicule
+local function shEvParkState(vehicle)
+    local ev = getEvClass()
+    if ev == nil or ev.functionParkingBrakeIsEnabled ~= true then return nil end
+    local vd = vehicle.vData
+    if vd == nil or vd.is == nil then return nil end
+    return vd.is[13] == true
+end
+
 -- ligne « Av: 1.2 Bar » centrée sur fond sombre, (11/11) précédée du petit pneu
 local function shDrawPressureRow(x, y, w, h, size, label, ov, icW, icH, gap)
     if drawFilledRect ~= nil then
@@ -578,7 +615,20 @@ function AS_SpeedHint:draw()
         setTextAlignment(RenderText.ALIGN_CENTER)
         setTextBold(true)
         if manual then setTextColor(1, 0.6, 0.1, 1) else setTextColor(0.3, 1, 0.3, 1) end
-        renderText(bx + blockW * 0.5, by + iconH + presH + py(2) + modeSize * 0.15, modeSize, L(manual and "vtpas_hud_manual" or "vtpas_hud_auto"))
+        local modeLabel = L(manual and "vtpas_hud_manual" or "vtpas_hud_auto")
+        renderText(bx + blockW * 0.5, by + iconH + presH + py(2) + modeSize * 0.15, modeSize, modeLabel)
+        -- frein de parking Enhanced Vehicle, à gauche du mot AUTO / MANUEL
+        local parkOn = shEvParkState(vehicle)
+        if parkOn ~= nil then
+            local pov = self:getEvParkOverlay()
+            if pov ~= nil then
+                local pW, pH = pxw(14), py(14)
+                local pX = bx + blockW * 0.5 - getTextWidth(modeSize, modeLabel) * 0.5 - pxw(4) - pW
+                local c = parkOn and SH_EV_PARK_ON or SH_EV_PARK_OFF
+                setOverlayColor(pov, c[1], c[2], c[3], c[4])
+                renderOverlay(pov, pX, by + iconH + presH + py(1), pW, pH)
+            end
+        end
 
         local k, frontLocked, rearLocked, frontDriven, rearDriven = shDriveState(vehicle)
         local kind = "tractor"
@@ -722,6 +772,8 @@ function AS_SpeedHint:delete()
         if ov then delete(ov) end
     end
     self.tireOverlays = nil
+    if self.evParkOverlay then delete(self.evParkOverlay) end
+    self.evParkOverlay = nil
 end
 
 addModEventListener(AS_SpeedHint)

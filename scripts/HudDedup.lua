@@ -18,6 +18,9 @@ AS_HudDedup.ENABLED = true
 AS_HudDedup.LIST = {
     { mod = "FS25_EnhancedVehicle", global = "FS25_EnhancedVehicle", path = { "hud", "dmg" },  keys = { enabled = false } },
     { mod = "FS25_EnhancedVehicle", global = "FS25_EnhancedVehicle", path = { "hud", "fuel" }, keys = { enabled = false } },
+    -- (v1.0.6.8) blocages de différentiel et frein de parking : déjà dans le HUD pneus d'AutoSwitch
+    { mod = "FS25_EnhancedVehicle", global = "FS25_EnhancedVehicle", path = { "hud", "diff" }, keys = { enabled = false } },
+    { mod = "FS25_EnhancedVehicle", global = "FS25_EnhancedVehicle", path = { "hud", "park" }, keys = { enabled = false } },
 }
 AS_HudDedup.saved = {}   -- [entrée] = { tbl = table modifiée, values = valeurs d'origine }
 AS_HudDedup.logged = {}

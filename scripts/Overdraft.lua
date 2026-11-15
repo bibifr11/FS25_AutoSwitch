@@ -288,12 +288,38 @@ local SCOPES = {
     -- (14/11) remplissage payant (engrais, chaux, semences, phyto, gazole...) : le jeu ne remplit
     -- que si le solde de la ferme de l'engin est au-dessus de zéro
     { "BuyingStation",            { "^addfillleveltofillableobject$" }, farm = "fillable" },
+    -- (14/11) contrôles du jeu qui manquaient encore (liste faite d'après tous les getMoney du jeu) :
+    -- « Remplir » d'une cuve ou d'un silo de la ferme (gazole, engrais...) : refus à la confirmation
+    { "RefillDialog",                 { "^onbuyyesno$" } },
+    -- atelier : réparation, peinture, changement de configuration
+    { "WorkshopScreen",               { "^onyesnorepaintdialog$", "^onyesnorepairdialog$" } },
+    { "ChangeVehicleConfigEvent",     { "^run$" } },
+    -- points de vente de palettes / véhicules posés sur la carte
+    { "PlaceablePalletBuyingStation", { "^shopcallback$" } },
+    { "PlaceableVehicleBuyingStation", { "^vehicleshopcallback$", "^buyvehicle$" } },
+    -- marchand d'animaux
+    { "AnimalBuyEvent",               { "^validate$" } },
+    -- clôtures, arbres, relief (pinceaux appelés à chaque image : sans annonce de solde)
+    { "ConstructionBrushFence",       { "^verifypreview$" },          farm = "player" },
+    { "ConstructionBrushNewFence",    { "^validatecurrentsegment$" }, farm = "player" },
+    { "ConstructionBrushTree",        { "^verifyplacement$" },        farm = "player" },
+    { "ConstructionBrushSculpt",      { "^update$" },                 farm = "player" },
+    -- vergers
+    { "OrchardBrushDialog",           { "^updatebuildstatus$" },      farm = "player" },
+    { "OrchardBuildRequest",          { "^buildline$", "^buildlegacyline$" } },
+    -- (15/11) ouvrier du jeu : son salaire est prélevé en continu et le travail s'arrête
+    -- (« pas assez d'argent ! ») dès que le solde de la ferme passe sous zéro
+    { "AIJob",                        { "^updatecost$" },             farm = "aijob" },
 }
 
 -- (v1.0.3.6) ferme qui paie, d'après les arguments de la fonction d'ADS
 local function payingFarm(kind, ...)
     if kind == "player" then
         return currentFarmId()
+    end
+    if kind == "aijob" then
+        local job = ...
+        return type(job) == "table" and job.startedFarmId or nil
     end
     if kind == "fillable" then
         local _, object = ...

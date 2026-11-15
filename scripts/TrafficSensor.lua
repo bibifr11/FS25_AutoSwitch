@@ -6,7 +6,7 @@
 -- Couvre le trafic de la carte et celui ajouté par Traffic Density Control.
 -- Les fichiers du jeu ne sont pas modifiés.
 AS_TrafficSensor = {}
-AS_TrafficSensor.FACTOR = 0.8      -- 80 % de la largeur d'origine
+AS_TrafficSensor.FACTOR = 0.5      -- 50 % de la largeur d'origine
 AS_TrafficSensor.count  = 0
 
 local TAG = "[AS_TrafficSensor] "
