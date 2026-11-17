@@ -19,8 +19,10 @@ AS_Arbiter = {}
 AS_Arbiter.active = false
 
 -- Crochets écartés : [fonction] = { [mod] = true }
+-- (v1.0.7.3) WheelsUtil.updateWheelsPhysics rendu à MoreRealistic : c'est sa boucle de conduite
+--   (sens de marche, embrayage, PDF au point mort, rapports). Écartée, la marche arrière
+--   d'une boîte manuelle ne partait plus et l'embrayage restait sans effet.
 AS_Arbiter.VETOES = {
-    ["WheelsUtil.updateWheelsPhysics"]  = { MoreRealistic = true },
     ["WheelPhysics.updateTireFriction"] = { MoreRealistic = true, FS25_useYourTyres = true },
     ["WheelPhysics.serverUpdate"]       = { MoreRealistic = true, FS25_DynamicDrivePro = true },
     ["Drivable.updateVehiclePhysics"]   = { pdlc_highlandsFishingPack = true },
