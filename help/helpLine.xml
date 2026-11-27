@@ -76,10 +76,6 @@
                 <text text="$l10n_as_help_ground_p2_text"/>
             </paragraph>
             <paragraph>
-                <title text="$l10n_as_help_ground_p3_title"/>
-                <text text="$l10n_as_help_ground_p3_text"/>
-            </paragraph>
-            <paragraph>
                 <title text="$l10n_as_help_ground_p4_title"/>
                 <text text="$l10n_as_help_ground_p4_text"/>
             </paragraph>

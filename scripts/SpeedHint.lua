@@ -178,8 +178,12 @@ function AS_SpeedHint:compute(vehicle)
             else
                 table.insert(parts, string.format(L("vtpas_hint_soil"), math.floor(wet * 100 + 0.5)))
                 if eff > 0.01 then
-                    local mudCap = fg.maxSpeedMudKph or 23
-                    upper = (upper ~= nil) and math.min(upper, mudCap) or mudCap
+                    -- (v1.0.7.8) Mud System Physics 1.4.2 n'a plus de vitesse maxi dans la boue :
+                    --   sans elle, pas de plafond boue (seule la limite des pneus reste)
+                    local mudCap = tonumber(fg.maxSpeedMudKph)
+                    if mudCap ~= nil then
+                        upper = (upper ~= nil) and math.min(upper, mudCap) or mudCap
+                    end
                     color = "yellow"
                     if vmin ~= nil and vmin >= 0.8 then
                         lower = math.ceil(vmin + self.MARGIN_KPH)

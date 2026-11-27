@@ -1120,7 +1120,6 @@ AS_Settings.LOG_LIST = {
     { "AS_ImplementStabilizer", "Outils stables à l'arrêt", "Implement stabilizer" },
     { "AS_AdSpeed", "Vitesse AutoDrive", "AutoDrive speed" },
     { "AS_Grass", "Herbe piétinée", "Trampled grass" },
-    { "AS_Puddles", "Flaques", "Puddles" },
     { "AS_Weather", "Météo", "Weather" },
     { "AS_Champs", "Champs", "Fields" },
     { "AS_Register", "Registre", "Register" },

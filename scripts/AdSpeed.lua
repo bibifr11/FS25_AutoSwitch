@@ -26,6 +26,44 @@ AS_AdSpeed.CHECK_MS        = 250
 AS_AdSpeed.ZONE_CONFIRM_MS = 1500
 AS_AdSpeed.state = {}   -- [vehicle] = { zone, candidate, candidateMs }
 AS_AdSpeed.timer = 0
+AS_AdSpeed.fpLogged = false
+
+-------------------------------------------------------------------------------
+-- (v1.0.7.8) FarmPilot a sa propre limitation de vitesse (réglage « Limitation de
+--   vitesse » : Aucune / Selon le sol / Routes, depuis FarmPilot 1.3.1.5).
+--   Quand cette FarmPilot est installée, c'est elle qui décide : AutoSwitch ne
+--   touche plus aux vitesses d'AutoDrive / FarmPilot (ni route, ni chemin, ni
+--   champ). Avec AutoDrive d'origine ou une FarmPilot plus ancienne, rien ne change.
+-------------------------------------------------------------------------------
+-- le mod est repéré par le moteur (g_modIsLoaded + version du modDesc) :
+--   chercher la variable de FarmPilot dans son environnement ne marchait pas en jeu.
+AS_AdSpeed.FP_MIN_VERSION = { 1, 3, 1, 5 }
+
+local function versionAtLeast(text, min)
+    local parts = {}
+    for n in string.gmatch(tostring(text or ""), "%d+") do parts[#parts + 1] = tonumber(n) end
+    for i = 1, #min do
+        local v = parts[i] or 0
+        if v ~= min[i] then return v > min[i] end
+    end
+    return true
+end
+
+function AS_AdSpeed:farmPilotGoverns()
+    if self.fpGoverns ~= nil then return self.fpGoverns end
+    local governs = false
+    local loaded = g_modIsLoaded ~= nil and g_modIsLoaded["FS25_FarmPilot"] == true
+    if loaded and g_modManager ~= nil and g_modManager.getModByName ~= nil then
+        local ok, mod = pcall(g_modManager.getModByName, g_modManager, "FS25_FarmPilot")
+        governs = ok and mod ~= nil and versionAtLeast(mod.version, self.FP_MIN_VERSION)
+    end
+    self.fpGoverns = governs
+    if governs and not self.fpLogged then
+        self.fpLogged = true
+        vtpInfo("[AS_AdSpeed] FarmPilot gère sa vitesse lui-même : vitesse AutoDrive d'AutoSwitch coupée")
+    end
+    return governs
+end
 
 -- "field", "path", "road" ou nil (aucune roue au sol)
 function AS_AdSpeed:detectZone(vehicle)
@@ -81,11 +119,11 @@ function AS_AdSpeed:hook(vehicle)
     sm.__asSpeedHooked = true
     local origSpeed, origField = sm.getSpeedLimit, sm.getFieldSpeedLimit
     sm.getSpeedLimit = function(s)
-        local kph = s.isActive ~= nil and s:isActive() == true and AS_AdSpeed:getZoneSpeed(vehicle) or nil
+        local kph = s.isActive ~= nil and s:isActive() == true and not AS_AdSpeed:farmPilotGoverns() and AS_AdSpeed:getZoneSpeed(vehicle) or nil
         return kph or origSpeed(s)
     end
     sm.getFieldSpeedLimit = function(s)
-        local kph = s.isActive ~= nil and s:isActive() == true and AS_AdSpeed:getZoneSpeed(vehicle) or nil
+        local kph = s.isActive ~= nil and s:isActive() == true and not AS_AdSpeed:farmPilotGoverns() and AS_AdSpeed:getZoneSpeed(vehicle) or nil
         return kph or origField(s)
     end
     vtpInfo(string.format("[AS_AdSpeed] %s : vitesse AutoDrive pilotée par le terrain", vehicle:getName()))
@@ -94,6 +132,10 @@ end
 function AS_AdSpeed:update(dt)
     -- AutoDrive conduit sur le serveur (ou en solo) : les roues n'y sont connues que là
     if g_currentMission == nil or g_server == nil then return end
+    if self:farmPilotGoverns() then
+        if next(self.state) ~= nil then self.state = {} end
+        return
+    end
     self.timer = self.timer + (dt or 0)
     if self.timer < self.CHECK_MS then return end
     local step = self.timer
@@ -126,6 +168,7 @@ function AS_AdSpeed:update(dt)
 end
 
 function AS_AdSpeed:deleteMap()
+    self.fpGoverns = nil
     self.state = {}
     self.timer = 0
 end

@@ -33,7 +33,6 @@
 --   LightRange    lumières des véhicules visibles de plus loin
 --   GrassTrample  herbe piétinée : recul de pousse au lieu du fauchage de Mud System Physics
 --   WindSway      vent visible : arbres, cultures et herbe bougent selon la force du vent (x2,2)
---   Puddles       flaques : type de sol Precision Farming -> Mud System Physics, flaques visibles
 --   Weather       fenêtre Météo (Ctrl droit + M) : prévisions du jeu lisibles
 --   Fields        fenêtre Champs (Ctrl droit + C ou icône) : culture, stade, semis, engrais, herbicide, récolte
 --   Overdraft     découvert : achat / location jusqu'à un plafond, agios chaque jour
@@ -117,7 +116,6 @@ local FILES = {
     "scripts/WindSway.lua",
     "scripts/GrassTrample.lua",
     "scripts/AiRuts.lua",
-    "scripts/Puddles.lua",
     "scripts/Weather.lua",
     "scripts/CropCalendar.lua",
     "scripts/Fields.lua",
@@ -140,17 +138,19 @@ local FILES = {
 -- cuts : modules non chargés si le mod manque (v1.0.0.87)
 local MSP_CUTS = { "scripts/SeedProtect.lua", "scripts/DirectResow.lua", "scripts/Duals.lua",
     "scripts/GrassTrample.lua", "scripts/MudPreset.lua", "scripts/MudWheelDrag.lua",
-    "scripts/ImplementStabilizer.lua", "scripts/TireDirtKeep.lua", "scripts/TtdBridge.lua",
-    "scripts/Puddles.lua" }
+    "scripts/ImplementStabilizer.lua", "scripts/TireDirtKeep.lua", "scripts/TtdBridge.lua" }
 local MR_CUTS = { "scripts/WetGrip.lua", "scripts/MudWheelDrag.lua", "scripts/ImplementStabilizer.lua" }
 local REQUIRED = {
     { "FS25_VariableTirePressure",    "1.0.0.13", "Variable Tire Pressure", cuts = { "scripts/Tires.lua", "scripts/VtpFix.lua" } },
     -- (v1.0.4.2) AutoDrive / FarmPilot plus requis (portée de goulotte chargée seulement s'il est là, plus bas)
-    { "FS25_Courseplay",              "8.1.0.3",  "Courseplay" },
+    -- (v1.0.7.8) Courseplay facultatif : tout fonctionne sans lui (relance CP au chargement inutile sans CP)
+    { anyOf = {
+        { "FS25_Courseplay",         "8.1.0.3",  "Courseplay" },
+    }, title = "Courseplay", optional = true, optionalKey = "vtpas_reqOptionalCp", optionalLog = "" },
     { "FS25_EnhancedVehicle",         "1.1.7.1",  "Enhanced Vehicle", cuts = { "scripts/Diff.lua", "scripts/SteerLimit.lua", "scripts/HudDedup.lua" } },
     { "FS25_MudSystemPhysics",        "1.3.6.0",  "Mud System Physics", cuts = MSP_CUTS },
-    { "FS25_DynamicDrivePro",         "1.0.1.0",  "DynamicDrive Pro" },
-    { { "FS25_TractorTerrainDynamics", "FS25_TTD*" }, "1.0.3.7", "Tractor Terrain Dynamics", cuts = { "scripts/TtdBridge.lua" } },
+    -- (v1.0.7.8) DynamicDrive Pro plus requis : aucun module ne s'en sert (son crochet roues reste écarté par l'arbitre)
+    -- (v1.0.7.8) Tractor Terrain Dynamics plus requis : pont MSP -> TTD chargé seulement s'il est là (plus bas)
     { "MoreRealistic",                "0.26.09.13", "MoreRealistic", cuts = MR_CUTS },
     { "moreRealisticXmlDatabank",     "1.0.0.1",  "MoreRealistic XML Databank", cuts = MR_CUTS },
     { "FS25_RealisticHarvesting",     "1.6.0.0",  "Realistic Harvesting" },
@@ -339,13 +339,21 @@ do
     if not ok or bad ~= nil or none then skip["scripts/ForageReach.lua"] = true end
 end
 
+-- (v1.0.7.8) pont MSP -> TTD : seulement avec Tractor Terrain Dynamics, sans rien signaler
+do
+    local ok, bad, _, none = pcall(checkEntry, { anyOf = {
+        { { "FS25_TractorTerrainDynamics", "FS25_TTD*" }, "1.0.3.7", "Tractor Terrain Dynamics" },
+    }, optional = true }, false)
+    if not ok or bad ~= nil or none then skip["scripts/TtdBridge.lua"] = true end
+end
+
 for _, file in ipairs(FILES) do
     if skip[file] then
         local global = STUB_NAMES[file] or ("AS_" .. string.match(file, "([%w_]+)%.lua$"))
         local stub = { disabled = true, ENABLED = false }
         for k, v in pairs(STUB_FIELDS[global] or {}) do stub[k] = v end
         _G[global] = stub
-        if file ~= "scripts/ForageReach.lua" then print("[AutoSwitch] module coupé (mod requis manquant) : " .. file) end
+        if file ~= "scripts/ForageReach.lua" and file ~= "scripts/TtdBridge.lua" then print("[AutoSwitch] module coupé (mod requis manquant) : " .. file) end
     else
         local path = Utils.getFilename(file, modDir)
         if fileExists(path) then
@@ -372,8 +380,12 @@ function AS_ModCheck:update(dt)
         local entry
         if req.anyOf ~= nil then
             if ok and none == true then
-                entry = { title = req.title, required = "", status = "optional" }
-                print(string.format("[AutoSwitch] %s : aucun installé (facultatif), usure des pneus gérée par AutoSwitch", req.title))
+                entry = { title = req.title, required = "", status = "optional", optionalKey = req.optionalKey }
+                if req.optionalLog ~= nil then
+                    print(string.format("[AutoSwitch] %s : pas installé (facultatif)", req.title))
+                else
+                    print(string.format("[AutoSwitch] %s : aucun installé (facultatif), usure des pneus gérée par AutoSwitch", req.title))
+                end
             elseif #req.anyOf > 1 then
                 -- (01/11) une seule ligne « AutoDrive / FarmPilot » : l'un des deux suffit,
                 -- l'état dit lequel est utilisé (« OK (FarmPilot 1.0.0.0) »)
@@ -431,6 +443,7 @@ function AS_ModCheck:statusText(m)
     elseif m.status == "blocked" then
         return text("vtpas_reqBlockedMod", "X  Bloqué par AutoSwitch")
     elseif m.status == "optional" then
+        if m.optionalKey ~= nil then return text(m.optionalKey, "Facultatif") end
         return text("vtpas_reqOptional", "Facultatif")
     end
     return string.format(text("vtpas_reqOk", "OK (%s)"), tostring(m.found))

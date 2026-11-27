@@ -51,7 +51,6 @@ AS_AiRuts.TTD_BASE_FILE = "AS_TtdDigBase.xml"
 AS_AiRuts.DEBUG = false
 AS_AiRuts.TTD_REPAIR_FILE = "AS_TtdRepair.xml"
 AS_AiRuts.REPAIR_PER_FRAME = 2000
-if AS_LOGS ~= nil then AS_LOGS["AS_AiRuts"] = true end   -- version privée : logs actifs
 AS_AiRuts.DEBUG_INTERVAL = 60000    -- ms entre deux bilans
 AS_AiRuts.SURFACE_INTERVAL = 300    -- ms entre deux lectures du sol
 AS_AiRuts.CELL = 2                  -- m : sol relu seulement si la roue a changé de case

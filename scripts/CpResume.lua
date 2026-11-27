@@ -240,6 +240,12 @@ function AS_CpResume:update(dt)
     if g_server == nil or g_currentMission == nil then return end
     if self.pending == nil then
         if not g_currentMission.isMissionStarted then return end
+        -- (v1.0.7.8) Courseplay facultatif : sans lui, rien à relancer
+        if g_modIsLoaded == nil or g_modIsLoaded["FS25_Courseplay"] ~= true then
+            self.pending = {}
+            log("Courseplay pas installé : relance au chargement inactive")
+            return
+        end
         local ok, list = pcall(self.load, self)
         self.pending = ok and list or {}
         if not ok then log("ERREUR lecture : %s", tostring(list)) end

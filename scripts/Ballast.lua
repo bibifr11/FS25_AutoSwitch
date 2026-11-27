@@ -273,16 +273,6 @@ function AS_Ballast:update(dt)
         end
     end
     st.vehicle, st.res = v, res
-    if res ~= nil then
-        local key = string.format("%s|%s|%d|%d", tostring(v), tostring(res.typeOutil), res.ideal or -1, math.floor(res.actuelle * 1000 + 0.5))
-        if key ~= st.logKey then
-            st.logKey = key
-            print(string.format("[AS_Ballast] %s : poids %.2f t, av %.2f t / ar %.2f t (%d %%), outil %s, masse avant actuelle %d kg, conseillée %s kg (règle %s), outil levé %d %% avant",
-                tostring(v.getName ~= nil and v:getName() or "?"), res.poids, res.avant, res.arriere, math.floor(res.part * 100 + 0.5),
-                tostring(res.typeOutil), math.floor(res.actuelle * 1000 + 0.5), tostring(res.ideal), tostring(res.regle),
-                math.floor((res.partOutil or res.part) * 100 + 0.5)))
-        end
-    end
 end
 
 -------------------------------------------------------------------------------

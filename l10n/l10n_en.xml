@@ -163,6 +163,7 @@
         <text name="vtpas_slipRoad_label" text="Wheel slip for diff lock on asphalt"/>
         <text name="vtpas_slipRoad_tip" text="On asphalt and concrete, this wheel slip threshold (%) replaces the front and rear differential thresholds. Unlocks at half this threshold. Off = never lock on hard surfaces."/>
         <text name="vtpas_reqOptional" text="Optional (wear handled by AutoSwitch)"/>
+        <text name="vtpas_reqOptionalCp" text="Optional"/>
         <text name="vtpas_secDiff" text="Differentials"/>
         <text name="vtpas_secTires" text="Tires"/>
         <text name="vtpas_secAlerts" text="Notifications and alerts"/>
@@ -295,7 +296,7 @@
         <text name="as_help_intro_p3_title" text="Shortcuts"/>
         <text name="as_help_intro_p3_text" text="• Right Ctrl + Up arrow: AUTO / MANUAL mode (inside a vehicle)&#10;• Right Ctrl + M: Weather window&#10;• Right Ctrl + C: Fields window&#10;• Right Ctrl + R: weighing and sales Register&#10;• Right Ctrl + I: mount / unmount dual wheels (on foot, next to a tire rack)&#10;&#10;All these keys can be changed in Settings &gt; Controls."/>
         <text name="as_help_intro_p4_title" text="Settings and required mods"/>
-        <text name="as_help_intro_p4_text" text="All settings are in Esc &gt; Settings, AUTOSWITCH tab. Each line has a tooltip.&#10;&#10;At the bottom of the tab:&#10;• the list of required mods, with a green tick (OK) or a red cross (missing, not activated or too old). A missing required mod does not block the game: only the features that depend on it are turned off;&#10;• &quot;Logs in log.txt&quot;: one switch per feature, off by default. Errors are always written.&#10;&#10;Required mods: VariableTirePressure, EnhancedVehicle, AutoDrive, Courseplay, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, TractorTerrainDynamics, DynamicDrivePro, RealisticHarvesting, MoistureSystem.&#10;Tire wear is built in: no tire mod is needed."/>
+        <text name="as_help_intro_p4_text" text="All settings are in Esc &gt; Settings, AUTOSWITCH tab. Each line has a tooltip.&#10;&#10;At the bottom of the tab:&#10;• the list of required mods, with a green tick (OK) or a red cross (missing, not activated or too old). A missing required mod does not block the game: only the features that depend on it are turned off;&#10;• &quot;Logs in log.txt&quot;: one switch per feature, off by default. Errors are always written.&#10;&#10;Required mods: VariableTirePressure, EnhancedVehicle, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, RealisticHarvesting, MoistureSystem.&#10;Optional: AutoDrive or FarmPilot, Courseplay, TractorTerrainDynamics.&#10;Tire wear is built in: no tire mod is needed."/>
         <text name="as_help_diff_title" text="Differentials and 4WD"/>
         <text name="as_help_diff_p1_title" text="Automatic locking"/>
         <text name="as_help_diff_p1_text" text="In AUTO mode, AutoSwitch locks the differentials (Enhanced Vehicle) when the wheels slip:&#10;• rear at 15 % slip, then front at 30 % (adjustable thresholds);&#10;• the slip must last 1.5 s before locking (adjustable);&#10;• unlocked when the slip falls back to half the threshold.&#10;&#10;A notification is shown on each lock and unlock (can be turned off). Locks are reset when the game is loaded."/>
@@ -321,8 +322,6 @@
         <text name="as_help_ground_p1_text" text="MoreRealistic ignores the grip computed by Mud System Physics and Tractor Terrain Dynamics. AutoSwitch therefore lowers grip in the field depending on local moisture (from 20 %, maximum at 70 %) and the soil type.&#10;&#10;Five levels: Beginner, Easy, Normal (default), Hard, Extreme. At 60 % moisture, the loss goes from about 34 % (Beginner) to 78 % (Extreme)."/>
         <text name="as_help_ground_p2_title" text="Grip bonuses"/>
         <text name="as_help_ground_p2_text" text="• Tires deflated in the field (Variable Tire Pressure): bonus capped at +15 % (+20 % with dual wheels).&#10;• Locked differentials: +4 % on the rear wheels, +3 % on the front wheels."/>
-        <text name="as_help_ground_p3_title" text="Puddles"/>
-        <text name="as_help_ground_p3_text" text="The Precision Farming soil type counts in Mud System Physics moisture: sand dries quickly, clay stays wet.&#10;&#10;When it rains on saturated ground, water gathers in the hollows of the terrain (fields, tracks, meadows; never on asphalt, concrete or in water) and forms visible puddles. They slowly disappear through seepage and evaporation."/>
         <text name="as_help_ground_p4_title" text="Grass and tracks"/>
         <text name="as_help_ground_p4_text" text="Mud System Physics mowed the grass under every wheel from 12 % moisture. Instead, trampled grass goes back one growth stage, with a chance that rises with speed and moisture; above 30 km/h it is cut short.&#10;&#10;Tire tracks are kept with the savegame: they no longer disappear when the game is reloaded (60,000 points by default, adjustable)."/>
         <text name="as_help_ground_p5_title" text="Implements, mud and sowing"/>

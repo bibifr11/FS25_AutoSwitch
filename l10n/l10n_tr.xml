@@ -31,7 +31,7 @@
         <text name="vtpas_alert_pct_tip" text="Bir aracın patinajı ayarlanan süre boyunca bu yüzdenin üzerinde kaldığında kırmızı bir mesaj gösterir. Devre Dışı = uyarı yok."/>
         <text name="vtpas_alert_sec_label" text="Patinaj uyarısı: süre"/>
         <text name="vtpas_alert_sec_tip" text="Uyarının görüntülenmesi için patinajın eşik değerin üzerinde kalması gereken süre (saniye cinsinden)."/>
-        <text name="vtpas_alert_slip" text="%s : %d saniyeden uzun süredir aşırı patinaj (%.0f %%)!"/>
+        <text name="vtpas_alert_slip" text="%s: aşırı patinaj (%.0f %%) %d saniyeden uzun süredir!"/>
         <text name="vtpas_alert_diffSteer" text="Tekerlekleri düzeltin"/>
         <text name="vtpas_diffdelay_label" text="Diferansiyeller: kilitleme öncesi gecikme"/>
         <text name="vtpas_diffdelay_tip" text="Diferansiyeller otomatik olarak kilitlenmeden önce patinajın eşik değerin üzerinde kalması gereken süre (saniye cinsinden)."/>
@@ -63,8 +63,8 @@
         <text name="vtpas_gt_Planted" text="dikilmiş"/>
         <text name="vtpas_gt_RidgeSown" text="sırtlara ekilmiş"/>
         <text name="vtpas_gt_Rollerlines" text="silindirlenmiş"/>
-        <text name="vtpas_gt_HarvestReady" text="hasada hazır ürün"/>
-        <text name="vtpas_gt_HarvestReadyO" text="hasada hazır ürün"/>
+        <text name="vtpas_gt_HarvestReady" text="hasada hazır ürün/ekin"/>
+        <text name="vtpas_gt_HarvestReadyO" text="hasada hazır ürün/ekin"/>
         <text name="vtpas_gt_Grass" text="çim"/>
         <text name="vtpas_gt_GrassCut" text="biçilmiş çim"/>
         <text name="vtpas_hint_riskShort" text="BATMA RİSKİ"/>
@@ -134,7 +134,7 @@
         <text name="as_dual_locked" text="Traktör sabitlendi: tekerlek değişimi devam ediyor (tahmini bitiş %s)"/>
         <text name="as_dual_zone" text="Traktörü montaj alanına yerleştirin (paletin yanındaki zeminde yer alan dikdörtgen)"/>
         <text name="as_dual_marker" text="Burada durun"/>
-        <text name="as_dual_marker_on" text="Sağ Ctrl + İ: tekerlekleri değiştir"/>
+        <text name="as_dual_marker_on" text="Sağ Ctrl + I: tekerlekleri değiştir"/>
         <text name="as_dual_timer_title" text="Tekerlek Değişimi"/>
         <text name="as_dual_timer_on" text="%s : çift tekerlek montajı - %d dk (tahmini %s) - lastik %d/%d"/>
         <text name="as_dual_timer_off" text="%s : çift tekerlek sökümü - %d dk (tahmini %s) - lastik %d/%d"/>
@@ -164,6 +164,7 @@
         <text name="vtpas_slipRoad_label" text="Asfaltta kilitlenme için patinaj eşiği"/>
         <text name="vtpas_slipRoad_tip" text="Asfalt ve betonda, bu patinaj yüzdesi (%) ön ve arka diferansiyellerin eşiklerinin yerini alır. Eşiğin yarısına düşüldüğünde kilit açılır. Devre Dışı = sert zeminlerde asla kilitlenmez."/>
         <text name="vtpas_reqOptional" text="İsteğe bağlı (aşınma AutoSwitch tarafından yönetilir)"/>
+        <text name="vtpas_reqOptionalCp" text="İsteğe bağlı"/>
         <text name="vtpas_secDiff" text="Diferansiyeller"/>
         <text name="vtpas_secTires" text="Lastikler"/>
         <text name="vtpas_secAlerts" text="Bildirimler ve uyarılar"/>
@@ -296,7 +297,7 @@
         <text name="as_help_intro_p3_title" text="Kısayollar"/>
         <text name="as_help_intro_p3_text" text="- Sağ Ctrl + Yukarı Ok: OTO / MANUEL modu (araç içindeyken)&#10;- Sağ Ctrl + M: Hava Durumu penceresi&#10;- Sağ Ctrl + C: Tarlalar penceresi&#10;- Sağ Ctrl + R: Tartım ve Satış Defteri&#10;- Sağ Ctrl + I: Çift tekerlek takma / sökme (yaya olarak, lastik paleti yanında)&#10;&#10;Tüm bu tuşlar Seçenekler &gt; Kontroller menüsünden değiştirilebilir."/>
         <text name="as_help_intro_p4_title" text="Ayarlar ve Gerekli Modlar"/>
-        <text name="as_help_intro_p4_text" text="Tüm ayarlar Escape &gt; Parametreler, AUTOSWITCH sekmesinde yer alır. Her satırın bir ipucu balonu vardır.&#10;&#10;Sekmenin altında:&#10;- yeşil onay işareti (Tamam) veya kırmızı çarpı (eksik, etkin değil ya da çok eski) içeren gerekli modlar listesi bulunur. Eksik bir gerekli mod oyunu bloke etmez: yalnızca buna bağlı fonksiyonlar devre dışı kalır;&#10;- 'Log.txt içindeki kayıtlar': varsayılan olarak kapalı olan, fonksiyon başına bir anahtar. Hatalar her zaman kaydedilir.&#10;&#10;Gerekli Modlar: VariableTirePressure, EnhancedVehicle, AutoDrive, Courseplay, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, TractorTerrainDynamics, DynamicDrivePro, RealisticHarvesting, MoistureSystem.&#10;Lastik aşınması entegre edilmiştir: ayrı bir lastik modu gerekmez."/>
+        <text name="as_help_intro_p4_text" text="Tüm ayarlar Escape &gt; Parametreler, AUTOSWITCH sekmesinde yer alır. Her satırın bir ipucu balonu vardır.&#10;&#10;Sekmenin altında:&#10;- yeşil onay işareti (Tamam) veya kırmızı çarpı (eksik, etkin değil ya da çok eski) içeren gerekli modlar listesi bulunur. Eksik bir gerekli mod oyunu bloke etmez: yalnızca buna bağlı fonksiyonlar devre dışı kalır;&#10;- 'Log.txt içindeki kayıtlar': varsayılan olarak kapalı olan, fonksiyon başına bir anahtar. Hatalar her zaman kaydedilir.&#10;&#10;Gerekli Modlar: VariableTirePressure, EnhancedVehicle, MoreRealistic, moreRealisticXmlDatabank, MudSystemPhysics, RealisticHarvesting, MoistureSystem.&#10;İsteğe bağlı: AutoDrive veya FarmPilot, Courseplay, TractorTerrainDynamics.&#10;Lastik aşınması entegre edilmiştir: ayrı bir lastik modu gerekmez."/>
         <text name="as_help_diff_title" text="Diferansiyeller ve 4x4"/>
         <text name="as_help_diff_p1_title" text="Otomatik Kilitleme"/>
         <text name="as_help_diff_p1_text" text="OTO modunda AutoSwitch, tekerlekler patinaj yaptığında diferansiyelleri (Enhanced Vehicle) kilitler:&#10;- önce %15 patinajda arka, ardından %30 patinajda ön (eşikler ayarlanabilir);&#10;- kilitlenmeden önce patinajın 1,5 saniye sürmesi gerekir (ayarlanabilir);&#10;- patinaj eşik değerin yarısına düştüğünde kilit açılır.&#10;&#10;Her kilitlenme ve kilit açılma işleminde bir bildirim görüntülenir (kapatılabilir). Kilitler oyun yüklendiğinde sıfırlanır."/>
@@ -322,8 +323,6 @@
         <text name="as_help_ground_p1_text" text="MoreRealistic, Mud System Physics ve Tractor Terrain Dynamics tarafından hesaplanan yol tutuşunu dikkate almaz. Bu nedenle AutoSwitch, yerel neme (%20'den başlayıp %70'te maksimuma ulaşan) ve zemin türüne göre tarladaki tutuşu azaltır.&#10;&#10;Beş seviye bulunur: Acemi, Kolay, Normal (varsayılan), Zor, Aşırı. %60 nem oranında tutuş kaybı yaklaşık %34'ten (Acemi) %78'e (Aşırı) kadar değişir."/>
         <text name="as_help_ground_p2_title" text="Tutuş Bonusları"/>
         <text name="as_help_ground_p2_text" text="- Tarlada inik lastikler (Variable Tire Pressure): bonus tekerleklerde +%15'e (çift tekerlekte +%20'ye) düşer.&#10;- Kilitli diferansiyeller: arka tekerleklerde +%4, ön tekerleklerde +%3."/>
-        <text name="as_help_ground_p3_title" text="Puddles"/>
-        <text name="as_help_ground_p3_text" text="The Precision Farming soil type counts in Mud System Physics moisture: sand dries quickly, clay stays wet.&#10;&#10;When it rains on saturated ground, water gathers in the hollows of the terrain (fields, tracks, meadows; never on asphalt, concrete or in water) and forms visible puddles. They slowly disappear through seepage and evaporation."/>
         <text name="as_help_ground_p4_title" text="Çim ve İzler"/>
         <text name="as_help_ground_p4_text" text="Mud System Physics, %12 nem oranından itibaren her tekerleğin altındaki çimleri biçiyordu. Bunun yerine ezilen çim bir aşama geri çekilir; bu ihtimal hız ve nem ile artar, 30 km/s hızın üzerinde ise tamamen sıfıra kesilir.&#10;&#10;Lastik izleri kayıt dosyasıyla birlikte saklanır: oyun yeniden yüklendiğinde kaybolmazlar (varsayılan 60.000 nokta, ayarlanabilir)."/>
         <text name="as_help_ground_p5_title" text="Ekipmanlar, Çamur ve Ekim"/>
@@ -391,87 +390,87 @@
         <text name="vtpas_tl_alertCritical" text="%s : lastiklerin değiştirilmesi gerekiyor (%%%d), atölyeye gidin"/>
         <text name="vtpas_tl_trackCut" text="%s : palet kesilmiş/hasarlı, atölyede değiştirilmeli"/>
         <text name="vtpas_tl_replace" text="Yeni lastikler"/>
-        <text name="vtpas_tl_replaceAsk" text="%s karşılığında %d adet yeni lastik takılsın mı?"/>
-        <text name="finance_asFieldLease" text="Field rents"/>
-        <text name="vtpas_fl_label" text="Field lease"/>
+        <text name="vtpas_tl_replaceAsk" text="%d adet yeni lastik takılsın mı? (Ücret: %s)"/>
+        <text name="finance_asFieldLease" text="Tarla kiraları"/>
+        <text name="vtpas_fl_label" text="Tarla kiralama"/>
         <text name="vtpas_fl_tip" text='"Lease" tab in the Esc menu: rent fields from neighbours or lease out your own. Off: the tab is hidden, running leases go on until they end.'/>
-        <text name="vtpas_flRate_label" text="Field rent (per year)"/>
-        <text name="vtpas_flRate_tip" text="Yearly rent as a percentage of the farmland price, paid every month (±15 % depending on the field). Does not change signed leases."/>
-        <text name="vtpas_flRenew_label" text="Lease renewal"/>
-        <text name="vtpas_flRenew_tip" text="Chance that the other party renews the lease when it ends. Answer given one month before the end."/>
-        <text name="vtpas_fl_title" text="Field lease"/>
-        <text name="vtpas_fl_modeOffers" text="Neighbour offers"/>
-        <text name="vtpas_fl_modeIn" text="My rented fields"/>
-        <text name="vtpas_fl_modeOut" text="My fields"/>
-        <text name="vtpas_fl_parcel" text="Farmland %d"/>
-        <text name="vtpas_fl_field" text="Field %d"/>
-        <text name="vtpas_fl_colField" text="Field"/>
-        <text name="vtpas_fl_colArea" text="Area"/>
-        <text name="vtpas_fl_colRent" text="Rent / month"/>
-        <text name="vtpas_fl_colTerm" text="Ends"/>
-        <text name="vtpas_fl_colTermOffer" text="Lease term"/>
-        <text name="vtpas_fl_colState" text="Status"/>
-        <text name="vtpas_fl_summary" text="Rent received: %s / month     Rent paid: %s / month"/>
-        <text name="vtpas_fl_noOffer" text="No offer this month."/>
-        <text name="vtpas_fl_none" text="No field."/>
-        <text name="vtpas_fl_months" text="%d months"/>
-        <text name="vtpas_fl_since" text="For %d months"/>
-        <text name="vtpas_fl_left" text="In %d months"/>
-        <text name="vtpas_fl_stOffer" text="For rent"/>
-        <text name="vtpas_fl_stOwn" text="Free (can be listed)"/>
-        <text name="vtpas_fl_stRyf" text="Managed by RentYourField"/>
-        <text name="vtpas_fl_stNoRenew" text="No renewal wanted"/>
-        <text name="vtpas_fl_stRenewYes" text="Renewal accepted"/>
-        <text name="vtpas_fl_stRenewNo" text="Not renewed at the end"/>
-        <text name="vtpas_fl_stHarvest" text="Extended until harvest"/>
-        <text name="vtpas_fl_stRunning" text="Running (%d-month lease)"/>
-        <text name="vtpas_fl_btnMode" text="Next list"/>
-        <text name="vtpas_fl_btnRenewOn" text="Renew: Yes"/>
-        <text name="vtpas_fl_btnRenewOff" text="Renew: No"/>
-        <text name="vtpas_fl_btnTerm" text="Term: %d months"/>
-        <text name="vtpas_fl_btnTake" text="Rent this field"/>
-        <text name="vtpas_fl_btnLeaseOut" text="List for lease"/>
-        <text name="vtpas_fl_btnTerminate" text="Terminate"/>
-        <text name="vtpas_fl_askTake" text="Rent %s for %s per month, %d-month lease?"/>
-        <text name="vtpas_fl_askLeaseOut" text="List %s for lease at %s per month? A tenant will sign within 1 to 3 months, for a term of their choice; until then the field stays yours."/>
-        <text name="vtpas_fl_askTerminatePen" text="Terminate the lease of %s early? Penalty: %s."/>
-        <text name="vtpas_fl_askTerminate" text="Terminate the lease of %s?"/>
-        <text name="vtpas_fl_noticeYes" text="%s: the lease will be renewed at the end of next month."/>
-        <text name="vtpas_fl_noticeNo" text="%s: the lease will not be renewed, it ends at the end of next month."/>
-        <text name="vtpas_fl_renewed" text="%s: lease renewed for %d months, new rent %s per month."/>
-        <text name="vtpas_fl_extended" text="%s: lease extended until harvest."/>
-        <text name="vtpas_fl_ended" text="%s: lease ended."/>
-        <text name="vtpas_fl_cntOwned" text="Owned fields: %d"/>
-        <text name="vtpas_fl_cntWait" text="(%d listed)"/>
-        <text name="vtpas_fl_cntTaken" text="Rented from neighbours: %d"/>
-        <text name="vtpas_fl_cntLeased" text="Leased to neighbours: %d"/>
-        <text name="vtpas_fl_listedSince" text="Listed for %d months"/>
-        <text name="vtpas_fl_stWait" text="Waiting for a tenant"/>
-        <text name="vtpas_fl_btnUnlist" text="Withdraw listing"/>
-        <text name="vtpas_fl_askUnlist" text="Withdraw the lease listing of %s?"/>
-        <text name="vtpas_fl_signed" text="%s: tenant found, %d-month lease signed at %s per month."/>
-        <text name="vtpas_fl_endedRelist" text="%s: lease ended, the field is listed again."/>
-        <text name="vtpas_fl_termTenant" text="Set by the tenant"/>
-        <text name="vtpas_fl_listOwn" text="My fields"/>
-        <text name="vtpas_fl_listLease" text="Leases"/>
-        <text name="vtpas_fl_listOffer" text="Neighbours' listings"/>
+        <text name="vtpas_flRate_label" text="Tarla kirası (yıllık)"/>
+        <text name="vtpas_flRate_tip" text="Tarla fiyatının yüzdesi olarak yıllık kira, her ay ödenir (tarlaya bağlı olarak ±%15). İmzalanmış kiralamaları değiştirmez."/>
+        <text name="vtpas_flRenew_label" text="Kira yenileme"/>
+        <text name="vtpas_flRenew_tip" text="Kira süresi dolduğunda karşı tarafın kirayı yenileme olasılığı. Yanıt, bitimden bir ay önce verilir."/>
+        <text name="vtpas_fl_title" text="Tarla kiralama"/>
+        <text name="vtpas_fl_modeOffers" text="Komşu teklifleri"/>
+        <text name="vtpas_fl_modeIn" text="Kiraladığım tarlalar"/>
+        <text name="vtpas_fl_modeOut" text="Tarlalarım"/>
+        <text name="vtpas_fl_parcel" text="Tarım Arazisi %d"/>
+        <text name="vtpas_fl_field" text="Tarla %d"/>
+        <text name="vtpas_fl_colField" text="Tarla"/>
+        <text name="vtpas_fl_colArea" text="Alan"/>
+        <text name="vtpas_fl_colRent" text="Kira / ay"/>
+        <text name="vtpas_fl_colTerm" text="Bitiş"/>
+        <text name="vtpas_fl_colTermOffer" text="Kira süresi"/>
+        <text name="vtpas_fl_colState" text="Durum"/>
+        <text name="vtpas_fl_summary" text="Alınan kira: %s / ay      Ödenen kira: %s / ay"/>
+        <text name="vtpas_fl_noOffer" text="Bu ay teklif yok."/>
+        <text name="vtpas_fl_none" text="Tarla yok."/>
+        <text name="vtpas_fl_months" text="%d ay"/>
+        <text name="vtpas_fl_since" text="%d aydır"/>
+        <text name="vtpas_fl_left" text="%d ay içinde"/>
+        <text name="vtpas_fl_stOffer" text="Kiralık"/>
+        <text name="vtpas_fl_stOwn" text="Boşta (ilana verilebilir)"/>
+        <text name="vtpas_fl_stRyf" text="RentYourField tarafından yönetiliyor"/>
+        <text name="vtpas_fl_stNoRenew" text="Yenileme istenmiyor"/>
+        <text name="vtpas_fl_stRenewYes" text="Yenileme kabul edildi"/>
+        <text name="vtpas_fl_stRenewNo" text="Süre sonunda yenilenmeyecek"/>
+        <text name="vtpas_fl_stHarvest" text="Hasada kadar uzatıldı"/>
+        <text name="vtpas_fl_stRunning" text="Devam ediyor (%d aylık kira)"/>
+        <text name="vtpas_fl_btnMode" text="Sonraki liste"/>
+        <text name="vtpas_fl_btnRenewOn" text="Yenile: Evet"/>
+        <text name="vtpas_fl_btnRenewOff" text="Yenile: Hayır"/>
+        <text name="vtpas_fl_btnTerm" text="Süre: %d ay"/>
+        <text name="vtpas_fl_btnTake" text="Bu tarlayı kirala"/>
+        <text name="vtpas_fl_btnLeaseOut" text="Kiraya ver"/>
+        <text name="vtpas_fl_btnTerminate" text="Feshet"/>
+        <text name="vtpas_fl_askTake" text="%s arazisi aylık %s karşılığında %d aylığına kiralansın mı?"/>
+        <text name="vtpas_fl_askLeaseOut" text="%s arazisi aylık %s karşılığında kiraya verilsin mi? 1 ila 3 ay içinde kendi belirleyeceği bir süre için bir kiracı sözleşme imzalayacaktır; o zamana kadar tarla sizin kalır."/>
+        <text name="vtpas_fl_askTerminatePen" text="%s kira sözleşmesi erken feshedilsin mi? Ceza: %s."/>
+        <text name="vtpas_fl_askTerminate" text="%s kira sözleşmesi feshedilsin mi?"/>
+        <text name="vtpas_fl_noticeYes" text="%s: kira gelecek ayın sonunda yenilenecek."/>
+        <text name="vtpas_fl_noticeNo" text="%s: kira yenilenmeyecek, gelecek ayın sonunda bitecek."/>
+        <text name="vtpas_fl_renewed" text="%s: kira %d ay uzatıldı, yeni kira aylık %s."/>
+        <text name="vtpas_fl_extended" text="%s: kira hasada kadar uzatıldı."/>
+        <text name="vtpas_fl_ended" text="%s: kira sona erdi."/>
+        <text name="vtpas_fl_cntOwned" text="Sahip olunan tarlalar: %d"/>
+        <text name="vtpas_fl_cntWait" text="(%d ilanda)"/>
+        <text name="vtpas_fl_cntTaken" text="Komşulardan kiralanan: %d"/>
+        <text name="vtpas_fl_cntLeased" text="Komşulara kiraya verilen: %d"/>
+        <text name="vtpas_fl_listedSince" text="%d aydır ilanda"/>
+        <text name="vtpas_fl_stWait" text="Kiracı bekleniyor"/>
+        <text name="vtpas_fl_btnUnlist" text="İlanı geri çek"/>
+        <text name="vtpas_fl_askUnlist" text="%s kiralama ilanı geri çekilsin mi?"/>
+        <text name="vtpas_fl_signed" text="%s: kiracı bulundu, %d aylık sözleşme imzalandı (aylık %s)."/>
+        <text name="vtpas_fl_endedRelist" text="%s: kira sona erdi, tarla tekrar ilana verildi."/>
+        <text name="vtpas_fl_termTenant" text="Kiracı tarafından belirlenir"/>
+        <text name="vtpas_fl_listOwn" text="Tarlalarım"/>
+        <text name="vtpas_fl_listLease" text="Kiralamalar"/>
+        <text name="vtpas_fl_listOffer" text="Komşuların ilanları"/>
         <text name="vtpas_fl_colAreaShort" text="ha"/>
-        <text name="vtpas_fl_leaseOf" text="%d-month lease"/>
-        <text name="vtpas_fl_stFree" text="Free"/>
-        <text name="vtpas_fl_stListed" text="Listed"/>
+        <text name="vtpas_fl_leaseOf" text="%d aylık kira"/>
+        <text name="vtpas_fl_stFree" text="Boşta"/>
+        <text name="vtpas_fl_stListed" text="İlanda"/>
         <text name="vtpas_fl_stRyfShort" text="RentYourField"/>
-        <text name="vtpas_fl_dirIn" text="Taken"/>
-        <text name="vtpas_fl_dirOut" text="Leased"/>
-        <text name="vtpas_fl_pick" text="Select a field in a list"/>
-        <text name="vtpas_fl_infoArea" text="Area: %.2f ha"/>
-        <text name="vtpas_fl_infoRent" text="Rent: %s / month"/>
-        <text name="vtpas_fl_btnPick" text="Select a field"/>
-        <text name="vtpas_fl_cntIncome" text="Monthly rent to collect: %s"/>
-        <text name="vtpas_fl_cntPay" text="Monthly rent to pay: %s"/>
-        <text name="vtpas_fl_groupMine" text="My properties"/>
-        <text name="vtpas_fl_groupNeighbours" text="My neighbours"/>
-        <text name="vtpas_fl_boxTitle" text="My leases"/>
-        <text name="vtpas_fl_listIn" text="My leases"/>
-        <text name="vtpas_fl_listOut" text="Leased fields"/>
+        <text name="vtpas_fl_dirIn" text="Kiralanan"/>
+        <text name="vtpas_fl_dirOut" text="Kiraya verilen"/>
+        <text name="vtpas_fl_pick" text="Listeden bir tarla seçin"/>
+        <text name="vtpas_fl_infoArea" text="Alan: %.2f ha"/>
+        <text name="vtpas_fl_infoRent" text="Kira: %s / ay"/>
+        <text name="vtpas_fl_btnPick" text="Bir tarla seçin"/>
+        <text name="vtpas_fl_cntIncome" text="Tahsil edilecek aylık kira: %s"/>
+        <text name="vtpas_fl_cntPay" text="Ödenecek aylık kira: %s"/>
+        <text name="vtpas_fl_groupMine" text="Mülklerim"/>
+        <text name="vtpas_fl_groupNeighbours" text="Komşularım"/>
+        <text name="vtpas_fl_boxTitle" text="Kiralamalarım"/>
+        <text name="vtpas_fl_listIn" text="Kiralamalarım"/>
+        <text name="vtpas_fl_listOut" text="Kiraya verilen tarlalar"/>
     </texts>
 </l10n>
